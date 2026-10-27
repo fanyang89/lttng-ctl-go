@@ -13,28 +13,16 @@ import (
 	"context"
 	"strings"
 	"unsafe"
+
+	"github.com/fanyang89/lttng-go/internal/ctlstate"
 )
 
 // A channel, rather than sync.Mutex, allows canceled waiters to leave promptly.
-var ctlGate = make(chan struct{}, 1)
-
 func lock(ctx context.Context) error {
-	if err := ctx.Err(); err != nil {
-		return err
-	}
-	select {
-	case ctlGate <- struct{}{}:
-		if err := ctx.Err(); err != nil {
-			unlock()
-			return err
-		}
-		return nil
-	case <-ctx.Done():
-		return ctx.Err()
-	}
+	return ctlstate.Lock(ctx)
 }
 
-func unlock() { <-ctlGate }
+func unlock() { ctlstate.Unlock() }
 
 // nativeError must be called while holding ctlGate. Legacy APIs return negative
 // error codes; APIs returning enum lttng_error_code are normalized by callers.

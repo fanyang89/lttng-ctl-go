@@ -40,11 +40,43 @@ Normal sessions support local output directories, network output to an LTTng
 relay daemon, or no output. **`SessionOptions{}` means no output**, not the CLI's
 default trace directory. Network output URLs are not remote sessiond endpoints.
 
-UST and kernel domains are exposed; end-to-end recording is tested with UST.
-Kernel tracing requires the appropriate modules and permissions and is not
-covered by the current integration suite. Agent domains (Java/Python), probes,
-snapshot/live session creation, rotation, trackers, triggers, and advanced
-channel/context attributes are not wrapped in this initial API.
+For the **complete liblttng-ctl 2.14 API**, import
+`github.com/fanyang89/lttng-go/ctl`. The root package remains the simpler
+recording API described above. The `ctl` package covers **all 425 public C
+functions**, all public enums, and the two global endpoints, including deprecated
+APIs. See [the complete symbol/signature inventory](ctl/API.tsv).
+
+The complete layer includes snapshot/live descriptors and outputs, rotation and
+schedules, process-attribute trackers, save/load, asynchronous clear/destruction,
+triggers, actions, rate policies, conditions, notification channels, evaluations,
+captured values, error queries, agent event rules, probes, health, extended channel
+attributes, and perf/application context fields. No unsupported native operation
+is replaced by a stub.
+
+`ctl` retains native scalar/status values followed by converted output parameters
+and an `error`. Status namespaces are typed separately; inspect `ctl.StatusError`
+for native failures. Nullable C strings use `*string` (`nil` for NULL, `new("")`
+for an empty string). All functions take a context first. Owned objects and array
+`List`s need explicit `Close`; borrowed objects reject use after owner closure or
+mutation, and const borrows reject writes. Ownership-transfer functions invalidate
+the moved input on success (including snapshot action outputs and expression
+trees). See [package documentation](ctl/doc.go) for these low-level contracts.
+
+For example, constructing a snapshot session without an initial output:
+
+```go
+descriptor, err := ctl.SessionDescriptorSnapshotCreate(ctx, new("snapshot"))
+if err != nil { return err }
+defer descriptor.Close()
+_, err = ctl.CreateSessionExt(ctx, descriptor)
+// Handle err; this creates a daemon-side session which must later be destroyed.
+```
+
+Plain C configuration structures have typed Go `Data`/`SetData` accessors and
+constructors such as `NewDomain`, `NewEventContext`, and `NewChannelAttr`.
+Names and filter semantics still follow upstream preconditions. Kernel operations
+require modules/privileges; Java/Python tracing requires the relevant applications.
+Binding coverage does not mean every deployment-dependent behavior is tested.
 
 ## Usage
 
@@ -108,7 +140,10 @@ not included among the named constants remain available as `ErrorCode` values.
 
 - **Concurrent calls are serialized package-wide.** liblttng-ctl 2.14 uses
   process-global connection state. Separate Go objects would not provide
-  isolation. Direct use of the C library by other code needs external coordination.
+  isolation. Root and `ctl` calls share the same lock. Direct use of the C library
+  by other code needs external coordination. A blocking notification receive
+  also holds this lock: poll for pending notifications first or use a dedicated
+  process for blocking reception.
 - **Contexts cancel queued calls, not in-flight C calls.** Once a native call has
   begun, the SDK waits for its actual result, even if the context expires. It
   never returns early while an invisible background mutation continues, retries
@@ -149,6 +184,27 @@ Tests cover lifecycle operations, configuration round trips, filter/exclusion
 ownership, concurrent control calls, and real UST recording read back through
 Babeltrace to check filter and context results. The library itself never runs
 external commands; only test fixtures and this test harness do.
+
+Every one of the 425 complete-layer functions has a generated cancellation test
+and is compiled and linked against the native library. Additional native tests
+cover object families, const/borrowed/moved lifetimes, and configuration. Advanced
+daemon tests exercise trackers, schedules, clear/destruction completion, trigger
+registration, subscriptions, error queries, and save/load. Kernel recording,
+relayd-dependent streaming, and every possible notification/evaluation payload
+are not exhaustively exercised by this local UST suite.
+
+Regenerate/check bindings from installed 2.14.x headers with Python 3 and gofmt:
+
+```sh
+go generate ./ctl
+python3 scripts/generate-ctl.py --check
+# Optional independent declaration audit (requires clang):
+python3 scripts/check-ctl-api.py
+```
+
+Generated source is checked in, so consumers do not need Python or clang. Header
+drift is detected rather than silently excluding declarations. Generation uses
+explicit ownership exceptions for transferred objects and native-owned results.
 
 Upstream references: [LTTng-tools](https://github.com/lttng/lttng-tools),
 [C headers](https://github.com/lttng/lttng-tools/tree/stable-2.14/include/lttng),
