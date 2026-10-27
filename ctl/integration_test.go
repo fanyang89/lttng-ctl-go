@@ -164,4 +164,20 @@ func TestIntegrationAdvancedControl(t *testing.T) {
 	success(LoadSessionAttrSetInputURL(ctx, load, &configDir))
 	success(LoadSessionAttrSetSessionName(ctx, load, &name))
 	success(LoadSession(ctx, load))
+	_, restored, err := ListSessions(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer restored.Close()
+	found := false
+	for _, session := range restored.Items() {
+		data, err := session.Data(ctx)
+		if err != nil {
+			t.Fatal(err)
+		}
+		found = found || data.Name == name
+	}
+	if !found {
+		t.Fatal("load reported success without restoring the saved session")
+	}
 }

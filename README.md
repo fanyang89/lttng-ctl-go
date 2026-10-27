@@ -206,6 +206,45 @@ Generated source is checked in, so consumers do not need Python or clang. Header
 drift is detected rather than silently excluding declarations. Generation uses
 explicit ownership exceptions for transferred objects and native-owned results.
 
+### Official suite and interoperability
+
+The upstream harness builds the unmodified LTTng-tools **v2.14.0** commit
+`8644cbc50c40ff75168acbb9d3ccc814f1072305` in a Fedora 44 container. It runs as
+the invoking non-root UID, with private PID/network namespaces and no Linux
+capabilities. It does not use or stop host daemons, load kernel modules, or enable
+destructive tests. Docker, Git, flock, and the project's Go toolchain are needed;
+build dependencies including Python `bt2` are installed only inside the image.
+
+```sh
+# Original unit + regression suites, then Go tests against the built library:
+sh scripts/test-upstream.sh all
+# Literal upstream top-level make check, including applicable optional suites:
+sh scripts/test-upstream.sh full
+# Go/CLI/C interoperability using the upstream-built tools and UST generator:
+sh scripts/test-upstream.sh sdk
+```
+
+Source, build products, and logs are retained under
+`${TMPDIR:-$HOME/tmp}/opencode/lttng-go-upstream-2.14.0` (override with
+`LTTNG_UPSTREAM_WORK`). Raw TAP/Automake logs remain in `build/tests`; stage logs
+are in `logs`, including the native library linkage used by the Go test binary.
+Failures are not suppressed, and SKIP is not counted as PASS. Kernel, destructive,
+and unavailable agent tests remain subject to upstream's environment gates.
+
+The original suite tests LTTng itself, not the Go wrapper. The additional Go tests
+exercise SDK-created sessions through the official CLI and CLI-created sessions
+through the SDK, XML machine-interface configuration checks, cross-language
+save/load, and actual normal/snapshot recording of the **original upstream UST
+generator**. Python `bt2` checks exact filtered payload values, counts, and VTID.
+Fixture-dependent cases explicitly skip outside the upstream harness.
+
+`TestInteropNoOutputLoadMatchesNative` also compares load errors and actual
+session existence with a small, unwrapped C reference. This catches upstream
+"success without restoration" behavior instead of accepting a zero return code
+as proof of interoperability. See the test's verbose output for the result on
+the library version being tested. Recorded results and coverage limits are in
+[the interoperability report](docs/interop-results.md).
+
 Upstream references: [LTTng-tools](https://github.com/lttng/lttng-tools),
 [C headers](https://github.com/lttng/lttng-tools/tree/stable-2.14/include/lttng),
 and [Python bindings](https://github.com/lttng/lttng-tools/tree/stable-2.14/extras/bindings/swig/python).
