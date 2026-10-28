@@ -4,7 +4,7 @@ package lttng
 
 /*
 #include <stdlib.h>
-#include <lttng/lttng.h>
+#include "internal/ctlstate/bridge_generated.h"
 */
 import "C"
 
@@ -64,7 +64,7 @@ func ListDomains(ctx context.Context, session string) ([]Domain, error) {
 	var domains []Domain
 	err := sessionCommand(ctx, "list domains", session, func(name *C.char) C.int {
 		var ptr *C.struct_lttng_domain
-		n := C.lttng_list_domains(name, &ptr)
+		n := C.ctlgo_lttng_list_domains(name, &ptr)
 		defer C.free(unsafe.Pointer(ptr))
 		if n < 0 {
 			return n

@@ -44,6 +44,37 @@ func createTestSession(t *testing.T, options SessionOptions) string {
 	return name
 }
 
+func TestIntegrationNetworkSessionSetup(t *testing.T) {
+	requireIntegration(t)
+	for _, options := range []SessionOptions{
+		{ControlURL: "net://127.0.0.1"},
+		{ControlURL: "tcp://127.0.0.1:5342", DataURL: "tcp://127.0.0.1:5343"},
+	} {
+		t.Run(options.ControlURL, func(t *testing.T) {
+			name := createTestSession(t, options)
+			sessions, err := ListSessions(t.Context())
+			if err != nil {
+				t.Fatal(err)
+			}
+			if !slices.ContainsFunc(sessions, func(session Session) bool { return session.Name == name }) {
+				t.Fatal("network session missing from list")
+			}
+		})
+	}
+	// The legacy API creates the session before applying separate URLs. A bad
+	// data URL must roll back creation, leaving the name available for reuse.
+	name := fmt.Sprintf("network-rollback-%d", os.Getpid())
+	t.Cleanup(func() { _ = DestroySession(context.Background(), name) })
+	if err := CreateSession(t.Context(), name, SessionOptions{
+		ControlURL: "tcp://127.0.0.1:5342", DataURL: "invalid://127.0.0.1",
+	}); err == nil {
+		t.Fatal("invalid data URL unexpectedly accepted")
+	}
+	if err := CreateSession(t.Context(), name, SessionOptions{}); err != nil {
+		t.Fatalf("failed setup left a session behind: %v", err)
+	}
+}
+
 func TestIntegrationLifecycle(t *testing.T) {
 	requireIntegration(t)
 	ctx := t.Context()
@@ -106,18 +137,17 @@ func TestIntegrationLifecycle(t *testing.T) {
 	if err := EnableEvent(ctx, name, ust, "events", rule); err != nil {
 		t.Fatal(err)
 	}
+	// Exercise channel disable while active: 2.12 sessiond ignores this
+	// operation on inactive UST sessions (also covered by the CLI comparison).
+	if err := StartSession(ctx, name); err != nil {
+		t.Fatal(err)
+	}
 	if err := DisableChannel(ctx, name, ust, "events"); err != nil {
 		t.Fatal(err)
 	}
 	channels, err = ListChannels(ctx, name, ust)
 	if err != nil || len(channels) != 1 || channels[0].Enabled {
 		t.Fatalf("channel was not disabled: %+v, %v", channels, err)
-	}
-	if err := EnableChannel(ctx, name, ust, "events", nil); err != nil {
-		t.Fatal(err)
-	}
-	if err := StartSession(ctx, name); err != nil {
-		t.Fatal(err)
 	}
 	sessions, err := ListSessions(ctx)
 	if err != nil || !slices.ContainsFunc(sessions, func(s Session) bool { return s.Name == name && s.Enabled }) {

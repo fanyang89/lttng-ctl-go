@@ -161,13 +161,48 @@ func TestInteropOfficialCLIToSDK(t *testing.T) {
 	if !cliSession(t, name).Enabled {
 		t.Fatal("CLI did not see SDK start")
 	}
-	officialCLI(t, "stop", name)
 	if err := DisableChannel(ctx, name, domain, "events"); err != nil {
 		t.Fatal(err)
 	}
 	if cliSession(t, name).Domains[0].Channels[0].Enabled {
 		t.Fatal("CLI did not see SDK channel disable")
 	}
+	officialCLI(t, "stop", name)
+}
+
+func TestInteropStoppedChannelDisableMatchesNative(t *testing.T) {
+	requireIntegration(t)
+	var enabled [2]bool
+	for i := range enabled {
+		t.Run(strconv.Itoa(i), func(t *testing.T) {
+			name := createTestSession(t, SessionOptions{})
+			interopChannel(t, name, EventRule{Name: "interop:*"})
+			if i == 0 {
+				if err := DisableChannel(t.Context(), name, Domain{Type: DomainUST, BufferType: BufferPerUID}, "events"); err != nil {
+					t.Fatal(err)
+				}
+			} else {
+				officialCLI(t, "disable-channel", "--userspace", "--session", name, "events")
+			}
+			enabled[i] = cliSession(t, name).Domains[0].Channels[0].Enabled
+			if !enabled[i] {
+				if i == 0 {
+					if err := EnableChannel(t.Context(), name, Domain{Type: DomainUST, BufferType: BufferPerUID}, "events", nil); err != nil {
+						t.Fatal(err)
+					}
+				} else {
+					officialCLI(t, "enable-channel", "--userspace", "--session", name, "events")
+				}
+			}
+			if !cliSession(t, name).Domains[0].Channels[0].Enabled {
+				t.Fatal("channel was not re-enabled")
+			}
+		})
+	}
+	if enabled[0] != enabled[1] {
+		t.Fatalf("inactive channel disable differs: SDK enabled=%v, native enabled=%v", enabled[0], enabled[1])
+	}
+	t.Logf("inactive channel disable: enabled=%v (SDK matches official CLI)", enabled[0])
 }
 
 func TestInteropSaveLoad(t *testing.T) {

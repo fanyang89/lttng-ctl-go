@@ -3,7 +3,7 @@
 package lttng
 
 /*
-#include <lttng/lttng.h>
+#include "internal/ctlstate/bridge_generated.h"
 */
 import "C"
 
@@ -45,6 +45,6 @@ func AddContext(ctx context.Context, session string, domain Domain, channel stri
 		name := optionalString(channel)
 		defer free(name)
 		field := C.struct_lttng_event_context{ctx: C.enum_lttng_event_context_type(field)}
-		return nativeError(op, C.lttng_add_context(handle, &field, nil, name))
+		return nativeError(op, C.ctlgo_lttng_add_context(handle, &field, nil, name))
 	})
 }

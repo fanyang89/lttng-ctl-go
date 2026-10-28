@@ -3,14 +3,15 @@
 package lttng
 
 /*
-#cgo pkg-config: lttng-ctl
 #include <stdlib.h>
-#include <lttng/lttng.h>
+#include "internal/ctlstate/bridge_generated.h"
 */
 import "C"
 
 import (
 	"context"
+	"errors"
+	"fmt"
 	"strings"
 	"unsafe"
 
@@ -27,10 +28,23 @@ func unlock() { ctlstate.Unlock() }
 // nativeError must be called while holding ctlGate. Legacy APIs return negative
 // error codes; APIs returning enum lttng_error_code are normalized by callers.
 func nativeError(op string, result C.int) error {
+	if err := ctlstate.CallError(); err != nil {
+		if errors.Is(err, ctlstate.ErrUnsupported) {
+			return fmt.Errorf("lttng: %s: %w: %w", op, ErrUnsupported, err)
+		}
+		return fmt.Errorf("lttng: %s: %w", op, err)
+	}
 	if result >= 0 {
 		return nil
 	}
-	return &Error{Op: op, Code: ErrorCode(-result), Message: C.GoString(C.lttng_strerror(result))}
+	return &Error{Op: op, Code: ErrorCode(-result), Message: C.GoString(C.ctlgo_lttng_strerror(result))}
+}
+
+// nativeHas is called only while the shared lock is held. A failed load is
+// reported by nativeError after the attempted operation.
+func nativeHas(symbol string) bool {
+	found, _ := ctlstate.HasSymbol(symbol)
+	return found
 }
 
 func checkString(op, field, value string, limit int, allowEmpty bool) error {
@@ -94,10 +108,10 @@ func useHandle(op, session string, domain Domain, call func(*C.struct_lttng_hand
 	name := optionalString(session)
 	defer free(name)
 	nativeDomain := domain.native()
-	handle := C.lttng_create_handle(name, &nativeDomain)
+	handle := C.ctlgo_lttng_create_handle(name, &nativeDomain)
 	if handle == nil {
 		return nativeError(op, -C.LTTNG_ERR_NOMEM)
 	}
-	defer C.lttng_destroy_handle(handle)
+	defer C.ctlgo_lttng_destroy_handle(handle)
 	return call(handle)
 }

@@ -2532,3 +2532,5115 @@ func TestEveryAPICancelsBeforeNativeCall(t *testing.T) {
 		}
 	})
 }
+func TestUnavailableAPIs(t *testing.T) {
+	ctx := t.Context()
+	t.Run("lttng_action_get_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_get_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionGetType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_list_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_list_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionListCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_list_add_action", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_list_add_action")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionListAddAction(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_list_get_count", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_list_get_count")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ActionListGetCount(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_list_get_at_index", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_list_get_at_index")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionListGetAtIndex(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_notify_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_notify_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionNotifyCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_notify_set_rate_policy", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_notify_set_rate_policy")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionNotifySetRatePolicy(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_notify_get_rate_policy", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_notify_get_rate_policy")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ActionNotifyGetRatePolicy(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_path_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_path_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionPathCreate(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_path_get_index_count", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_path_get_index_count")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ActionPathGetIndexCount(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_path_get_index_at_index", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_path_get_index_at_index")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ActionPathGetIndexAtIndex(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rate_policy_get_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rate_policy_get_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = RatePolicyGetType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rate_policy_every_n_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rate_policy_every_n_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = RatePolicyEveryNCreate(ctx, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rate_policy_every_n_get_interval", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rate_policy_every_n_get_interval")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = RatePolicyEveryNGetInterval(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rate_policy_once_after_n_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rate_policy_once_after_n_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = RatePolicyOnceAfterNCreate(ctx, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rate_policy_once_after_n_get_threshold", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rate_policy_once_after_n_get_threshold")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = RatePolicyOnceAfterNGetThreshold(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_rotate_session_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_rotate_session_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionRotateSessionCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_rotate_session_set_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_rotate_session_set_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionRotateSessionSetSessionName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_rotate_session_get_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_rotate_session_get_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ActionRotateSessionGetSessionName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_rotate_session_set_rate_policy", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_rotate_session_set_rate_policy")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionRotateSessionSetRatePolicy(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_rotate_session_get_rate_policy", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_rotate_session_get_rate_policy")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ActionRotateSessionGetRatePolicy(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_snapshot_session_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_snapshot_session_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionSnapshotSessionCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_snapshot_session_set_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_snapshot_session_set_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionSnapshotSessionSetSessionName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_snapshot_session_get_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_snapshot_session_get_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ActionSnapshotSessionGetSessionName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_snapshot_session_set_output", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_snapshot_session_set_output")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionSnapshotSessionSetOutput(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_snapshot_session_get_output", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_snapshot_session_get_output")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ActionSnapshotSessionGetOutput(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_snapshot_session_set_rate_policy", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_snapshot_session_set_rate_policy")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionSnapshotSessionSetRatePolicy(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_snapshot_session_get_rate_policy", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_snapshot_session_get_rate_policy")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ActionSnapshotSessionGetRatePolicy(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_start_session_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_start_session_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionStartSessionCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_start_session_set_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_start_session_set_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionStartSessionSetSessionName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_start_session_get_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_start_session_get_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ActionStartSessionGetSessionName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_start_session_set_rate_policy", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_start_session_set_rate_policy")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionStartSessionSetRatePolicy(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_start_session_get_rate_policy", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_start_session_get_rate_policy")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ActionStartSessionGetRatePolicy(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_stop_session_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_stop_session_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionStopSessionCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_stop_session_set_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_stop_session_set_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionStopSessionSetSessionName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_stop_session_get_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_stop_session_get_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ActionStopSessionGetSessionName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_stop_session_set_rate_policy", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_stop_session_set_rate_policy")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ActionStopSessionSetRatePolicy(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_action_stop_session_get_rate_policy", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_action_stop_session_get_rate_policy")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ActionStopSessionGetRatePolicy(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_channel_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_channel_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ChannelCreate(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_list_channels", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_list_channels")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ListChannels(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_enable_channel", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_enable_channel")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EnableChannel(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_disable_channel", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_disable_channel")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = DisableChannel(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_channel_set_default_attr", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_channel_set_default_attr")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		err = ChannelSetDefaultAttr(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_channel_get_discarded_event_count", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_channel_get_discarded_event_count")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ChannelGetDiscardedEventCount(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_channel_get_lost_packet_count", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_channel_get_lost_packet_count")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ChannelGetLostPacketCount(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_channel_get_monitor_timer_interval", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_channel_get_monitor_timer_interval")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ChannelGetMonitorTimerInterval(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_channel_set_monitor_timer_interval", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_channel_set_monitor_timer_interval")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ChannelSetMonitorTimerInterval(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_channel_get_blocking_timeout", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_channel_get_blocking_timeout")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ChannelGetBlockingTimeout(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_channel_set_blocking_timeout", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_channel_set_blocking_timeout")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ChannelSetBlockingTimeout(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_channel_get_allocation_policy", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_channel_get_allocation_policy")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ChannelGetAllocationPolicy(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_channel_set_allocation_policy", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_channel_set_allocation_policy")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ChannelSetAllocationPolicy(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_clear_handle_wait_for_completion", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_clear_handle_wait_for_completion")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ClearHandleWaitForCompletion(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_clear_handle_get_result", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_clear_handle_get_result")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ClearHandleGetResult(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_clear_session", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_clear_session")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ClearSession(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_buffer_usage_low_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_buffer_usage_low_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionBufferUsageLowCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_buffer_usage_high_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_buffer_usage_high_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionBufferUsageHighCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_buffer_usage_get_threshold_ratio", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_buffer_usage_get_threshold_ratio")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ConditionBufferUsageGetThresholdRatio(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_buffer_usage_set_threshold_ratio", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_buffer_usage_set_threshold_ratio")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionBufferUsageSetThresholdRatio(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_buffer_usage_get_threshold", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_buffer_usage_get_threshold")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ConditionBufferUsageGetThreshold(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_buffer_usage_set_threshold", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_buffer_usage_set_threshold")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionBufferUsageSetThreshold(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_buffer_usage_get_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_buffer_usage_get_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ConditionBufferUsageGetSessionName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_buffer_usage_set_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_buffer_usage_set_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionBufferUsageSetSessionName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_buffer_usage_get_channel_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_buffer_usage_get_channel_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ConditionBufferUsageGetChannelName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_buffer_usage_set_channel_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_buffer_usage_set_channel_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionBufferUsageSetChannelName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_buffer_usage_get_domain_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_buffer_usage_get_domain_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ConditionBufferUsageGetDomainType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_buffer_usage_set_domain_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_buffer_usage_set_domain_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionBufferUsageSetDomainType(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_evaluation_buffer_usage_get_usage_ratio", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_evaluation_buffer_usage_get_usage_ratio")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EvaluationBufferUsageGetUsageRatio(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_evaluation_buffer_usage_get_usage", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_evaluation_buffer_usage_get_usage")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EvaluationBufferUsageGetUsage(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_get_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_get_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionGetType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_evaluation_get_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_evaluation_get_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EvaluationGetType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_event_rule_matches_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_event_rule_matches_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionEventRuleMatchesCreate(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_event_rule_matches_get_rule", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_event_rule_matches_get_rule")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ConditionEventRuleMatchesGetRule(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_evaluation_event_rule_matches_get_captured_values", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_evaluation_event_rule_matches_get_captured_values")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EvaluationEventRuleMatchesGetCapturedValues(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_event_rule_matches_append_capture_descriptor", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_event_rule_matches_append_capture_descriptor")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionEventRuleMatchesAppendCaptureDescriptor(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_event_rule_matches_get_capture_descriptor_count", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_event_rule_matches_get_capture_descriptor_count")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ConditionEventRuleMatchesGetCaptureDescriptorCount(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_event_rule_matches_get_capture_descriptor_at_index", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_event_rule_matches_get_capture_descriptor_at_index")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionEventRuleMatchesGetCaptureDescriptorAtIndex(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_session_consumed_size_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_session_consumed_size_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionSessionConsumedSizeCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_session_consumed_size_get_threshold", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_session_consumed_size_get_threshold")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ConditionSessionConsumedSizeGetThreshold(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_session_consumed_size_set_threshold", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_session_consumed_size_set_threshold")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionSessionConsumedSizeSetThreshold(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_session_consumed_size_get_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_session_consumed_size_get_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ConditionSessionConsumedSizeGetSessionName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_session_consumed_size_set_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_session_consumed_size_set_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionSessionConsumedSizeSetSessionName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_evaluation_session_consumed_size_get_consumed_size", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_evaluation_session_consumed_size_get_consumed_size")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EvaluationSessionConsumedSizeGetConsumedSize(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_session_rotation_ongoing_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_session_rotation_ongoing_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionSessionRotationOngoingCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_session_rotation_completed_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_session_rotation_completed_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionSessionRotationCompletedCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_session_rotation_get_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_session_rotation_get_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ConditionSessionRotationGetSessionName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_condition_session_rotation_set_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_condition_session_rotation_set_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ConditionSessionRotationSetSessionName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_evaluation_session_rotation_get_id", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_evaluation_session_rotation_get_id")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EvaluationSessionRotationGetID(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_evaluation_session_rotation_completed_get_location", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_evaluation_session_rotation_completed_get_location")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EvaluationSessionRotationCompletedGetLocation(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_destruction_handle_wait_for_completion", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_destruction_handle_wait_for_completion")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = DestructionHandleWaitForCompletion(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_destruction_handle_get_result", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_destruction_handle_get_result")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = DestructionHandleGetResult(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_destruction_handle_get_rotation_state", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_destruction_handle_get_rotation_state")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = DestructionHandleGetRotationState(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_destruction_handle_get_archive_location", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_destruction_handle_get_archive_location")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = DestructionHandleGetArchiveLocation(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_list_domains", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_list_domains")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ListDomains(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_error_query_trigger_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_error_query_trigger_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ErrorQueryTriggerCreate(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_error_query_condition_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_error_query_condition_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ErrorQueryConditionCreate(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_error_query_action_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_error_query_action_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ErrorQueryActionCreate(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_error_query_execute", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_error_query_execute")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ErrorQueryExecute(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_error_query_results_get_count", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_error_query_results_get_count")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ErrorQueryResultsGetCount(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_error_query_results_get_result", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_error_query_results_get_result")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ErrorQueryResultsGetResult(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_error_query_result_get_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_error_query_result_get_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ErrorQueryResultGetType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_error_query_result_get_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_error_query_result_get_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ErrorQueryResultGetName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_error_query_result_get_description", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_error_query_result_get_description")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ErrorQueryResultGetDescription(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_error_query_result_counter_get_value", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_error_query_result_counter_get_value")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ErrorQueryResultCounterGetValue(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_expr_get_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_expr_get_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventExprGetType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_expr_event_payload_field_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_expr_event_payload_field_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventExprEventPayloadFieldCreate(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_expr_event_payload_field_get_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_expr_event_payload_field_get_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventExprEventPayloadFieldGetName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_expr_channel_context_field_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_expr_channel_context_field_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventExprChannelContextFieldCreate(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_expr_channel_context_field_get_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_expr_channel_context_field_get_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventExprChannelContextFieldGetName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_expr_app_specific_context_field_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_expr_app_specific_context_field_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventExprAppSpecificContextFieldCreate(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_expr_app_specific_context_field_get_provider_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_expr_app_specific_context_field_get_provider_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventExprAppSpecificContextFieldGetProviderName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_expr_app_specific_context_field_get_type_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_expr_app_specific_context_field_get_type_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventExprAppSpecificContextFieldGetTypeName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_expr_array_field_element_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_expr_array_field_element_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventExprArrayFieldElementCreate(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_expr_array_field_element_get_parent_expr", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_expr_array_field_element_get_parent_expr")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventExprArrayFieldElementGetParentExpr(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_expr_array_field_element_get_index", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_expr_array_field_element_get_index")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventExprArrayFieldElementGetIndex(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_expr_is_equal", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_expr_is_equal")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventExprIsEqual(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_field_value_get_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_field_value_get_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventFieldValueGetType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_field_value_unsigned_int_get_value", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_field_value_unsigned_int_get_value")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventFieldValueUnsignedIntGetValue(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_field_value_signed_int_get_value", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_field_value_signed_int_get_value")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventFieldValueSignedIntGetValue(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_field_value_real_get_value", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_field_value_real_get_value")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventFieldValueRealGetValue(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_field_value_string_get_value", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_field_value_string_get_value")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventFieldValueStringGetValue(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_field_value_array_get_length", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_field_value_array_get_length")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventFieldValueArrayGetLength(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_field_value_array_get_element_at_index", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_field_value_array_get_element_at_index")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventFieldValueArrayGetElementAtIndex(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_get_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_get_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleGetType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_jul_logging_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_jul_logging_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleJULLoggingCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_jul_logging_set_name_pattern", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_jul_logging_set_name_pattern")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleJULLoggingSetNamePattern(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_jul_logging_get_name_pattern", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_jul_logging_get_name_pattern")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleJULLoggingGetNamePattern(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_jul_logging_set_filter", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_jul_logging_set_filter")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleJULLoggingSetFilter(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_jul_logging_get_filter", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_jul_logging_get_filter")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleJULLoggingGetFilter(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_jul_logging_set_log_level_rule", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_jul_logging_set_log_level_rule")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleJULLoggingSetLogLevelRule(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_jul_logging_get_log_level_rule", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_jul_logging_get_log_level_rule")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleJULLoggingGetLogLevelRule(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_kprobe_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_kprobe_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleKernelKprobeCreate(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_kprobe_get_location", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_kprobe_get_location")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleKernelKprobeGetLocation(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_kprobe_set_event_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_kprobe_set_event_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleKernelKprobeSetEventName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_kprobe_get_event_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_kprobe_get_event_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleKernelKprobeGetEventName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_syscall_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_syscall_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleKernelSyscallCreate(ctx, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_syscall_set_name_pattern", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_syscall_set_name_pattern")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleKernelSyscallSetNamePattern(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_syscall_get_name_pattern", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_syscall_get_name_pattern")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleKernelSyscallGetNamePattern(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_syscall_set_filter", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_syscall_set_filter")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleKernelSyscallSetFilter(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_syscall_get_filter", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_syscall_get_filter")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleKernelSyscallGetFilter(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_syscall_get_emission_site", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_syscall_get_emission_site")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleKernelSyscallGetEmissionSite(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_tracepoint_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_tracepoint_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleKernelTracepointCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_tracepoint_set_name_pattern", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_tracepoint_set_name_pattern")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleKernelTracepointSetNamePattern(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_tracepoint_get_name_pattern", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_tracepoint_get_name_pattern")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleKernelTracepointGetNamePattern(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_tracepoint_set_filter", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_tracepoint_set_filter")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleKernelTracepointSetFilter(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_tracepoint_get_filter", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_tracepoint_get_filter")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleKernelTracepointGetFilter(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_uprobe_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_uprobe_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleKernelUprobeCreate(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_uprobe_get_location", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_uprobe_get_location")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleKernelUprobeGetLocation(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_uprobe_set_event_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_uprobe_set_event_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleKernelUprobeSetEventName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_kernel_uprobe_get_event_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_kernel_uprobe_get_event_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleKernelUprobeGetEventName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_log4j_logging_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_log4j_logging_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleLog4jLoggingCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_log4j_logging_set_name_pattern", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_log4j_logging_set_name_pattern")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleLog4jLoggingSetNamePattern(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_log4j_logging_get_name_pattern", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_log4j_logging_get_name_pattern")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleLog4jLoggingGetNamePattern(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_log4j_logging_set_filter", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_log4j_logging_set_filter")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleLog4jLoggingSetFilter(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_log4j_logging_get_filter", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_log4j_logging_get_filter")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleLog4jLoggingGetFilter(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_log4j_logging_set_log_level_rule", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_log4j_logging_set_log_level_rule")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleLog4jLoggingSetLogLevelRule(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_log4j_logging_get_log_level_rule", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_log4j_logging_get_log_level_rule")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleLog4jLoggingGetLogLevelRule(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_log4j2_logging_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_log4j2_logging_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleLog4j2LoggingCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_log4j2_logging_set_name_pattern", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_log4j2_logging_set_name_pattern")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleLog4j2LoggingSetNamePattern(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_log4j2_logging_get_name_pattern", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_log4j2_logging_get_name_pattern")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleLog4j2LoggingGetNamePattern(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_log4j2_logging_set_filter", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_log4j2_logging_set_filter")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleLog4j2LoggingSetFilter(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_log4j2_logging_get_filter", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_log4j2_logging_get_filter")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleLog4j2LoggingGetFilter(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_log4j2_logging_set_log_level_rule", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_log4j2_logging_set_log_level_rule")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleLog4j2LoggingSetLogLevelRule(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_log4j2_logging_get_log_level_rule", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_log4j2_logging_get_log_level_rule")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleLog4j2LoggingGetLogLevelRule(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_python_logging_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_python_logging_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRulePythonLoggingCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_python_logging_set_name_pattern", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_python_logging_set_name_pattern")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRulePythonLoggingSetNamePattern(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_python_logging_get_name_pattern", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_python_logging_get_name_pattern")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRulePythonLoggingGetNamePattern(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_python_logging_set_filter", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_python_logging_set_filter")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRulePythonLoggingSetFilter(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_python_logging_get_filter", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_python_logging_get_filter")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRulePythonLoggingGetFilter(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_python_logging_set_log_level_rule", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_python_logging_set_log_level_rule")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRulePythonLoggingSetLogLevelRule(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_python_logging_get_log_level_rule", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_python_logging_get_log_level_rule")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRulePythonLoggingGetLogLevelRule(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_user_tracepoint_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_user_tracepoint_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleUserTracepointCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_user_tracepoint_set_name_pattern", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_user_tracepoint_set_name_pattern")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleUserTracepointSetNamePattern(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_user_tracepoint_get_name_pattern", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_user_tracepoint_get_name_pattern")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleUserTracepointGetNamePattern(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_user_tracepoint_set_filter", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_user_tracepoint_set_filter")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleUserTracepointSetFilter(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_user_tracepoint_get_filter", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_user_tracepoint_get_filter")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleUserTracepointGetFilter(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_user_tracepoint_set_log_level_rule", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_user_tracepoint_set_log_level_rule")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleUserTracepointSetLogLevelRule(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_user_tracepoint_get_log_level_rule", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_user_tracepoint_get_log_level_rule")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleUserTracepointGetLogLevelRule(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_user_tracepoint_add_name_pattern_exclusion", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_user_tracepoint_add_name_pattern_exclusion")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventRuleUserTracepointAddNamePatternExclusion(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_user_tracepoint_get_name_pattern_exclusion_count", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_user_tracepoint_get_name_pattern_exclusion_count")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleUserTracepointGetNamePatternExclusionCount(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_rule_user_tracepoint_get_name_pattern_exclusion_at_index", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_rule_user_tracepoint_get_name_pattern_exclusion_at_index")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventRuleUserTracepointGetNamePatternExclusionAtIndex(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_list_events", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_list_events")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ListEvents(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_get_filter_expression", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_get_filter_expression")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventGetFilterExpression(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_get_exclusion_name_count", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_get_exclusion_name_count")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventGetExclusionNameCount(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_get_exclusion_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_get_exclusion_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = EventGetExclusionName(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_get_userspace_probe_location", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_get_userspace_probe_location")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventGetUserspaceProbeLocation(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_event_set_userspace_probe_location", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_event_set_userspace_probe_location")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EventSetUserspaceProbeLocation(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_list_tracepoints", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_list_tracepoints")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ListTracepoints(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_list_tracepoint_fields", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_list_tracepoint_fields")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ListTracepointFields(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_list_syscalls", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_list_syscalls")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ListSyscalls(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_add_context", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_add_context")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = AddContext(ctx, nil, nil, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_enable_event", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_enable_event")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EnableEvent(ctx, nil, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_enable_event_with_filter", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_enable_event_with_filter")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EnableEventWithFilter(ctx, nil, nil, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_enable_event_with_exclusions", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_enable_event_with_exclusions")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = EnableEventWithExclusions(ctx, nil, nil, nil, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_disable_event", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_disable_event")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = DisableEvent(ctx, nil, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_disable_event_ext", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_disable_event_ext")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = DisableEventExt(ctx, nil, nil, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_create_handle", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_create_handle")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = CreateHandle(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_health_create_sessiond", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_health_create_sessiond")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = HealthCreateSessiond(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_health_create_consumerd", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_health_create_consumerd")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = HealthCreateConsumerd(ctx, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_health_create_relayd", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_health_create_relayd")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = HealthCreateRelayd(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_health_query", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_health_query")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = HealthQuery(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_health_state", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_health_state")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = HealthState(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_health_get_nr_threads", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_health_get_nr_threads")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = HealthGetNrThreads(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_health_get_thread", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_health_get_thread")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = HealthGetThread(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_health_thread_state", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_health_thread_state")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = HealthThreadState(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_health_thread_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_health_thread_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = HealthThreadName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_kernel_probe_location_get_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_kernel_probe_location_get_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = KernelProbeLocationGetType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_kernel_probe_location_symbol_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_kernel_probe_location_symbol_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = KernelProbeLocationSymbolCreate(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_kernel_probe_location_symbol_get_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_kernel_probe_location_symbol_get_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = KernelProbeLocationSymbolGetName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_kernel_probe_location_symbol_get_offset", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_kernel_probe_location_symbol_get_offset")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = KernelProbeLocationSymbolGetOffset(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_kernel_probe_location_address_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_kernel_probe_location_address_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = KernelProbeLocationAddressCreate(ctx, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_kernel_probe_location_address_get_address", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_kernel_probe_location_address_get_address")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = KernelProbeLocationAddressGetAddress(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session_attr_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session_attr_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSessionAttrCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session_attr_get_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session_attr_get_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSessionAttrGetSessionName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session_attr_get_input_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session_attr_get_input_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSessionAttrGetInputURL(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session_attr_get_overwrite", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session_attr_get_overwrite")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSessionAttrGetOverwrite(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session_attr_get_override_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session_attr_get_override_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSessionAttrGetOverrideURL(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session_attr_get_override_ctrl_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session_attr_get_override_ctrl_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSessionAttrGetOverrideCtrlURL(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session_attr_get_override_data_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session_attr_get_override_data_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSessionAttrGetOverrideDataURL(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session_attr_get_override_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session_attr_get_override_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSessionAttrGetOverrideSessionName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session_attr_set_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session_attr_set_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSessionAttrSetSessionName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session_attr_set_input_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session_attr_set_input_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSessionAttrSetInputURL(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session_attr_set_overwrite", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session_attr_set_overwrite")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSessionAttrSetOverwrite(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session_attr_set_override_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session_attr_set_override_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSessionAttrSetOverrideURL(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session_attr_set_override_ctrl_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session_attr_set_override_ctrl_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSessionAttrSetOverrideCtrlURL(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session_attr_set_override_data_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session_attr_set_override_data_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSessionAttrSetOverrideDataURL(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session_attr_set_override_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session_attr_set_override_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSessionAttrSetOverrideSessionName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_load_session", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_load_session")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LoadSession(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_trace_archive_location_get_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_trace_archive_location_get_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = TraceArchiveLocationGetType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_trace_archive_location_local_get_absolute_path", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_trace_archive_location_local_get_absolute_path")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = TraceArchiveLocationLocalGetAbsolutePath(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_trace_archive_location_relay_get_host", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_trace_archive_location_relay_get_host")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = TraceArchiveLocationRelayGetHost(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_trace_archive_location_relay_get_control_port", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_trace_archive_location_relay_get_control_port")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = TraceArchiveLocationRelayGetControlPort(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_trace_archive_location_relay_get_data_port", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_trace_archive_location_relay_get_data_port")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = TraceArchiveLocationRelayGetDataPort(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_trace_archive_location_relay_get_protocol_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_trace_archive_location_relay_get_protocol_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = TraceArchiveLocationRelayGetProtocolType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_trace_archive_location_relay_get_relative_path", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_trace_archive_location_relay_get_relative_path")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = TraceArchiveLocationRelayGetRelativePath(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_log_level_rule_get_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_log_level_rule_get_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LogLevelRuleGetType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_log_level_rule_exactly_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_log_level_rule_exactly_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LogLevelRuleExactlyCreate(ctx, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_log_level_rule_exactly_get_level", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_log_level_rule_exactly_get_level")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = LogLevelRuleExactlyGetLevel(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_log_level_rule_at_least_as_severe_as_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_log_level_rule_at_least_as_severe_as_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = LogLevelRuleAtLeastAsSevereAsCreate(ctx, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_log_level_rule_at_least_as_severe_as_get_level", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_log_level_rule_at_least_as_severe_as_get_level")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = LogLevelRuleAtLeastAsSevereAsGetLevel(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_strerror", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_strerror")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = Strerror(ctx, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_session_daemon_alive", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_session_daemon_alive")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SessionDaemonAlive(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_set_tracing_group", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_set_tracing_group")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SetTracingGroup(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_register_consumer", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_register_consumer")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = RegisterConsumer(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_start_tracing", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_start_tracing")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = StartTracing(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_stop_tracing", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_stop_tracing")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = StopTracing(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_stop_tracing_no_wait", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_stop_tracing_no_wait")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = StopTracingNoWait(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_calibrate", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_calibrate")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = Calibrate(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_set_consumer_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_set_consumer_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SetConsumerURL(ctx, nil, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_data_pending", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_data_pending")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = DataPending(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_get_kernel_tracer_status", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_get_kernel_tracer_status")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = GetKernelTracerStatus(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_metadata_regenerate", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_metadata_regenerate")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = MetadataRegenerate(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_regenerate_metadata", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_regenerate_metadata")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = RegenerateMetadata(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_regenerate_statedump", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_regenerate_statedump")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = RegenerateStatedump(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_notification_channel_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_notification_channel_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = NotificationChannelCreate(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_notification_channel_get_next_notification", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_notification_channel_get_next_notification")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = NotificationChannelGetNextNotification(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_notification_channel_has_pending_notification", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_notification_channel_has_pending_notification")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = NotificationChannelHasPendingNotification(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_notification_channel_subscribe", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_notification_channel_subscribe")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = NotificationChannelSubscribe(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_notification_channel_unsubscribe", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_notification_channel_unsubscribe")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = NotificationChannelUnsubscribe(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_notification_get_condition", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_notification_get_condition")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = NotificationGetCondition(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_notification_get_evaluation", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_notification_get_evaluation")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = NotificationGetEvaluation(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_notification_get_trigger", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_notification_get_trigger")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = NotificationGetTrigger(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rotation_handle_get_state", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rotation_handle_get_state")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = RotationHandleGetState(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rotation_handle_get_archive_location", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rotation_handle_get_archive_location")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = RotationHandleGetArchiveLocation(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rotate_session", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rotate_session")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = RotateSession(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rotation_schedule_get_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rotation_schedule_get_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = RotationScheduleGetType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rotation_schedule_size_threshold_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rotation_schedule_size_threshold_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = RotationScheduleSizeThresholdCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rotation_schedule_size_threshold_get_threshold", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rotation_schedule_size_threshold_get_threshold")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = RotationScheduleSizeThresholdGetThreshold(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rotation_schedule_size_threshold_set_threshold", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rotation_schedule_size_threshold_set_threshold")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = RotationScheduleSizeThresholdSetThreshold(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rotation_schedule_periodic_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rotation_schedule_periodic_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = RotationSchedulePeriodicCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rotation_schedule_periodic_get_period", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rotation_schedule_periodic_get_period")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = RotationSchedulePeriodicGetPeriod(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rotation_schedule_periodic_set_period", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rotation_schedule_periodic_set_period")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = RotationSchedulePeriodicSetPeriod(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rotation_schedules_get_count", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rotation_schedules_get_count")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = RotationSchedulesGetCount(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_rotation_schedules_get_at_index", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_rotation_schedules_get_at_index")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = RotationSchedulesGetAtIndex(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_session_add_rotation_schedule", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_session_add_rotation_schedule")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SessionAddRotationSchedule(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_session_remove_rotation_schedule", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_session_remove_rotation_schedule")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SessionRemoveRotationSchedule(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_session_list_rotation_schedules", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_session_list_rotation_schedules")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = SessionListRotationSchedules(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_save_session_attr_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_save_session_attr_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SaveSessionAttrCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_save_session_attr_get_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_save_session_attr_get_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SaveSessionAttrGetSessionName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_save_session_attr_get_output_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_save_session_attr_get_output_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SaveSessionAttrGetOutputURL(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_save_session_attr_get_overwrite", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_save_session_attr_get_overwrite")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SaveSessionAttrGetOverwrite(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_save_session_attr_get_omit_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_save_session_attr_get_omit_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SaveSessionAttrGetOmitName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_save_session_attr_get_omit_output", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_save_session_attr_get_omit_output")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SaveSessionAttrGetOmitOutput(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_save_session_attr_set_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_save_session_attr_set_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SaveSessionAttrSetSessionName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_save_session_attr_set_output_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_save_session_attr_set_output_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SaveSessionAttrSetOutputURL(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_save_session_attr_set_overwrite", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_save_session_attr_set_overwrite")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SaveSessionAttrSetOverwrite(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_save_session_attr_set_omit_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_save_session_attr_set_omit_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SaveSessionAttrSetOmitName(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_save_session_attr_set_omit_output", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_save_session_attr_set_omit_output")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SaveSessionAttrSetOmitOutput(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_save_session", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_save_session")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SaveSession(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_session_descriptor_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_session_descriptor_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SessionDescriptorCreate(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_session_descriptor_local_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_session_descriptor_local_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SessionDescriptorLocalCreate(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_session_descriptor_network_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_session_descriptor_network_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SessionDescriptorNetworkCreate(ctx, nil, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_session_descriptor_snapshot_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_session_descriptor_snapshot_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SessionDescriptorSnapshotCreate(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_session_descriptor_snapshot_local_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_session_descriptor_snapshot_local_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SessionDescriptorSnapshotLocalCreate(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_session_descriptor_snapshot_network_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_session_descriptor_snapshot_network_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SessionDescriptorSnapshotNetworkCreate(ctx, nil, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_session_descriptor_live_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_session_descriptor_live_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SessionDescriptorLiveCreate(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_session_descriptor_live_network_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_session_descriptor_live_network_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SessionDescriptorLiveNetworkCreate(ctx, nil, nil, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_session_descriptor_get_session_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_session_descriptor_get_session_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = SessionDescriptorGetSessionName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_create_session_ext", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_create_session_ext")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = CreateSessionExt(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_create_session", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_create_session")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = CreateSession(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_create_session_snapshot", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_create_session_snapshot")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = CreateSessionSnapshot(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_create_session_live", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_create_session_live")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = CreateSessionLive(ctx, nil, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_destroy_session", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_destroy_session")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = DestroySession(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_destroy_session_no_wait", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_destroy_session_no_wait")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = DestroySessionNoWait(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_destroy_session_ext", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_destroy_session_ext")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = DestroySessionExt(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_list_sessions", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_list_sessions")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ListSessions(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_session_get_creation_time", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_session_get_creation_time")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = SessionGetCreationTime(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_set_session_shm_path", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_set_session_shm_path")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SetSessionShmPath(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_get_session_shm_path_override", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_get_session_shm_path_override")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = GetSessionShmPathOverride(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_output_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_output_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotOutputCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_output_get_id", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_output_get_id")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotOutputGetID(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_output_get_maxsize", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_output_get_maxsize")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotOutputGetMaxsize(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_output_get_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_output_get_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotOutputGetName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_output_get_ctrl_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_output_get_ctrl_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotOutputGetCtrlURL(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_output_get_data_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_output_get_data_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotOutputGetDataURL(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_output_set_id", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_output_set_id")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotOutputSetID(ctx, 0, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_output_set_size", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_output_set_size")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotOutputSetSize(ctx, 0, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_output_set_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_output_set_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotOutputSetName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_output_set_local_path", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_output_set_local_path")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotOutputSetLocalPath(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_output_set_network_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_output_set_network_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotOutputSetNetworkURL(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_output_set_network_urls", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_output_set_network_urls")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotOutputSetNetworkURLS(ctx, nil, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_output_set_ctrl_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_output_set_ctrl_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotOutputSetCtrlURL(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_output_set_data_url", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_output_set_data_url")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotOutputSetDataURL(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_add_output", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_add_output")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotAddOutput(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_del_output", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_del_output")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotDelOutput(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_list_output", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_list_output")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = SnapshotListOutput(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_output_list_get_next", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_output_list_get_next")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotOutputListGetNext(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_snapshot_record", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_snapshot_record")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = SnapshotRecord(ctx, nil, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_session_get_tracker_handle", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_session_get_tracker_handle")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = SessionGetTrackerHandle(ctx, nil, 0, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_tracker_handle_get_tracking_policy", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_tracker_handle_get_tracking_policy")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ProcessAttrTrackerHandleGetTrackingPolicy(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_tracker_handle_set_tracking_policy", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_tracker_handle_set_tracking_policy")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrTrackerHandleSetTrackingPolicy(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_process_id_tracker_handle_add_pid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_process_id_tracker_handle_add_pid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrProcessIDTrackerHandleAddPID(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_process_id_tracker_handle_remove_pid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_process_id_tracker_handle_remove_pid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrProcessIDTrackerHandleRemovePID(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_virtual_process_id_tracker_handle_add_pid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_virtual_process_id_tracker_handle_add_pid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrVirtualProcessIDTrackerHandleAddPID(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_virtual_process_id_tracker_handle_remove_pid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_virtual_process_id_tracker_handle_remove_pid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrVirtualProcessIDTrackerHandleRemovePID(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_user_id_tracker_handle_add_uid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_user_id_tracker_handle_add_uid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrUserIDTrackerHandleAddUID(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_user_id_tracker_handle_remove_uid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_user_id_tracker_handle_remove_uid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrUserIDTrackerHandleRemoveUID(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_user_id_tracker_handle_add_user_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_user_id_tracker_handle_add_user_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrUserIDTrackerHandleAddUserName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_user_id_tracker_handle_remove_user_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_user_id_tracker_handle_remove_user_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrUserIDTrackerHandleRemoveUserName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_virtual_user_id_tracker_handle_add_uid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_virtual_user_id_tracker_handle_add_uid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrVirtualUserIDTrackerHandleAddUID(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_virtual_user_id_tracker_handle_remove_uid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_virtual_user_id_tracker_handle_remove_uid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrVirtualUserIDTrackerHandleRemoveUID(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_virtual_user_id_tracker_handle_add_user_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_virtual_user_id_tracker_handle_add_user_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrVirtualUserIDTrackerHandleAddUserName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_virtual_user_id_tracker_handle_remove_user_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_virtual_user_id_tracker_handle_remove_user_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrVirtualUserIDTrackerHandleRemoveUserName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_group_id_tracker_handle_add_gid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_group_id_tracker_handle_add_gid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrGroupIDTrackerHandleAddGID(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_group_id_tracker_handle_remove_gid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_group_id_tracker_handle_remove_gid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrGroupIDTrackerHandleRemoveGID(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_group_id_tracker_handle_add_group_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_group_id_tracker_handle_add_group_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrGroupIDTrackerHandleAddGroupName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_group_id_tracker_handle_remove_group_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_group_id_tracker_handle_remove_group_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrGroupIDTrackerHandleRemoveGroupName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_virtual_group_id_tracker_handle_add_gid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_virtual_group_id_tracker_handle_add_gid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrVirtualGroupIDTrackerHandleAddGID(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_virtual_group_id_tracker_handle_remove_gid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_virtual_group_id_tracker_handle_remove_gid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrVirtualGroupIDTrackerHandleRemoveGID(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_virtual_group_id_tracker_handle_add_group_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_virtual_group_id_tracker_handle_add_group_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrVirtualGroupIDTrackerHandleAddGroupName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_virtual_group_id_tracker_handle_remove_group_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_virtual_group_id_tracker_handle_remove_group_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrVirtualGroupIDTrackerHandleRemoveGroupName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_tracker_handle_get_inclusion_set", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_tracker_handle_get_inclusion_set")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ProcessAttrTrackerHandleGetInclusionSet(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_values_get_count", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_values_get_count")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ProcessAttrValuesGetCount(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_values_get_type_at_index", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_values_get_type_at_index")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = ProcessAttrValuesGetTypeAtIndex(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_values_get_pid_at_index", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_values_get_pid_at_index")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ProcessAttrValuesGetPIDAtIndex(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_values_get_uid_at_index", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_values_get_uid_at_index")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ProcessAttrValuesGetUIDAtIndex(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_values_get_user_name_at_index", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_values_get_user_name_at_index")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ProcessAttrValuesGetUserNameAtIndex(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_values_get_gid_at_index", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_values_get_gid_at_index")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ProcessAttrValuesGetGIDAtIndex(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_process_attr_values_get_group_name_at_index", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_process_attr_values_get_group_name_at_index")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ProcessAttrValuesGetGroupNameAtIndex(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_list_tracker_pids", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_list_tracker_pids")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, _, _, err = ListTrackerPids(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_track_pid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_track_pid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = TrackPID(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_untrack_pid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_untrack_pid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UntrackPID(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_trigger_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_trigger_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = TriggerCreate(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_trigger_set_owner_uid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_trigger_set_owner_uid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = TriggerSetOwnerUID(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_trigger_get_owner_uid", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_trigger_get_owner_uid")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = TriggerGetOwnerUID(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_trigger_get_condition", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_trigger_get_condition")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = TriggerGetCondition(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_trigger_get_const_condition", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_trigger_get_const_condition")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = TriggerGetConstCondition(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_trigger_get_action", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_trigger_get_action")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = TriggerGetAction(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_trigger_get_const_action", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_trigger_get_const_action")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = TriggerGetConstAction(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_trigger_get_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_trigger_get_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = TriggerGetName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_register_trigger_with_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_register_trigger_with_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = RegisterTriggerWithName(ctx, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_register_trigger_with_automatic_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_register_trigger_with_automatic_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = RegisterTriggerWithAutomaticName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_unregister_trigger", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_unregister_trigger")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UnregisterTrigger(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_list_triggers", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_list_triggers")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = ListTriggers(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_triggers_get_at_index", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_triggers_get_at_index")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = TriggersGetAtIndex(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_triggers_get_count", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_triggers_get_count")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, _, err = TriggersGetCount(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_register_trigger", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_register_trigger")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = RegisterTrigger(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_lookup_method_get_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_lookup_method_get_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationLookupMethodGetType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_lookup_method_function_elf_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_lookup_method_function_elf_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationLookupMethodFunctionELFCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_lookup_method_tracepoint_sdt_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_lookup_method_tracepoint_sdt_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationLookupMethodTracepointSDTCreate(ctx)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_get_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_get_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationGetType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_function_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_function_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationFunctionCreate(ctx, nil, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_function_get_binary_path", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_function_get_binary_path")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationFunctionGetBinaryPath(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_function_get_function_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_function_get_function_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationFunctionGetFunctionName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_function_get_binary_fd", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_function_get_binary_fd")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationFunctionGetBinaryFD(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_function_get_instrumentation_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_function_get_instrumentation_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationFunctionGetInstrumentationType(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_function_set_instrumentation_type", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_function_set_instrumentation_type")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationFunctionSetInstrumentationType(ctx, nil, 0)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_get_lookup_method", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_get_lookup_method")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationGetLookupMethod(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_tracepoint_create", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_tracepoint_create")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationTracepointCreate(ctx, nil, nil, nil, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_tracepoint_get_binary_path", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_tracepoint_get_binary_path")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationTracepointGetBinaryPath(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_tracepoint_get_probe_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_tracepoint_get_probe_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationTracepointGetProbeName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_tracepoint_get_provider_name", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_tracepoint_get_provider_name")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationTracepointGetProviderName(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+	t.Run("lttng_userspace_probe_location_tracepoint_get_binary_fd", func(t *testing.T) {
+		present, err := HasSymbol(ctx, "lttng_userspace_probe_location_tracepoint_get_binary_fd")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if present {
+			return
+		}
+		_, err = UserspaceProbeLocationTracepointGetBinaryFD(ctx, nil)
+		if !errors.Is(err, ErrUnsupported) {
+			t.Fatalf("missing API: %v", err)
+		}
+	})
+}

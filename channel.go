@@ -4,7 +4,7 @@ package lttng
 
 /*
 #include <stdlib.h>
-#include <lttng/lttng.h>
+#include "internal/ctlstate/bridge_generated.h"
 */
 import "C"
 
@@ -68,12 +68,37 @@ func DefaultChannelConfig(ctx context.Context, domain Domain) (ChannelConfig, er
 	}
 	defer unlock()
 	nativeDomain := domain.native()
-	channel := C.lttng_channel_create(&nativeDomain)
+	channel := createChannel(&nativeDomain)
 	if channel == nil {
 		return ChannelConfig{}, nativeError(op, -C.LTTNG_ERR_NOMEM)
 	}
-	defer C.lttng_channel_destroy(channel)
+	defer destroyChannel(channel)
 	return channelConfig(&channel.attr), nil
+}
+
+// LTTng 2.8 exposes zero-initialized public channels and the defaults setter,
+// but not the allocation API introduced in 2.9.
+func createChannel(domain *C.struct_lttng_domain) *C.struct_lttng_channel {
+	if nativeHas("lttng_channel_create") && nativeHas("lttng_channel_destroy") {
+		return C.ctlgo_lttng_channel_create(domain)
+	}
+	channel := (*C.struct_lttng_channel)(C.calloc(1, C.sizeof_struct_lttng_channel))
+	if channel != nil {
+		C.ctlgo_lttng_channel_set_default_attr(domain, &channel.attr)
+		if nativeError("channel defaults", 0) != nil {
+			C.free(unsafe.Pointer(channel))
+			return nil
+		}
+	}
+	return channel
+}
+
+func destroyChannel(channel *C.struct_lttng_channel) {
+	if nativeHas("lttng_channel_create") && nativeHas("lttng_channel_destroy") {
+		C.ctlgo_lttng_channel_destroy(channel)
+	} else {
+		C.free(unsafe.Pointer(channel))
+	}
 }
 
 func channelConfig(attr *C.struct_lttng_channel_attr) ChannelConfig {
@@ -120,11 +145,11 @@ func EnableChannel(ctx context.Context, session string, domain Domain, name stri
 	}
 	return withHandle(ctx, op, session, domain, func(handle *C.struct_lttng_handle) error {
 		nativeDomain := domain.native()
-		channel := C.lttng_channel_create(&nativeDomain)
+		channel := createChannel(&nativeDomain)
 		if channel == nil {
 			return nativeError(op, -C.LTTNG_ERR_NOMEM)
 		}
-		defer C.lttng_channel_destroy(channel)
+		defer destroyChannel(channel)
 		copyName(channel.name[:], name)
 		if config != nil {
 			channel.attr.overwrite = C.int(config.LossMode)
@@ -136,7 +161,7 @@ func EnableChannel(ctx context.Context, session string, domain Domain, name stri
 			channel.attr.tracefile_size = C.uint64_t(config.TracefileSize)
 			channel.attr.tracefile_count = C.uint64_t(config.TracefileCount)
 		}
-		return nativeError(op, C.lttng_enable_channel(handle, channel))
+		return nativeError(op, C.ctlgo_lttng_enable_channel(handle, channel))
 	})
 }
 
@@ -149,7 +174,7 @@ func DisableChannel(ctx context.Context, session string, domain Domain, name str
 	return withHandle(ctx, op, session, domain, func(handle *C.struct_lttng_handle) error {
 		name := C.CString(name)
 		defer free(name)
-		return nativeError(op, C.lttng_disable_channel(handle, name))
+		return nativeError(op, C.ctlgo_lttng_disable_channel(handle, name))
 	})
 }
 
@@ -159,7 +184,7 @@ func ListChannels(ctx context.Context, session string, domain Domain) ([]Channel
 	var channels []Channel
 	err := withHandle(ctx, op, session, domain, func(handle *C.struct_lttng_handle) error {
 		var ptr *C.struct_lttng_channel
-		n := C.lttng_list_channels(handle, &ptr)
+		n := C.ctlgo_lttng_list_channels(handle, &ptr)
 		defer C.free(unsafe.Pointer(ptr))
 		if err := nativeError(op, n); err != nil {
 			return err
@@ -171,10 +196,10 @@ func ListChannels(ctx context.Context, session string, domain Domain) ([]Channel
 			var count C.uint64_t
 			var result C.int
 			if channel.Config.LossMode == LossOverwrite {
-				result = C.lttng_channel_get_lost_packet_count(native, &count)
+				result = C.ctlgo_lttng_channel_get_lost_packet_count(native, &count)
 				channel.LostPackets = uint64(count)
 			} else {
-				result = C.lttng_channel_get_discarded_event_count(native, &count)
+				result = C.ctlgo_lttng_channel_get_discarded_event_count(native, &count)
 				channel.DiscardedEvents = uint64(count)
 			}
 			if err := nativeError(op, result); err != nil {

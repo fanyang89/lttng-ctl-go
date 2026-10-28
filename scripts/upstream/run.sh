@@ -23,6 +23,12 @@ make -C /work/build install >/work/logs/install.log 2>&1
 export PATH=/work/install/bin:/work/install/sbin:$PATH
 export LD_LIBRARY_PATH=/work/install/lib:/work/install/lib64
 export PKG_CONFIG_PATH=/work/install/lib/pkgconfig:/work/install/lib64/pkgconfig
+export CGO_CPPFLAGS=-I/work/install/include
+if [[ -f /work/install/lib/liblttng-ctl.so.0 ]]; then
+	export LTTNG_CTL_GO_LIBRARY=/work/install/lib/liblttng-ctl.so.0
+else
+	export LTTNG_CTL_GO_LIBRARY=/work/install/lib64/liblttng-ctl.so.0
+fi
 export LTTNG_SESSION_CONFIG_XSD_PATH=/work/install/share/xml/lttng
 {
 	printf 'Source commit: %s\n' "$commit"
@@ -67,7 +73,11 @@ cd /sdk
 go test -tags=integration -c -o /work/sdk.test .
 linkage=$(ldd /work/sdk.test)
 printf "%s\n" "$linkage"
-printf "%s\n" "$linkage" | grep -Eq "liblttng-ctl.so.0 => /work/install/lib(64)?/liblttng-ctl.so.0"
+if printf "%s\n" "$linkage" | grep -q liblttng-ctl; then
+    echo "Unexpected link-time dependency on liblttng-ctl" >&2
+    exit 1
+fi
+/work/sdk.test -test.run="TestDefaults|TestRuntimeLoaderFailures" -test.v
 '
 fi
 exit "$status"

@@ -7,7 +7,14 @@ package lttng
 */
 import "C"
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/fanyang89/lttng-ctl-go/internal/ctlstate"
+)
+
+// ErrLibraryUnavailable identifies a failure to load the runtime control library.
+var ErrLibraryUnavailable = ctlstate.ErrLibraryUnavailable
 
 // ErrorCode is a positive liblttng-ctl error code. It can be used with errors.Is.
 type ErrorCode int

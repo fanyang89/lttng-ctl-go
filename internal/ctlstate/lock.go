@@ -1,3 +1,5 @@
+//go:build linux && cgo
+
 // Package ctlstate coordinates all calls into the process-global control library.
 package ctlstate
 
@@ -16,6 +18,7 @@ func Lock(ctx context.Context) error {
 			Unlock()
 			return err
 		}
+		resetError()
 		return nil
 	case <-ctx.Done():
 		return ctx.Err()

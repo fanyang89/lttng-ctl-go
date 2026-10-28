@@ -4,12 +4,13 @@ package lttng
 
 /*
 #include <stdlib.h>
-#include <lttng/lttng.h>
+#include "internal/ctlstate/bridge_generated.h"
 */
 import "C"
 
 import (
 	"context"
+	"errors"
 	"path/filepath"
 	"time"
 	"unsafe"
@@ -35,8 +36,8 @@ type Session struct {
 	LiveTimer    time.Duration
 }
 
-// CreateSession creates a normal recording session using the official descriptor
-// API. It does not start tracing or implicitly create channels or event rules.
+// CreateSession creates a normal recording session. It does not start tracing or
+// implicitly create channels or event rules. Older libraries use the legacy API.
 func CreateSession(ctx context.Context, name string, options SessionOptions) error {
 	const op = "create session"
 	for _, field := range []struct{ name, value string }{
@@ -52,31 +53,63 @@ func CreateSession(ctx context.Context, name string, options SessionOptions) err
 	if options.DataURL != "" && options.ControlURL == "" {
 		return invalid(op, "data URL requires a control URL")
 	}
-	return sessionCommand(ctx, op, name, func(name *C.char) C.int {
+	var rollbackError error
+	err := sessionCommand(ctx, op, name, func(name *C.char) C.int {
+		if !nativeHas("lttng_create_session_ext") {
+			url := options.OutputPath
+			if options.ControlURL != "" {
+				url = options.ControlURL
+			}
+			if options.DataURL != "" {
+				// Like the upstream CLI, configure separate URLs after creation.
+				url = ""
+			}
+			nativeURL := optionalString(url)
+			defer free(nativeURL)
+			result := C.ctlgo_lttng_create_session(name, nativeURL)
+			if result < 0 || options.DataURL == "" {
+				return result
+			}
+			handle := C.ctlgo_lttng_create_handle(name, nil)
+			if handle == nil {
+				result = -C.LTTNG_ERR_NOMEM
+			} else {
+				defer C.ctlgo_lttng_destroy_handle(handle)
+				control, data := C.CString(options.ControlURL), C.CString(options.DataURL)
+				defer free(control)
+				defer free(data)
+				result = C.ctlgo_lttng_set_consumer_url(handle, control, data)
+			}
+			if result < 0 {
+				rollbackError = nativeError("destroy session after URL setup failure", C.ctlgo_lttng_destroy_session(name))
+			}
+			return result
+		}
 		var descriptor *C.struct_lttng_session_descriptor
 		switch {
 		case options.OutputPath != "":
 			path := C.CString(options.OutputPath)
 			defer free(path)
-			descriptor = C.lttng_session_descriptor_local_create(name, path)
+			descriptor = C.ctlgo_lttng_session_descriptor_local_create(name, path)
 		case options.ControlURL != "":
 			control, data := C.CString(options.ControlURL), optionalString(options.DataURL)
 			defer free(control)
 			defer free(data)
-			descriptor = C.lttng_session_descriptor_network_create(name, control, data)
+			descriptor = C.ctlgo_lttng_session_descriptor_network_create(name, control, data)
 		default:
-			descriptor = C.lttng_session_descriptor_create(name)
+			descriptor = C.ctlgo_lttng_session_descriptor_create(name)
 		}
 		if descriptor == nil {
 			return -C.LTTNG_ERR_INVALID
 		}
-		defer C.lttng_session_descriptor_destroy(descriptor)
-		code := C.lttng_create_session_ext(descriptor)
+		defer C.ctlgo_lttng_session_descriptor_destroy(descriptor)
+		code := C.ctlgo_lttng_create_session_ext(descriptor)
 		if code != C.LTTNG_OK {
 			return -C.int(code)
 		}
 		return 0
 	})
+	return errors.Join(err, rollbackError)
 }
 
 // ListSessions returns sessions visible to the process's Unix credentials.
@@ -86,7 +119,7 @@ func ListSessions(ctx context.Context) ([]Session, error) {
 	}
 	defer unlock()
 	var ptr *C.struct_lttng_session
-	n := C.lttng_list_sessions(&ptr)
+	n := C.ctlgo_lttng_list_sessions(&ptr)
 	defer C.free(unsafe.Pointer(ptr))
 	if err := nativeError("list sessions", n); err != nil {
 		return nil, err
@@ -109,14 +142,14 @@ func SessionDaemonAlive(ctx context.Context) (bool, error) {
 		return false, err
 	}
 	defer unlock()
-	result := C.lttng_session_daemon_alive()
+	result := C.ctlgo_lttng_session_daemon_alive()
 	return result == 1, nativeError("session daemon alive", result)
 }
 
 // StartSession starts tracing. Already-started errors are not suppressed.
 func StartSession(ctx context.Context, session string) error {
 	return sessionCommand(ctx, "start session", session, func(name *C.char) C.int {
-		return C.lttng_start_tracing(name)
+		return C.ctlgo_lttng_start_tracing(name)
 	})
 }
 
@@ -125,7 +158,7 @@ func StartSession(ctx context.Context, session string) error {
 // DataPending when the caller needs to control polling and cancellation.
 func StopSession(ctx context.Context, session string) error {
 	return sessionCommand(ctx, "stop session", session, func(name *C.char) C.int {
-		return C.lttng_stop_tracing(name)
+		return C.ctlgo_lttng_stop_tracing(name)
 	})
 }
 
@@ -133,7 +166,7 @@ func StopSession(ctx context.Context, session string) error {
 // The command itself still performs a synchronous C call.
 func StopSessionNoWait(ctx context.Context, session string) error {
 	return sessionCommand(ctx, "stop session without waiting", session, func(name *C.char) C.int {
-		return C.lttng_stop_tracing_no_wait(name)
+		return C.ctlgo_lttng_stop_tracing_no_wait(name)
 	})
 }
 
@@ -141,7 +174,7 @@ func StopSessionNoWait(ctx context.Context, session string) error {
 func DataPending(ctx context.Context, session string) (bool, error) {
 	var pending bool
 	err := sessionCommand(ctx, "data pending", session, func(name *C.char) C.int {
-		result := C.lttng_data_pending(name)
+		result := C.ctlgo_lttng_data_pending(name)
 		pending = result == 1
 		return result
 	})
@@ -153,6 +186,6 @@ func DataPending(ctx context.Context, session string) (bool, error) {
 // interrupted by ctx.
 func DestroySession(ctx context.Context, session string) error {
 	return sessionCommand(ctx, "destroy session", session, func(name *C.char) C.int {
-		return C.lttng_destroy_session(name)
+		return C.ctlgo_lttng_destroy_session(name)
 	})
 }

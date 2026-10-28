@@ -8,9 +8,9 @@ LTTng project.
 ## Requirements
 
 - Linux and Go 1.27.1 or newer (as specified in `go.mod`).
-- CGO enabled, a C compiler, and `pkg-config`.
-- liblttng-ctl development headers and shared library. Validated with LTTng
-  **2.14.0**; other versions are not currently validated.
+- CGO enabled, a C compiler, and **LTTng 2.14.x development headers** at build time.
+- At runtime, **liblttng-ctl 2.8.x, 2.10.x, 2.12.x, or 2.14.x** and its dependencies.
+  The SDK loads the library dynamically; the same binary supports these versions.
 - A running session daemon for control operations. The SDK never launches one.
 
 For Debian/Ubuntu, install `build-essential pkg-config liblttng-ctl-dev
@@ -25,6 +25,17 @@ CGO_ENABLED=1 go build ./...
 Consumers also need the liblttng-ctl shared library and its dependencies at
 runtime. CGO complicates cross-compilation: use a C toolchain, headers, and
 libraries for the target platform. There is no pure-Go fallback.
+
+The build does not link against `liblttng-ctl`. For headers outside the compiler's
+default include path, set `CGO_CPPFLAGS=-I/path/to/lttng-2.14/include`.
+The runtime loader uses `liblttng-ctl.so.0` through the system search path
+(including `LD_LIBRARY_PATH`). To select a specific installation, set
+`LTTNG_CTL_GO_LIBRARY=/absolute/path/to/liblttng-ctl.so.0` before the first call.
+Library selection, including a failed load, is fixed for the process lifetime.
+
+One binary still requires the same CPU architecture and a compatible libc.
+Build on the oldest OS baseline you intend to deploy to. See
+[runtime compatibility](docs/compatibility.md) for the tested versions and ABI details.
 
 ## API
 
@@ -45,14 +56,15 @@ For the **complete liblttng-ctl 2.14 API**, import
 `github.com/fanyang89/lttng-ctl-go` (package `lttng`), remains the simpler
 recording API described above. The `ctl` package covers **all 425 public C
 functions**, all public enums, and the two global endpoints, including deprecated
-APIs. See [the complete symbol/signature inventory](ctl/API.tsv).
+APIs. See [the complete symbol/signature inventory](ctl/API.tsv). Availability
+depends on the runtime library; missing APIs return `ctl.ErrUnsupported`.
 
 The complete layer includes snapshot/live descriptors and outputs, rotation and
 schedules, process-attribute trackers, save/load, asynchronous clear/destruction,
 triggers, actions, rate policies, conditions, notification channels, evaluations,
 captured values, error queries, agent event rules, probes, health, extended channel
-attributes, and perf/application context fields. No unsupported native operation
-is replaced by a stub.
+attributes, and perf/application context fields. Available operations call the
+native library; missing operations fail explicitly without claiming success.
 
 `ctl` retains native scalar/status values followed by converted output parameters
 and an `error`. Status namespaces are typed separately; inspect `ctl.StatusError`
@@ -138,6 +150,11 @@ if native, ok := errors.AsType[*lttng.Error](err); ok {
 Input validation rejects embedded NUL bytes, oversized names, and values that
 would truncate during C conversion; these errors wrap `ErrInvalid`. Native codes
 not included among the named constants remain available as `ErrorCode` values.
+Missing native APIs match `ErrUnsupported` (or `ctl.ErrUnsupported` in `ctl`);
+the latter includes an `UnsupportedError` naming the missing symbol. A library
+that cannot be loaded returns `ErrLibraryUnavailable`. `ctl.HasSymbol` can check
+native symbol availability; daemon, tracer, and permission checks still happen
+when the operation runs.
 
 - **Concurrent calls are serialized package-wide.** liblttng-ctl 2.14 uses
   process-global connection state. Separate Go objects would not provide
@@ -164,12 +181,15 @@ not included among the named constants remain available as `ErrorCode` values.
 
 ## Tests
 
-Unit tests do not require a session daemon:
+The full unit suite requires a 2.14 runtime but no session daemon:
 
 ```sh
 go test -race ./...
 go vet ./...
 ```
+
+For the build-once 2.8/2.10/2.12/2.14 runtime matrix, run
+`sh scripts/test-compat.sh all`; see [compatibility coverage](docs/compatibility.md).
 
 Integration tests additionally require `lttng-sessiond`, liblttng-ust development
 headers/library, and `babeltrace2` (`liblttng-ust-dev`/`babeltrace2` on Debian,
@@ -187,8 +207,9 @@ Babeltrace to check filter and context results. The library itself never runs
 external commands; only test fixtures and this test harness do.
 
 Every one of the 425 complete-layer functions has a generated cancellation test
-and is compiled and linked against the native library. Additional native tests
-cover object families, const/borrowed/moved lifetimes, and configuration. Advanced
+and a typed dynamic-call bridge. Generated tests also check unavailable APIs on
+older runtimes. Additional native tests cover object families,
+const/borrowed/moved lifetimes, and configuration. Advanced
 daemon tests exercise trackers, schedules, clear/destruction completion, trigger
 registration, subscriptions, error queries, and save/load. Kernel recording,
 relayd-dependent streaming, and every possible notification/evaluation payload

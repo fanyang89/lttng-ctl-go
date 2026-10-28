@@ -4,7 +4,7 @@ package lttng
 
 /*
 #include <stdlib.h>
-#include <lttng/lttng.h>
+#include "internal/ctlstate/bridge_generated.h"
 */
 import "C"
 
@@ -90,11 +90,13 @@ func EnableEvent(ctx context.Context, session string, domain Domain, channel str
 		return err
 	}
 	return withHandle(ctx, op, session, domain, func(handle *C.struct_lttng_handle) error {
-		event := C.lttng_event_create()
+		// This legacy rule needs no extended fields. Public zero-initialized
+		// events work on 2.8 and 2.10, which predate lttng_event_create.
+		event := (*C.struct_lttng_event)(C.calloc(1, C.sizeof_struct_lttng_event))
 		if event == nil {
 			return nativeError(op, -C.LTTNG_ERR_NOMEM)
 		}
-		defer C.lttng_event_destroy(event)
+		defer C.free(unsafe.Pointer(event))
 		event._type = C.enum_lttng_event_type(rule.Type)
 		event.loglevel_type = C.enum_lttng_loglevel_type(rule.LogLevelType)
 		event.loglevel = C.int(rule.LogLevel)
@@ -116,7 +118,7 @@ func EnableEvent(ctx context.Context, session string, domain Domain, channel str
 				unsafe.Slice(exclusions, len(rule.Exclusions))[i] = ptr
 			}
 		}
-		return nativeError(op, C.lttng_enable_event_with_exclusions(handle, event, channelName, filter, C.int(len(rule.Exclusions)), exclusions))
+		return nativeError(op, C.ctlgo_lttng_enable_event_with_exclusions(handle, event, channelName, filter, C.int(len(rule.Exclusions)), exclusions))
 	})
 }
 
@@ -135,7 +137,7 @@ func DisableEvent(ctx context.Context, session string, domain Domain, channel, n
 		channelName, eventName := optionalString(channel), optionalString(name)
 		defer free(channelName)
 		defer free(eventName)
-		return nativeError(op, C.lttng_disable_event(handle, eventName, channelName))
+		return nativeError(op, C.ctlgo_lttng_disable_event(handle, eventName, channelName))
 	})
 }
 
@@ -151,7 +153,7 @@ func ListEvents(ctx context.Context, session string, domain Domain, channel stri
 		name := C.CString(channel)
 		defer free(name)
 		var ptr *C.struct_lttng_event
-		n := C.lttng_list_events(handle, name, &ptr)
+		n := C.ctlgo_lttng_list_events(handle, name, &ptr)
 		defer C.free(unsafe.Pointer(ptr))
 		if err := nativeError(op, n); err != nil {
 			return err
@@ -177,7 +179,7 @@ func ListTracepoints(ctx context.Context, domain Domain) ([]Event, error) {
 	var events []Event
 	err := useHandle(op, "", domain, func(handle *C.struct_lttng_handle) error {
 		var ptr *C.struct_lttng_event
-		n := C.lttng_list_tracepoints(handle, &ptr)
+		n := C.ctlgo_lttng_list_tracepoints(handle, &ptr)
 		defer C.free(unsafe.Pointer(ptr))
 		if err := nativeError(op, n); err != nil {
 			return err
@@ -200,18 +202,18 @@ func copyEvents(op string, ptr *C.struct_lttng_event, n int, rules bool) ([]Even
 		}
 		if rules {
 			var filter *C.char
-			if err := nativeError(op, C.lttng_event_get_filter_expression(native, &filter)); err != nil {
+			if err := nativeError(op, C.ctlgo_lttng_event_get_filter_expression(native, &filter)); err != nil {
 				return nil, err
 			}
 			event.Filter = C.GoString(filter)
-			count := C.lttng_event_get_exclusion_name_count(native)
+			count := C.ctlgo_lttng_event_get_exclusion_name_count(native)
 			if err := nativeError(op, count); err != nil {
 				return nil, err
 			}
 			event.Exclusions = make([]string, int(count))
 			for j := range int(count) {
 				var name *C.char
-				if err := nativeError(op, C.lttng_event_get_exclusion_name(native, C.size_t(j), &name)); err != nil {
+				if err := nativeError(op, C.ctlgo_lttng_event_get_exclusion_name(native, C.size_t(j), &name)); err != nil {
 					return nil, err
 				}
 				event.Exclusions[j] = C.GoString(name)

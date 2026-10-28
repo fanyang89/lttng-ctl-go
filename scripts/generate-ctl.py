@@ -166,7 +166,9 @@ def generate(include):
 
     def disposer(s):
         if s in destroy:
-            return f"func(p unsafe.Pointer) {{ C.{destroy[s]}((*C.struct_{s})(p)) }}"
+            return (
+                f"func(p unsafe.Pointer) {{ C.ctlgo_{destroy[s]}((*C.struct_{s})(p)) }}"
+            )
         return "func(p unsafe.Pointer) { C.free(p) }"
 
     lines = [
@@ -176,10 +178,9 @@ def generate(include):
         "package ctl",
         "",
         "/*",
-        "#cgo pkg-config: lttng-ctl",
         "#cgo CFLAGS: -Wno-deprecated-declarations",
         "#include <stdlib.h>",
-        "#include <lttng/lttng.h>",
+        '#include "../internal/ctlstate/bridge_generated.h"',
         "*/",
         'import "C"',
         "",
@@ -200,7 +201,7 @@ def generate(include):
             f"// {typ} wraps a {s}. See package documentation for ownership.",
             f"type {typ} struct {{ ref *resource }}",
             f"func (obj *{typ}) resource() *resource {{ if obj == nil {{ return nil }}; return obj.ref }}",
-            f"func (obj *{typ}) Close() error {{ if err := ctlstate.Lock(context.Background()); err != nil {{ return err }}; defer ctlstate.Unlock(); obj.resource().close(); return nil }}",
+            f"func (obj *{typ}) Close() error {{ if err := ctlstate.Lock(context.Background()); err != nil {{ return err }}; defer ctlstate.Unlock(); obj.resource().close(); return ctlstate.CallError() }}",
             "",
         ]
     tests = [
@@ -210,6 +211,7 @@ def generate(include):
         'import ("context"; "errors"; "testing")',
         "func TestEveryAPICancelsBeforeNativeCall(t *testing.T) { ctx,cancel := context.WithCancel(t.Context()); cancel()",
     ]
+    unavailable_tests = ["func TestUnavailableAPIs(t *testing.T) { ctx := t.Context()"]
     manifest = [
         "# liblttng-ctl 2.14 public functions: C symbol\tGo binding\tHeader\tC declaration"
     ]
@@ -221,7 +223,7 @@ def generate(include):
             typ = objectname(struct(params[0][0]))
             lines += [
                 f"// {go} wraps {name}. Close is an idempotent equivalent.",
-                f"func {go}(ctx context.Context, arg *{typ}) error {{ if err := ctlstate.Lock(ctx); err != nil {{ return err }}; defer ctlstate.Unlock(); arg.resource().close(); return nil }}",
+                f"func {go}(ctx context.Context, arg *{typ}) error {{ if err := ctlstate.Lock(ctx); err != nil {{ return err }}; defer ctlstate.Unlock(); arg.resource().close(); return ctlstate.CallError() }}",
                 "",
             ]
             tests += [
@@ -408,12 +410,26 @@ def generate(include):
             f"if err := ctlstate.Lock(ctx); err != nil {{ return {fail}err }}",
             "defer ctlstate.Unlock()",
         ]
+        required = [name]
+        # Preflight destructors before acquiring native-owned results.
+        for t, n in [(ret, "")] + params:
+            if "struct " in t and (not n or t.count("*") == 2 and name in OWNED_OUT):
+                s = struct(t)
+                if s in destroy and destroy[s] not in required:
+                    required.append(destroy[s])
+        symbols = ", ".join('"' + symbol + '"' for symbol in required)
+        lines.append(
+            f"if err := ctlstate.Require({symbols}); err != nil {{ return {fail}err }}"
+        )
         lines += [
             x.replace("FAIL ", fail).replace("ErrInvalid", "ErrInvalidArgument")
             for x in before
         ]
-        call = f"C.{name}({', '.join(callargs)})"
+        call = f"C.ctlgo_{name}({', '.join(callargs)})"
         lines += [(("result := " if ret != "void" else "") + call)]
+        lines.append(
+            f"if err := ctlstate.CallError(); err != nil {{ return {fail}err }}"
+        )
         if (
             ret == "int"
             or ret.startswith("enum ")
@@ -424,6 +440,10 @@ def generate(include):
                 f'if err := statusError("{name}","{family}",int(result),{str(ret == "enum lttng_error_code").lower()}); err != nil {{ return {fail}err }}'
             )
         lines += [x.replace("FAIL ", fail) for x in after]
+        if name == "lttng_trigger_create":
+            lines.append(
+                "out.ref.retained = []*resource{arg_condition.ref.retain(), arg_action.ref.retain()}"
+            )
         lines += [f"arg_{n}.ref.moved()" for n in transfers]
         lines += [
             "return " + ", ".join([x[1] for x in retout + outputs] + ["nil"]),
@@ -433,6 +453,11 @@ def generate(include):
         tests.append(
             f't.Run("{name}",func(t *testing.T) {{ {", ".join(["_"] * (len(outputtypes) - 1) + ["err"])} := {go}(ctx{", " if inputzero else ""}{", ".join(inputzero)}); if !errors.Is(err,context.Canceled) {{ t.Fatal(err) }} }})'
         )
+        unavailable_tests.append(
+            f't.Run("{name}",func(t *testing.T) {{ present,err := HasSymbol(ctx,"{name}"); if err != nil {{ t.Fatal(err) }}; if present {{ return }}; '
+            f"{', '.join(['_'] * (len(outputtypes) - 1) + ['err'])} = {go}(ctx{', ' if inputzero else ''}{', '.join(inputzero)}); "
+            'if !errors.Is(err,ErrUnsupported) { t.Fatalf("missing API: %v",err) } })'
+        )
         manifest.append("\t".join([name, go, f["header"], f["decl"]]))
     for name in [
         "lttng_session_daemon_notification_endpoint",
@@ -441,13 +466,14 @@ def generate(include):
         go = camel(name)
         lines += [
             f"// {go} returns the library-owned endpoint.",
-            f"func {go}(ctx context.Context) (*Endpoint,error) {{ if err := ctlstate.Lock(ctx); err != nil {{ return nil,err }}; defer ctlstate.Unlock(); return &Endpoint{{ref:borrow(unsafe.Pointer(C.{name}),nil,true)}},nil }}",
+            f'func {go}(ctx context.Context) (*Endpoint,error) {{ if err := ctlstate.Lock(ctx); err != nil {{ return nil,err }}; defer ctlstate.Unlock(); if err := ctlstate.Require("{name}"); err != nil {{ return nil,err }}; return &Endpoint{{ref:borrow(unsafe.Pointer(C.ctlgo_get_{name}()),nil,true)}},nil }}',
         ]
     lines += [
         "func copyCString(p *C.char) *string { if p == nil { return nil }; return new(C.GoString(p)) }",
         "var _ = fmt.Errorf",
     ]
     tests += ["}"]
+    tests += unavailable_tests + ["}"]
     version = subprocess.check_output(
         ["pkg-config", "--modversion", "lttng-ctl"], text=True
     ).strip()
@@ -457,6 +483,55 @@ def generate(include):
         "ctl/api_generated.go": "\n".join(lines) + "\n",
         "ctl/api_generated_test.go": "\n".join(tests) + "\n",
         "ctl/API.tsv": "\n".join(manifest) + "\n",
+        **generate_bridge(funcs),
+    }
+
+
+def generate_bridge(funcs):
+    header = [
+        "/* Code generated by scripts/generate-ctl.py; DO NOT EDIT. */",
+        "#ifndef CTLGO_BRIDGE_GENERATED_H",
+        "#define CTLGO_BRIDGE_GENERATED_H",
+        "#include <lttng/lttng.h>",
+        '#include "loader.h"',
+    ]
+    source = [
+        "//go:build linux && cgo",
+        "/* Code generated by scripts/generate-ctl.py; DO NOT EDIT. */",
+        '#include "bridge_generated.h"',
+    ]
+    for f in funcs:
+        ret, name, params = f["ret"], f["name"], f["params"]
+        args = ", ".join(t + " " + n for t, n in params) or "void"
+        types = ", ".join(t for t, n in params) or "void"
+        values = ", ".join(n for t, n in params)
+        signature = f"{ret} ctlgo_{name}({args})"
+        header.append(signature + ";")
+        fallback = "" if ret == "void" else " NULL" if "*" in ret else f" ({ret}) -1"
+        source += [
+            signature + " {",
+            f"    typedef {ret} (*function_type)({types});",
+            f'    function_type function = (function_type) ctlgo_require("{name}");',
+            f"    if (!function) {{ return{fallback}; }}",
+            f"    {'return ' if ret != 'void' else ''}function({values});",
+            "}",
+        ]
+    for name in [
+        "lttng_session_daemon_notification_endpoint",
+        "lttng_session_daemon_command_endpoint",
+    ]:
+        signature = f"struct lttng_endpoint *ctlgo_get_{name}(void)"
+        header.append(signature + ";")
+        source += [
+            signature + " {",
+            f'    struct lttng_endpoint **value = ctlgo_require("{name}");',
+            "    return value ? *value : NULL;",
+            "}",
+        ]
+    header += ["#endif"]
+    return {
+        "internal/ctlstate/bridge_generated.h": "\n".join(header) + "\n",
+        "internal/ctlstate/bridge_generated.c": "\n".join(source) + "\n",
     }
 
 

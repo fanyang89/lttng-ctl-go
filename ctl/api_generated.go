@@ -4,10 +4,9 @@
 package ctl
 
 /*
-#cgo pkg-config: lttng-ctl
 #cgo CFLAGS: -Wno-deprecated-declarations
 #include <stdlib.h>
-#include <lttng/lttng.h>
+#include "../internal/ctlstate/bridge_generated.h"
 */
 import "C"
 
@@ -921,7 +920,7 @@ func (obj *Action) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ActionPath wraps a lttng_action_path. See package documentation for ownership.
@@ -939,7 +938,7 @@ func (obj *ActionPath) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // Calibration wraps a lttng_calibrate. See package documentation for ownership.
@@ -957,7 +956,7 @@ func (obj *Calibration) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // Channel wraps a lttng_channel. See package documentation for ownership.
@@ -975,7 +974,7 @@ func (obj *Channel) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ChannelAttr wraps a lttng_channel_attr. See package documentation for ownership.
@@ -993,7 +992,7 @@ func (obj *ChannelAttr) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ClearHandle wraps a lttng_clear_handle. See package documentation for ownership.
@@ -1011,7 +1010,7 @@ func (obj *ClearHandle) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // Condition wraps a lttng_condition. See package documentation for ownership.
@@ -1029,7 +1028,7 @@ func (obj *Condition) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // DestructionHandle wraps a lttng_destruction_handle. See package documentation for ownership.
@@ -1047,7 +1046,7 @@ func (obj *DestructionHandle) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // Domain wraps a lttng_domain. See package documentation for ownership.
@@ -1065,7 +1064,7 @@ func (obj *Domain) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // Endpoint wraps a lttng_endpoint. See package documentation for ownership.
@@ -1083,7 +1082,7 @@ func (obj *Endpoint) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ErrorQuery wraps a lttng_error_query. See package documentation for ownership.
@@ -1101,7 +1100,7 @@ func (obj *ErrorQuery) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ErrorQueryResult wraps a lttng_error_query_result. See package documentation for ownership.
@@ -1119,7 +1118,7 @@ func (obj *ErrorQueryResult) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ErrorQueryResults wraps a lttng_error_query_results. See package documentation for ownership.
@@ -1137,7 +1136,7 @@ func (obj *ErrorQueryResults) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // Evaluation wraps a lttng_evaluation. See package documentation for ownership.
@@ -1155,7 +1154,7 @@ func (obj *Evaluation) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // Event wraps a lttng_event. See package documentation for ownership.
@@ -1173,7 +1172,7 @@ func (obj *Event) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // EventContext wraps a lttng_event_context. See package documentation for ownership.
@@ -1191,7 +1190,7 @@ func (obj *EventContext) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // EventExpr wraps a lttng_event_expr. See package documentation for ownership.
@@ -1209,7 +1208,7 @@ func (obj *EventExpr) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // EventField wraps a lttng_event_field. See package documentation for ownership.
@@ -1227,7 +1226,7 @@ func (obj *EventField) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // EventFieldValue wraps a lttng_event_field_value. See package documentation for ownership.
@@ -1245,7 +1244,7 @@ func (obj *EventFieldValue) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // EventRule wraps a lttng_event_rule. See package documentation for ownership.
@@ -1263,7 +1262,7 @@ func (obj *EventRule) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // Handle wraps a lttng_handle. See package documentation for ownership.
@@ -1281,7 +1280,7 @@ func (obj *Handle) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // Health wraps a lttng_health. See package documentation for ownership.
@@ -1299,7 +1298,7 @@ func (obj *Health) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // HealthThread wraps a lttng_health_thread. See package documentation for ownership.
@@ -1317,7 +1316,7 @@ func (obj *HealthThread) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // KernelProbeLocation wraps a lttng_kernel_probe_location. See package documentation for ownership.
@@ -1335,7 +1334,7 @@ func (obj *KernelProbeLocation) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // LoadSessionAttr wraps a lttng_load_session_attr. See package documentation for ownership.
@@ -1353,7 +1352,7 @@ func (obj *LoadSessionAttr) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // LogLevelRule wraps a lttng_log_level_rule. See package documentation for ownership.
@@ -1371,7 +1370,7 @@ func (obj *LogLevelRule) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // Notification wraps a lttng_notification. See package documentation for ownership.
@@ -1389,7 +1388,7 @@ func (obj *Notification) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // NotificationChannel wraps a lttng_notification_channel. See package documentation for ownership.
@@ -1407,7 +1406,7 @@ func (obj *NotificationChannel) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ProcessAttrTrackerHandle wraps a lttng_process_attr_tracker_handle. See package documentation for ownership.
@@ -1425,7 +1424,7 @@ func (obj *ProcessAttrTrackerHandle) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ProcessAttrValues wraps a lttng_process_attr_values. See package documentation for ownership.
@@ -1443,7 +1442,7 @@ func (obj *ProcessAttrValues) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // RatePolicy wraps a lttng_rate_policy. See package documentation for ownership.
@@ -1461,7 +1460,7 @@ func (obj *RatePolicy) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // RotationHandle wraps a lttng_rotation_handle. See package documentation for ownership.
@@ -1479,7 +1478,7 @@ func (obj *RotationHandle) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // RotationImmediateDescriptor wraps a lttng_rotation_immediate_descriptor. See package documentation for ownership.
@@ -1497,7 +1496,7 @@ func (obj *RotationImmediateDescriptor) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // RotationSchedule wraps a lttng_rotation_schedule. See package documentation for ownership.
@@ -1515,7 +1514,7 @@ func (obj *RotationSchedule) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // RotationSchedules wraps a lttng_rotation_schedules. See package documentation for ownership.
@@ -1533,7 +1532,7 @@ func (obj *RotationSchedules) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // SaveSessionAttr wraps a lttng_save_session_attr. See package documentation for ownership.
@@ -1551,7 +1550,7 @@ func (obj *SaveSessionAttr) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // Session wraps a lttng_session. See package documentation for ownership.
@@ -1569,7 +1568,7 @@ func (obj *Session) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // SessionDescriptor wraps a lttng_session_descriptor. See package documentation for ownership.
@@ -1587,7 +1586,7 @@ func (obj *SessionDescriptor) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // SnapshotOutput wraps a lttng_snapshot_output. See package documentation for ownership.
@@ -1605,7 +1604,7 @@ func (obj *SnapshotOutput) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // SnapshotOutputList wraps a lttng_snapshot_output_list. See package documentation for ownership.
@@ -1623,7 +1622,7 @@ func (obj *SnapshotOutputList) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // TraceArchiveLocation wraps a lttng_trace_archive_location. See package documentation for ownership.
@@ -1641,7 +1640,7 @@ func (obj *TraceArchiveLocation) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // Trigger wraps a lttng_trigger. See package documentation for ownership.
@@ -1659,7 +1658,7 @@ func (obj *Trigger) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // Triggers wraps a lttng_triggers. See package documentation for ownership.
@@ -1677,7 +1676,7 @@ func (obj *Triggers) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // UserspaceProbeLocation wraps a lttng_userspace_probe_location. See package documentation for ownership.
@@ -1695,7 +1694,7 @@ func (obj *UserspaceProbeLocation) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // UserspaceProbeLocationLookupMethod wraps a lttng_userspace_probe_location_lookup_method. See package documentation for ownership.
@@ -1713,7 +1712,7 @@ func (obj *UserspaceProbeLocationLookupMethod) Close() error {
 	}
 	defer ctlstate.Unlock()
 	obj.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ActionGetType wraps lttng_action_get_type (lttng/action/action.h).
@@ -1722,12 +1721,18 @@ func ActionGetType(ctx context.Context, arg_action *Action) (ActionType, error) 
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_get_type"); err != nil {
+		return 0, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_action = (*C.struct_lttng_action)(arg_action.ref.ptr)
-	result := C.lttng_action_get_type(native_action)
+	result := C.ctlgo_lttng_action_get_type(native_action)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return ActionType(result), nil
 }
 
@@ -1738,7 +1743,7 @@ func ActionDestroy(ctx context.Context, arg *Action) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ActionListCreate wraps lttng_action_list_create (lttng/action/list.h).
@@ -1747,11 +1752,17 @@ func ActionListCreate(ctx context.Context) (*Action, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_action_list_create()
+	if err := ctlstate.Require("lttng_action_list_create", "lttng_action_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_action_list_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Action{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_action_destroy((*C.struct_lttng_action)(p)) })}
+	out := &Action{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_action_destroy((*C.struct_lttng_action)(p)) })}
 	return out, nil
 }
 
@@ -1761,6 +1772,9 @@ func ActionListAddAction(ctx context.Context, arg_action_list *Action, arg_actio
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_list_add_action"); err != nil {
+		return 0, err
+	}
 	var native_action_list *C.struct_lttng_action
 	if err := arg_action_list.resource().check(true); err != nil {
 		return 0, err
@@ -1771,7 +1785,10 @@ func ActionListAddAction(ctx context.Context, arg_action_list *Action, arg_actio
 		return 0, err
 	}
 	native_action = (*C.struct_lttng_action)(arg_action.ref.ptr)
-	result := C.lttng_action_list_add_action(native_action_list, native_action)
+	result := C.ctlgo_lttng_action_list_add_action(native_action_list, native_action)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_action_list_add_action", "lttng_action_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -1786,13 +1803,19 @@ func ActionListGetCount(ctx context.Context, arg_action_list *Action) (ActionSta
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_list_get_count"); err != nil {
+		return 0, 0, err
+	}
 	var native_action_list *C.struct_lttng_action
 	if err := arg_action_list.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_action_list = (*C.struct_lttng_action)(arg_action_list.ref.ptr)
 	var native_count C.uint
-	result := C.lttng_action_list_get_count(native_action_list, &native_count)
+	result := C.ctlgo_lttng_action_list_get_count(native_action_list, &native_count)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_action_list_get_count", "lttng_action_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -1805,12 +1828,18 @@ func ActionListGetAtIndex(ctx context.Context, arg_action_list *Action, arg_inde
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_list_get_at_index", "lttng_action_destroy"); err != nil {
+		return nil, err
+	}
 	var native_action_list *C.struct_lttng_action
 	if err := arg_action_list.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_action_list = (*C.struct_lttng_action)(arg_action_list.ref.ptr)
-	result := C.lttng_action_list_get_at_index(native_action_list, C.uint(arg_index))
+	result := C.ctlgo_lttng_action_list_get_at_index(native_action_list, C.uint(arg_index))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -1824,11 +1853,17 @@ func ActionNotifyCreate(ctx context.Context) (*Action, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_action_notify_create()
+	if err := ctlstate.Require("lttng_action_notify_create", "lttng_action_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_action_notify_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Action{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_action_destroy((*C.struct_lttng_action)(p)) })}
+	out := &Action{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_action_destroy((*C.struct_lttng_action)(p)) })}
 	return out, nil
 }
 
@@ -1838,6 +1873,9 @@ func ActionNotifySetRatePolicy(ctx context.Context, arg_action *Action, arg_poli
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_notify_set_rate_policy"); err != nil {
+		return 0, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(true); err != nil {
 		return 0, err
@@ -1848,7 +1886,10 @@ func ActionNotifySetRatePolicy(ctx context.Context, arg_action *Action, arg_poli
 		return 0, err
 	}
 	native_policy = (*C.struct_lttng_rate_policy)(arg_policy.ref.ptr)
-	result := C.lttng_action_notify_set_rate_policy(native_action, native_policy)
+	result := C.ctlgo_lttng_action_notify_set_rate_policy(native_action, native_policy)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_action_notify_set_rate_policy", "lttng_action_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -1862,13 +1903,19 @@ func ActionNotifyGetRatePolicy(ctx context.Context, arg_action *Action) (ActionS
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_notify_get_rate_policy"); err != nil {
+		return 0, nil, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_action = (*C.struct_lttng_action)(arg_action.ref.ptr)
 	var native_policy *C.struct_lttng_rate_policy
-	result := C.lttng_action_notify_get_rate_policy(native_action, &native_policy)
+	result := C.ctlgo_lttng_action_notify_get_rate_policy(native_action, &native_policy)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_action_notify_get_rate_policy", "lttng_action_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -1885,6 +1932,9 @@ func ActionPathCreate(ctx context.Context, arg_indexes []uint64) (*ActionPath, e
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_path_create", "lttng_action_path_destroy"); err != nil {
+		return nil, err
+	}
 	var native_indexes *C.uint64_t
 	if len(arg_indexes) > 0 {
 		native_indexes = (*C.uint64_t)(C.calloc(C.size_t(len(arg_indexes)), 8))
@@ -1896,11 +1946,14 @@ func ActionPathCreate(ctx context.Context, arg_indexes []uint64) (*ActionPath, e
 			unsafe.Slice(native_indexes, len(arg_indexes))[i] = C.uint64_t(x)
 		}
 	}
-	result := C.lttng_action_path_create(native_indexes, C.size_t(len(arg_indexes)))
+	result := C.ctlgo_lttng_action_path_create(native_indexes, C.size_t(len(arg_indexes)))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &ActionPath{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_action_path_destroy((*C.struct_lttng_action_path)(p)) })}
+	out := &ActionPath{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_action_path_destroy((*C.struct_lttng_action_path)(p)) })}
 	return out, nil
 }
 
@@ -1910,13 +1963,19 @@ func ActionPathGetIndexCount(ctx context.Context, arg_path *ActionPath) (ActionP
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_path_get_index_count"); err != nil {
+		return 0, 0, err
+	}
 	var native_path *C.struct_lttng_action_path
 	if err := arg_path.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_path = (*C.struct_lttng_action_path)(arg_path.ref.ptr)
 	var native_index_count C.size_t
-	result := C.lttng_action_path_get_index_count(native_path, &native_index_count)
+	result := C.ctlgo_lttng_action_path_get_index_count(native_path, &native_index_count)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_action_path_get_index_count", "lttng_action_path_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -1929,6 +1988,9 @@ func ActionPathGetIndexAtIndex(ctx context.Context, arg_path *ActionPath, arg_pa
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_path_get_index_at_index"); err != nil {
+		return 0, 0, err
+	}
 	var native_path *C.struct_lttng_action_path
 	if err := arg_path.resource().check(false); err != nil {
 		return 0, 0, err
@@ -1938,7 +2000,10 @@ func ActionPathGetIndexAtIndex(ctx context.Context, arg_path *ActionPath, arg_pa
 		return 0, 0, ErrInvalidArgument
 	}
 	var native_out_index C.uint64_t
-	result := C.lttng_action_path_get_index_at_index(native_path, C.size_t(arg_path_index), &native_out_index)
+	result := C.ctlgo_lttng_action_path_get_index_at_index(native_path, C.size_t(arg_path_index), &native_out_index)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_action_path_get_index_at_index", "lttng_action_path_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -1952,7 +2017,7 @@ func ActionPathDestroy(ctx context.Context, arg *ActionPath) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // RatePolicyGetType wraps lttng_rate_policy_get_type (lttng/action/rate-policy.h).
@@ -1961,12 +2026,18 @@ func RatePolicyGetType(ctx context.Context, arg_policy *RatePolicy) (RatePolicyT
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_rate_policy_get_type"); err != nil {
+		return 0, err
+	}
 	var native_policy *C.struct_lttng_rate_policy
 	if err := arg_policy.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_policy = (*C.struct_lttng_rate_policy)(arg_policy.ref.ptr)
-	result := C.lttng_rate_policy_get_type(native_policy)
+	result := C.ctlgo_lttng_rate_policy_get_type(native_policy)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return RatePolicyType(result), nil
 }
 
@@ -1976,11 +2047,17 @@ func RatePolicyEveryNCreate(ctx context.Context, arg_n uint64) (*RatePolicy, err
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_rate_policy_every_n_create(C.uint64_t(arg_n))
+	if err := ctlstate.Require("lttng_rate_policy_every_n_create", "lttng_rate_policy_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_rate_policy_every_n_create(C.uint64_t(arg_n))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &RatePolicy{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_rate_policy_destroy((*C.struct_lttng_rate_policy)(p)) })}
+	out := &RatePolicy{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_rate_policy_destroy((*C.struct_lttng_rate_policy)(p)) })}
 	return out, nil
 }
 
@@ -1990,13 +2067,19 @@ func RatePolicyEveryNGetInterval(ctx context.Context, arg_policy *RatePolicy) (R
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_rate_policy_every_n_get_interval"); err != nil {
+		return 0, 0, err
+	}
 	var native_policy *C.struct_lttng_rate_policy
 	if err := arg_policy.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_policy = (*C.struct_lttng_rate_policy)(arg_policy.ref.ptr)
 	var native_n C.uint64_t
-	result := C.lttng_rate_policy_every_n_get_interval(native_policy, &native_n)
+	result := C.ctlgo_lttng_rate_policy_every_n_get_interval(native_policy, &native_n)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_rate_policy_every_n_get_interval", "lttng_rate_policy_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -2009,11 +2092,17 @@ func RatePolicyOnceAfterNCreate(ctx context.Context, arg_n uint64) (*RatePolicy,
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_rate_policy_once_after_n_create(C.uint64_t(arg_n))
+	if err := ctlstate.Require("lttng_rate_policy_once_after_n_create", "lttng_rate_policy_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_rate_policy_once_after_n_create(C.uint64_t(arg_n))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &RatePolicy{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_rate_policy_destroy((*C.struct_lttng_rate_policy)(p)) })}
+	out := &RatePolicy{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_rate_policy_destroy((*C.struct_lttng_rate_policy)(p)) })}
 	return out, nil
 }
 
@@ -2023,13 +2112,19 @@ func RatePolicyOnceAfterNGetThreshold(ctx context.Context, arg_policy *RatePolic
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_rate_policy_once_after_n_get_threshold"); err != nil {
+		return 0, 0, err
+	}
 	var native_policy *C.struct_lttng_rate_policy
 	if err := arg_policy.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_policy = (*C.struct_lttng_rate_policy)(arg_policy.ref.ptr)
 	var native_n C.uint64_t
-	result := C.lttng_rate_policy_once_after_n_get_threshold(native_policy, &native_n)
+	result := C.ctlgo_lttng_rate_policy_once_after_n_get_threshold(native_policy, &native_n)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_rate_policy_once_after_n_get_threshold", "lttng_rate_policy_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -2043,7 +2138,7 @@ func RatePolicyDestroy(ctx context.Context, arg *RatePolicy) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ActionRotateSessionCreate wraps lttng_action_rotate_session_create (lttng/action/rotate-session.h).
@@ -2052,11 +2147,17 @@ func ActionRotateSessionCreate(ctx context.Context) (*Action, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_action_rotate_session_create()
+	if err := ctlstate.Require("lttng_action_rotate_session_create", "lttng_action_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_action_rotate_session_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Action{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_action_destroy((*C.struct_lttng_action)(p)) })}
+	out := &Action{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_action_destroy((*C.struct_lttng_action)(p)) })}
 	return out, nil
 }
 
@@ -2066,6 +2167,9 @@ func ActionRotateSessionSetSessionName(ctx context.Context, arg_action *Action, 
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_rotate_session_set_session_name"); err != nil {
+		return 0, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(true); err != nil {
 		return 0, err
@@ -2076,7 +2180,10 @@ func ActionRotateSessionSetSessionName(ctx context.Context, arg_action *Action, 
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_action_rotate_session_set_session_name(native_action, native_session_name)
+	result := C.ctlgo_lttng_action_rotate_session_set_session_name(native_action, native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_action_rotate_session_set_session_name", "lttng_action_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2090,13 +2197,19 @@ func ActionRotateSessionGetSessionName(ctx context.Context, arg_action *Action) 
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_rotate_session_get_session_name"); err != nil {
+		return 0, nil, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_action = (*C.struct_lttng_action)(arg_action.ref.ptr)
 	var native_session_name *C.char
-	result := C.lttng_action_rotate_session_get_session_name(native_action, &native_session_name)
+	result := C.ctlgo_lttng_action_rotate_session_get_session_name(native_action, &native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_action_rotate_session_get_session_name", "lttng_action_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -2109,6 +2222,9 @@ func ActionRotateSessionSetRatePolicy(ctx context.Context, arg_action *Action, a
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_rotate_session_set_rate_policy"); err != nil {
+		return 0, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(true); err != nil {
 		return 0, err
@@ -2119,7 +2235,10 @@ func ActionRotateSessionSetRatePolicy(ctx context.Context, arg_action *Action, a
 		return 0, err
 	}
 	native_policy = (*C.struct_lttng_rate_policy)(arg_policy.ref.ptr)
-	result := C.lttng_action_rotate_session_set_rate_policy(native_action, native_policy)
+	result := C.ctlgo_lttng_action_rotate_session_set_rate_policy(native_action, native_policy)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_action_rotate_session_set_rate_policy", "lttng_action_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2133,13 +2252,19 @@ func ActionRotateSessionGetRatePolicy(ctx context.Context, arg_action *Action) (
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_rotate_session_get_rate_policy"); err != nil {
+		return 0, nil, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_action = (*C.struct_lttng_action)(arg_action.ref.ptr)
 	var native_policy *C.struct_lttng_rate_policy
-	result := C.lttng_action_rotate_session_get_rate_policy(native_action, &native_policy)
+	result := C.ctlgo_lttng_action_rotate_session_get_rate_policy(native_action, &native_policy)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_action_rotate_session_get_rate_policy", "lttng_action_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -2156,11 +2281,17 @@ func ActionSnapshotSessionCreate(ctx context.Context) (*Action, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_action_snapshot_session_create()
+	if err := ctlstate.Require("lttng_action_snapshot_session_create", "lttng_action_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_action_snapshot_session_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Action{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_action_destroy((*C.struct_lttng_action)(p)) })}
+	out := &Action{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_action_destroy((*C.struct_lttng_action)(p)) })}
 	return out, nil
 }
 
@@ -2170,6 +2301,9 @@ func ActionSnapshotSessionSetSessionName(ctx context.Context, arg_action *Action
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_snapshot_session_set_session_name"); err != nil {
+		return 0, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(true); err != nil {
 		return 0, err
@@ -2180,7 +2314,10 @@ func ActionSnapshotSessionSetSessionName(ctx context.Context, arg_action *Action
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_action_snapshot_session_set_session_name(native_action, native_session_name)
+	result := C.ctlgo_lttng_action_snapshot_session_set_session_name(native_action, native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_action_snapshot_session_set_session_name", "lttng_action_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2194,13 +2331,19 @@ func ActionSnapshotSessionGetSessionName(ctx context.Context, arg_action *Action
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_snapshot_session_get_session_name"); err != nil {
+		return 0, nil, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_action = (*C.struct_lttng_action)(arg_action.ref.ptr)
 	var native_session_name *C.char
-	result := C.lttng_action_snapshot_session_get_session_name(native_action, &native_session_name)
+	result := C.ctlgo_lttng_action_snapshot_session_get_session_name(native_action, &native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_action_snapshot_session_get_session_name", "lttng_action_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -2213,6 +2356,9 @@ func ActionSnapshotSessionSetOutput(ctx context.Context, arg_action *Action, arg
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_snapshot_session_set_output"); err != nil {
+		return 0, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(true); err != nil {
 		return 0, err
@@ -2226,7 +2372,10 @@ func ActionSnapshotSessionSetOutput(ctx context.Context, arg_action *Action, arg
 		return 0, ErrReadOnly
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_action_snapshot_session_set_output(native_action, native_output)
+	result := C.ctlgo_lttng_action_snapshot_session_set_output(native_action, native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_action_snapshot_session_set_output", "lttng_action_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2242,13 +2391,19 @@ func ActionSnapshotSessionGetOutput(ctx context.Context, arg_action *Action) (Ac
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_snapshot_session_get_output"); err != nil {
+		return 0, nil, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_action = (*C.struct_lttng_action)(arg_action.ref.ptr)
 	var native_output *C.struct_lttng_snapshot_output
-	result := C.lttng_action_snapshot_session_get_output(native_action, &native_output)
+	result := C.ctlgo_lttng_action_snapshot_session_get_output(native_action, &native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_action_snapshot_session_get_output", "lttng_action_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -2265,6 +2420,9 @@ func ActionSnapshotSessionSetRatePolicy(ctx context.Context, arg_action *Action,
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_snapshot_session_set_rate_policy"); err != nil {
+		return 0, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(true); err != nil {
 		return 0, err
@@ -2275,7 +2433,10 @@ func ActionSnapshotSessionSetRatePolicy(ctx context.Context, arg_action *Action,
 		return 0, err
 	}
 	native_policy = (*C.struct_lttng_rate_policy)(arg_policy.ref.ptr)
-	result := C.lttng_action_snapshot_session_set_rate_policy(native_action, native_policy)
+	result := C.ctlgo_lttng_action_snapshot_session_set_rate_policy(native_action, native_policy)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_action_snapshot_session_set_rate_policy", "lttng_action_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2289,13 +2450,19 @@ func ActionSnapshotSessionGetRatePolicy(ctx context.Context, arg_action *Action)
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_snapshot_session_get_rate_policy"); err != nil {
+		return 0, nil, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_action = (*C.struct_lttng_action)(arg_action.ref.ptr)
 	var native_policy *C.struct_lttng_rate_policy
-	result := C.lttng_action_snapshot_session_get_rate_policy(native_action, &native_policy)
+	result := C.ctlgo_lttng_action_snapshot_session_get_rate_policy(native_action, &native_policy)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_action_snapshot_session_get_rate_policy", "lttng_action_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -2312,11 +2479,17 @@ func ActionStartSessionCreate(ctx context.Context) (*Action, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_action_start_session_create()
+	if err := ctlstate.Require("lttng_action_start_session_create", "lttng_action_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_action_start_session_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Action{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_action_destroy((*C.struct_lttng_action)(p)) })}
+	out := &Action{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_action_destroy((*C.struct_lttng_action)(p)) })}
 	return out, nil
 }
 
@@ -2326,6 +2499,9 @@ func ActionStartSessionSetSessionName(ctx context.Context, arg_action *Action, a
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_start_session_set_session_name"); err != nil {
+		return 0, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(true); err != nil {
 		return 0, err
@@ -2336,7 +2512,10 @@ func ActionStartSessionSetSessionName(ctx context.Context, arg_action *Action, a
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_action_start_session_set_session_name(native_action, native_session_name)
+	result := C.ctlgo_lttng_action_start_session_set_session_name(native_action, native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_action_start_session_set_session_name", "lttng_action_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2350,13 +2529,19 @@ func ActionStartSessionGetSessionName(ctx context.Context, arg_action *Action) (
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_start_session_get_session_name"); err != nil {
+		return 0, nil, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_action = (*C.struct_lttng_action)(arg_action.ref.ptr)
 	var native_session_name *C.char
-	result := C.lttng_action_start_session_get_session_name(native_action, &native_session_name)
+	result := C.ctlgo_lttng_action_start_session_get_session_name(native_action, &native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_action_start_session_get_session_name", "lttng_action_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -2369,6 +2554,9 @@ func ActionStartSessionSetRatePolicy(ctx context.Context, arg_action *Action, ar
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_start_session_set_rate_policy"); err != nil {
+		return 0, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(true); err != nil {
 		return 0, err
@@ -2379,7 +2567,10 @@ func ActionStartSessionSetRatePolicy(ctx context.Context, arg_action *Action, ar
 		return 0, err
 	}
 	native_policy = (*C.struct_lttng_rate_policy)(arg_policy.ref.ptr)
-	result := C.lttng_action_start_session_set_rate_policy(native_action, native_policy)
+	result := C.ctlgo_lttng_action_start_session_set_rate_policy(native_action, native_policy)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_action_start_session_set_rate_policy", "lttng_action_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2393,13 +2584,19 @@ func ActionStartSessionGetRatePolicy(ctx context.Context, arg_action *Action) (A
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_start_session_get_rate_policy"); err != nil {
+		return 0, nil, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_action = (*C.struct_lttng_action)(arg_action.ref.ptr)
 	var native_policy *C.struct_lttng_rate_policy
-	result := C.lttng_action_start_session_get_rate_policy(native_action, &native_policy)
+	result := C.ctlgo_lttng_action_start_session_get_rate_policy(native_action, &native_policy)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_action_start_session_get_rate_policy", "lttng_action_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -2416,11 +2613,17 @@ func ActionStopSessionCreate(ctx context.Context) (*Action, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_action_stop_session_create()
+	if err := ctlstate.Require("lttng_action_stop_session_create", "lttng_action_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_action_stop_session_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Action{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_action_destroy((*C.struct_lttng_action)(p)) })}
+	out := &Action{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_action_destroy((*C.struct_lttng_action)(p)) })}
 	return out, nil
 }
 
@@ -2430,6 +2633,9 @@ func ActionStopSessionSetSessionName(ctx context.Context, arg_action *Action, ar
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_stop_session_set_session_name"); err != nil {
+		return 0, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(true); err != nil {
 		return 0, err
@@ -2440,7 +2646,10 @@ func ActionStopSessionSetSessionName(ctx context.Context, arg_action *Action, ar
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_action_stop_session_set_session_name(native_action, native_session_name)
+	result := C.ctlgo_lttng_action_stop_session_set_session_name(native_action, native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_action_stop_session_set_session_name", "lttng_action_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2454,13 +2663,19 @@ func ActionStopSessionGetSessionName(ctx context.Context, arg_action *Action) (A
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_stop_session_get_session_name"); err != nil {
+		return 0, nil, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_action = (*C.struct_lttng_action)(arg_action.ref.ptr)
 	var native_session_name *C.char
-	result := C.lttng_action_stop_session_get_session_name(native_action, &native_session_name)
+	result := C.ctlgo_lttng_action_stop_session_get_session_name(native_action, &native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_action_stop_session_get_session_name", "lttng_action_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -2473,6 +2688,9 @@ func ActionStopSessionSetRatePolicy(ctx context.Context, arg_action *Action, arg
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_stop_session_set_rate_policy"); err != nil {
+		return 0, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(true); err != nil {
 		return 0, err
@@ -2483,7 +2701,10 @@ func ActionStopSessionSetRatePolicy(ctx context.Context, arg_action *Action, arg
 		return 0, err
 	}
 	native_policy = (*C.struct_lttng_rate_policy)(arg_policy.ref.ptr)
-	result := C.lttng_action_stop_session_set_rate_policy(native_action, native_policy)
+	result := C.ctlgo_lttng_action_stop_session_set_rate_policy(native_action, native_policy)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_action_stop_session_set_rate_policy", "lttng_action_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2497,13 +2718,19 @@ func ActionStopSessionGetRatePolicy(ctx context.Context, arg_action *Action) (Ac
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_action_stop_session_get_rate_policy"); err != nil {
+		return 0, nil, err
+	}
 	var native_action *C.struct_lttng_action
 	if err := arg_action.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_action = (*C.struct_lttng_action)(arg_action.ref.ptr)
 	var native_policy *C.struct_lttng_rate_policy
-	result := C.lttng_action_stop_session_get_rate_policy(native_action, &native_policy)
+	result := C.ctlgo_lttng_action_stop_session_get_rate_policy(native_action, &native_policy)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_action_stop_session_get_rate_policy", "lttng_action_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -2520,16 +2747,22 @@ func ChannelCreate(ctx context.Context, arg_domain *Domain) (*Channel, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_channel_create", "lttng_channel_destroy"); err != nil {
+		return nil, err
+	}
 	var native_domain *C.struct_lttng_domain
 	if err := arg_domain.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_domain = (*C.struct_lttng_domain)(arg_domain.ref.ptr)
-	result := C.lttng_channel_create(native_domain)
+	result := C.ctlgo_lttng_channel_create(native_domain)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Channel{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_channel_destroy((*C.struct_lttng_channel)(p)) })}
+	out := &Channel{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_channel_destroy((*C.struct_lttng_channel)(p)) })}
 	return out, nil
 }
 
@@ -2540,7 +2773,7 @@ func ChannelDestroy(ctx context.Context, arg *Channel) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ListChannels wraps lttng_list_channels (lttng/channel.h).
@@ -2549,13 +2782,19 @@ func ListChannels(ctx context.Context, arg_handle *Handle) (int, *List[*Channel]
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_list_channels"); err != nil {
+		return 0, nil, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_handle = (*C.struct_lttng_handle)(arg_handle.ref.ptr)
 	var native_channels *C.struct_lttng_channel
-	result := C.lttng_list_channels(native_handle, &native_channels)
+	result := C.ctlgo_lttng_list_channels(native_handle, &native_channels)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_list_channels", "int", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -2573,6 +2812,9 @@ func EnableChannel(ctx context.Context, arg_handle *Handle, arg_channel *Channel
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_enable_channel"); err != nil {
+		return 0, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(true); err != nil {
 		return 0, err
@@ -2583,7 +2825,10 @@ func EnableChannel(ctx context.Context, arg_handle *Handle, arg_channel *Channel
 		return 0, err
 	}
 	native_channel = (*C.struct_lttng_channel)(arg_channel.ref.ptr)
-	result := C.lttng_enable_channel(native_handle, native_channel)
+	result := C.ctlgo_lttng_enable_channel(native_handle, native_channel)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_enable_channel", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2598,6 +2843,9 @@ func DisableChannel(ctx context.Context, arg_handle *Handle, arg_channel_name *s
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_disable_channel"); err != nil {
+		return 0, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(true); err != nil {
 		return 0, err
@@ -2608,7 +2856,10 @@ func DisableChannel(ctx context.Context, arg_handle *Handle, arg_channel_name *s
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_channel_name))
-	result := C.lttng_disable_channel(native_handle, native_channel_name)
+	result := C.ctlgo_lttng_disable_channel(native_handle, native_channel_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_disable_channel", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2622,6 +2873,9 @@ func ChannelSetDefaultAttr(ctx context.Context, arg_domain *Domain, arg_attr *Ch
 		return err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_channel_set_default_attr"); err != nil {
+		return err
+	}
 	var native_domain *C.struct_lttng_domain
 	if err := arg_domain.resource().check(true); err != nil {
 		return err
@@ -2632,7 +2886,10 @@ func ChannelSetDefaultAttr(ctx context.Context, arg_domain *Domain, arg_attr *Ch
 		return err
 	}
 	native_attr = (*C.struct_lttng_channel_attr)(arg_attr.ref.ptr)
-	C.lttng_channel_set_default_attr(native_domain, native_attr)
+	C.ctlgo_lttng_channel_set_default_attr(native_domain, native_attr)
+	if err := ctlstate.CallError(); err != nil {
+		return err
+	}
 	arg_domain.ref.revision++
 	arg_attr.ref.revision++
 	return nil
@@ -2644,13 +2901,19 @@ func ChannelGetDiscardedEventCount(ctx context.Context, arg_channel *Channel) (i
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_channel_get_discarded_event_count"); err != nil {
+		return 0, 0, err
+	}
 	var native_channel *C.struct_lttng_channel
 	if err := arg_channel.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_channel = (*C.struct_lttng_channel)(arg_channel.ref.ptr)
 	var native_count C.uint64_t
-	result := C.lttng_channel_get_discarded_event_count(native_channel, &native_count)
+	result := C.ctlgo_lttng_channel_get_discarded_event_count(native_channel, &native_count)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_channel_get_discarded_event_count", "int", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -2663,13 +2926,19 @@ func ChannelGetLostPacketCount(ctx context.Context, arg_channel *Channel) (int, 
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_channel_get_lost_packet_count"); err != nil {
+		return 0, 0, err
+	}
 	var native_channel *C.struct_lttng_channel
 	if err := arg_channel.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_channel = (*C.struct_lttng_channel)(arg_channel.ref.ptr)
 	var native_count C.uint64_t
-	result := C.lttng_channel_get_lost_packet_count(native_channel, &native_count)
+	result := C.ctlgo_lttng_channel_get_lost_packet_count(native_channel, &native_count)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_channel_get_lost_packet_count", "int", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -2682,13 +2951,19 @@ func ChannelGetMonitorTimerInterval(ctx context.Context, arg_channel *Channel) (
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_channel_get_monitor_timer_interval"); err != nil {
+		return 0, 0, err
+	}
 	var native_channel *C.struct_lttng_channel
 	if err := arg_channel.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_channel = (*C.struct_lttng_channel)(arg_channel.ref.ptr)
 	var native_period C.uint64_t
-	result := C.lttng_channel_get_monitor_timer_interval(native_channel, &native_period)
+	result := C.ctlgo_lttng_channel_get_monitor_timer_interval(native_channel, &native_period)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_channel_get_monitor_timer_interval", "int", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -2701,12 +2976,18 @@ func ChannelSetMonitorTimerInterval(ctx context.Context, arg_channel *Channel, a
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_channel_set_monitor_timer_interval"); err != nil {
+		return 0, err
+	}
 	var native_channel *C.struct_lttng_channel
 	if err := arg_channel.resource().check(true); err != nil {
 		return 0, err
 	}
 	native_channel = (*C.struct_lttng_channel)(arg_channel.ref.ptr)
-	result := C.lttng_channel_set_monitor_timer_interval(native_channel, C.uint64_t(arg_period))
+	result := C.ctlgo_lttng_channel_set_monitor_timer_interval(native_channel, C.uint64_t(arg_period))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_channel_set_monitor_timer_interval", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2720,13 +3001,19 @@ func ChannelGetBlockingTimeout(ctx context.Context, arg_channel *Channel) (int, 
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_channel_get_blocking_timeout"); err != nil {
+		return 0, 0, err
+	}
 	var native_channel *C.struct_lttng_channel
 	if err := arg_channel.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_channel = (*C.struct_lttng_channel)(arg_channel.ref.ptr)
 	var native_timeout C.int64_t
-	result := C.lttng_channel_get_blocking_timeout(native_channel, &native_timeout)
+	result := C.ctlgo_lttng_channel_get_blocking_timeout(native_channel, &native_timeout)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_channel_get_blocking_timeout", "int", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -2739,12 +3026,18 @@ func ChannelSetBlockingTimeout(ctx context.Context, arg_channel *Channel, arg_ti
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_channel_set_blocking_timeout"); err != nil {
+		return 0, err
+	}
 	var native_channel *C.struct_lttng_channel
 	if err := arg_channel.resource().check(true); err != nil {
 		return 0, err
 	}
 	native_channel = (*C.struct_lttng_channel)(arg_channel.ref.ptr)
-	result := C.lttng_channel_set_blocking_timeout(native_channel, C.int64_t(arg_timeout))
+	result := C.ctlgo_lttng_channel_set_blocking_timeout(native_channel, C.int64_t(arg_timeout))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_channel_set_blocking_timeout", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2758,13 +3051,19 @@ func ChannelGetAllocationPolicy(ctx context.Context, arg_channel *Channel) (Erro
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_channel_get_allocation_policy"); err != nil {
+		return 0, 0, err
+	}
 	var native_channel *C.struct_lttng_channel
 	if err := arg_channel.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_channel = (*C.struct_lttng_channel)(arg_channel.ref.ptr)
 	var native_policy C.enum_lttng_channel_allocation_policy
-	result := C.lttng_channel_get_allocation_policy(native_channel, &native_policy)
+	result := C.ctlgo_lttng_channel_get_allocation_policy(native_channel, &native_policy)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_channel_get_allocation_policy", "lttng_error_code", int(result), true); err != nil {
 		return 0, 0, err
 	}
@@ -2777,6 +3076,9 @@ func ChannelSetAllocationPolicy(ctx context.Context, arg_channel *Channel, arg_p
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_channel_set_allocation_policy"); err != nil {
+		return 0, err
+	}
 	var native_channel *C.struct_lttng_channel
 	if err := arg_channel.resource().check(true); err != nil {
 		return 0, err
@@ -2785,7 +3087,10 @@ func ChannelSetAllocationPolicy(ctx context.Context, arg_channel *Channel, arg_p
 	if int64(C.enum_lttng_channel_allocation_policy(arg_policy)) != int64(arg_policy) {
 		return 0, ErrInvalidArgument
 	}
-	result := C.lttng_channel_set_allocation_policy(native_channel, C.enum_lttng_channel_allocation_policy(arg_policy))
+	result := C.ctlgo_lttng_channel_set_allocation_policy(native_channel, C.enum_lttng_channel_allocation_policy(arg_policy))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_channel_set_allocation_policy", "lttng_error_code", int(result), true); err != nil {
 		return 0, err
 	}
@@ -2800,7 +3105,7 @@ func ClearHandleDestroy(ctx context.Context, arg *ClearHandle) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ClearHandleWaitForCompletion wraps lttng_clear_handle_wait_for_completion (lttng/clear-handle.h).
@@ -2809,6 +3114,9 @@ func ClearHandleWaitForCompletion(ctx context.Context, arg_handle *ClearHandle, 
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_clear_handle_wait_for_completion"); err != nil {
+		return 0, err
+	}
 	var native_handle *C.struct_lttng_clear_handle
 	if err := arg_handle.resource().check(false); err != nil {
 		return 0, err
@@ -2817,7 +3125,10 @@ func ClearHandleWaitForCompletion(ctx context.Context, arg_handle *ClearHandle, 
 	if int64(C.int(arg_timeout_ms)) != int64(arg_timeout_ms) {
 		return 0, ErrInvalidArgument
 	}
-	result := C.lttng_clear_handle_wait_for_completion(native_handle, C.int(arg_timeout_ms))
+	result := C.ctlgo_lttng_clear_handle_wait_for_completion(native_handle, C.int(arg_timeout_ms))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_clear_handle_wait_for_completion", "lttng_clear_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2830,13 +3141,19 @@ func ClearHandleGetResult(ctx context.Context, arg_handle *ClearHandle) (ClearHa
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_clear_handle_get_result"); err != nil {
+		return 0, 0, err
+	}
 	var native_handle *C.struct_lttng_clear_handle
 	if err := arg_handle.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_handle = (*C.struct_lttng_clear_handle)(arg_handle.ref.ptr)
 	var native_result C.enum_lttng_error_code
-	result := C.lttng_clear_handle_get_result(native_handle, &native_result)
+	result := C.ctlgo_lttng_clear_handle_get_result(native_handle, &native_result)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_clear_handle_get_result", "lttng_clear_handle_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -2849,19 +3166,25 @@ func ClearSession(ctx context.Context, arg_session_name *string) (ErrorCode, *Cl
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_clear_session", "lttng_clear_handle_destroy"); err != nil {
+		return 0, nil, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, nil, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
 	var native_handle *C.struct_lttng_clear_handle
-	result := C.lttng_clear_session(native_session_name, &native_handle)
+	result := C.ctlgo_lttng_clear_session(native_session_name, &native_handle)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_clear_session", "lttng_error_code", int(result), true); err != nil {
 		return 0, nil, err
 	}
 	var out_handle *ClearHandle
 	if native_handle != nil {
-		out_handle = &ClearHandle{ref: own(unsafe.Pointer(native_handle), func(p unsafe.Pointer) { C.lttng_clear_handle_destroy((*C.struct_lttng_clear_handle)(p)) })}
+		out_handle = &ClearHandle{ref: own(unsafe.Pointer(native_handle), func(p unsafe.Pointer) { C.ctlgo_lttng_clear_handle_destroy((*C.struct_lttng_clear_handle)(p)) })}
 	}
 	return ErrorCode(result), out_handle, nil
 }
@@ -2872,11 +3195,17 @@ func ConditionBufferUsageLowCreate(ctx context.Context) (*Condition, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_condition_buffer_usage_low_create()
+	if err := ctlstate.Require("lttng_condition_buffer_usage_low_create", "lttng_condition_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_condition_buffer_usage_low_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Condition{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_condition_destroy((*C.struct_lttng_condition)(p)) })}
+	out := &Condition{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_condition_destroy((*C.struct_lttng_condition)(p)) })}
 	return out, nil
 }
 
@@ -2886,11 +3215,17 @@ func ConditionBufferUsageHighCreate(ctx context.Context) (*Condition, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_condition_buffer_usage_high_create()
+	if err := ctlstate.Require("lttng_condition_buffer_usage_high_create", "lttng_condition_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_condition_buffer_usage_high_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Condition{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_condition_destroy((*C.struct_lttng_condition)(p)) })}
+	out := &Condition{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_condition_destroy((*C.struct_lttng_condition)(p)) })}
 	return out, nil
 }
 
@@ -2900,13 +3235,19 @@ func ConditionBufferUsageGetThresholdRatio(ctx context.Context, arg_condition *C
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_buffer_usage_get_threshold_ratio"); err != nil {
+		return 0, 0, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
 	var native_threshold C.double
-	result := C.lttng_condition_buffer_usage_get_threshold_ratio(native_condition, &native_threshold)
+	result := C.ctlgo_lttng_condition_buffer_usage_get_threshold_ratio(native_condition, &native_threshold)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_condition_buffer_usage_get_threshold_ratio", "lttng_condition_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -2919,12 +3260,18 @@ func ConditionBufferUsageSetThresholdRatio(ctx context.Context, arg_condition *C
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_buffer_usage_set_threshold_ratio"); err != nil {
+		return 0, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(true); err != nil {
 		return 0, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
-	result := C.lttng_condition_buffer_usage_set_threshold_ratio(native_condition, C.double(arg_threshold))
+	result := C.ctlgo_lttng_condition_buffer_usage_set_threshold_ratio(native_condition, C.double(arg_threshold))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_condition_buffer_usage_set_threshold_ratio", "lttng_condition_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2938,13 +3285,19 @@ func ConditionBufferUsageGetThreshold(ctx context.Context, arg_condition *Condit
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_buffer_usage_get_threshold"); err != nil {
+		return 0, 0, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
 	var native_threshold C.uint64_t
-	result := C.lttng_condition_buffer_usage_get_threshold(native_condition, &native_threshold)
+	result := C.ctlgo_lttng_condition_buffer_usage_get_threshold(native_condition, &native_threshold)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_condition_buffer_usage_get_threshold", "lttng_condition_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -2957,12 +3310,18 @@ func ConditionBufferUsageSetThreshold(ctx context.Context, arg_condition *Condit
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_buffer_usage_set_threshold"); err != nil {
+		return 0, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(true); err != nil {
 		return 0, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
-	result := C.lttng_condition_buffer_usage_set_threshold(native_condition, C.uint64_t(arg_threshold))
+	result := C.ctlgo_lttng_condition_buffer_usage_set_threshold(native_condition, C.uint64_t(arg_threshold))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_condition_buffer_usage_set_threshold", "lttng_condition_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -2976,13 +3335,19 @@ func ConditionBufferUsageGetSessionName(ctx context.Context, arg_condition *Cond
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_buffer_usage_get_session_name"); err != nil {
+		return 0, nil, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
 	var native_session_name *C.char
-	result := C.lttng_condition_buffer_usage_get_session_name(native_condition, &native_session_name)
+	result := C.ctlgo_lttng_condition_buffer_usage_get_session_name(native_condition, &native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_condition_buffer_usage_get_session_name", "lttng_condition_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -2995,6 +3360,9 @@ func ConditionBufferUsageSetSessionName(ctx context.Context, arg_condition *Cond
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_buffer_usage_set_session_name"); err != nil {
+		return 0, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(true); err != nil {
 		return 0, err
@@ -3005,7 +3373,10 @@ func ConditionBufferUsageSetSessionName(ctx context.Context, arg_condition *Cond
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_condition_buffer_usage_set_session_name(native_condition, native_session_name)
+	result := C.ctlgo_lttng_condition_buffer_usage_set_session_name(native_condition, native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_condition_buffer_usage_set_session_name", "lttng_condition_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -3019,13 +3390,19 @@ func ConditionBufferUsageGetChannelName(ctx context.Context, arg_condition *Cond
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_buffer_usage_get_channel_name"); err != nil {
+		return 0, nil, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
 	var native_channel_name *C.char
-	result := C.lttng_condition_buffer_usage_get_channel_name(native_condition, &native_channel_name)
+	result := C.ctlgo_lttng_condition_buffer_usage_get_channel_name(native_condition, &native_channel_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_condition_buffer_usage_get_channel_name", "lttng_condition_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -3038,6 +3415,9 @@ func ConditionBufferUsageSetChannelName(ctx context.Context, arg_condition *Cond
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_buffer_usage_set_channel_name"); err != nil {
+		return 0, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(true); err != nil {
 		return 0, err
@@ -3048,7 +3428,10 @@ func ConditionBufferUsageSetChannelName(ctx context.Context, arg_condition *Cond
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_channel_name))
-	result := C.lttng_condition_buffer_usage_set_channel_name(native_condition, native_channel_name)
+	result := C.ctlgo_lttng_condition_buffer_usage_set_channel_name(native_condition, native_channel_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_condition_buffer_usage_set_channel_name", "lttng_condition_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -3062,13 +3445,19 @@ func ConditionBufferUsageGetDomainType(ctx context.Context, arg_condition *Condi
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_buffer_usage_get_domain_type"); err != nil {
+		return 0, 0, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
 	var native_domain C.enum_lttng_domain_type
-	result := C.lttng_condition_buffer_usage_get_domain_type(native_condition, &native_domain)
+	result := C.ctlgo_lttng_condition_buffer_usage_get_domain_type(native_condition, &native_domain)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_condition_buffer_usage_get_domain_type", "lttng_condition_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -3081,6 +3470,9 @@ func ConditionBufferUsageSetDomainType(ctx context.Context, arg_condition *Condi
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_buffer_usage_set_domain_type"); err != nil {
+		return 0, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(true); err != nil {
 		return 0, err
@@ -3089,7 +3481,10 @@ func ConditionBufferUsageSetDomainType(ctx context.Context, arg_condition *Condi
 	if int64(C.enum_lttng_domain_type(arg_domain)) != int64(arg_domain) {
 		return 0, ErrInvalidArgument
 	}
-	result := C.lttng_condition_buffer_usage_set_domain_type(native_condition, C.enum_lttng_domain_type(arg_domain))
+	result := C.ctlgo_lttng_condition_buffer_usage_set_domain_type(native_condition, C.enum_lttng_domain_type(arg_domain))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_condition_buffer_usage_set_domain_type", "lttng_condition_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -3103,13 +3498,19 @@ func EvaluationBufferUsageGetUsageRatio(ctx context.Context, arg_evaluation *Eva
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_evaluation_buffer_usage_get_usage_ratio"); err != nil {
+		return 0, 0, err
+	}
 	var native_evaluation *C.struct_lttng_evaluation
 	if err := arg_evaluation.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_evaluation = (*C.struct_lttng_evaluation)(arg_evaluation.ref.ptr)
 	var native_usage C.double
-	result := C.lttng_evaluation_buffer_usage_get_usage_ratio(native_evaluation, &native_usage)
+	result := C.ctlgo_lttng_evaluation_buffer_usage_get_usage_ratio(native_evaluation, &native_usage)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_evaluation_buffer_usage_get_usage_ratio", "lttng_evaluation_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -3122,13 +3523,19 @@ func EvaluationBufferUsageGetUsage(ctx context.Context, arg_evaluation *Evaluati
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_evaluation_buffer_usage_get_usage"); err != nil {
+		return 0, 0, err
+	}
 	var native_evaluation *C.struct_lttng_evaluation
 	if err := arg_evaluation.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_evaluation = (*C.struct_lttng_evaluation)(arg_evaluation.ref.ptr)
 	var native_usage C.uint64_t
-	result := C.lttng_evaluation_buffer_usage_get_usage(native_evaluation, &native_usage)
+	result := C.ctlgo_lttng_evaluation_buffer_usage_get_usage(native_evaluation, &native_usage)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_evaluation_buffer_usage_get_usage", "lttng_evaluation_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -3141,12 +3548,18 @@ func ConditionGetType(ctx context.Context, arg_condition *Condition) (ConditionT
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_get_type"); err != nil {
+		return 0, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
-	result := C.lttng_condition_get_type(native_condition)
+	result := C.ctlgo_lttng_condition_get_type(native_condition)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return ConditionType(result), nil
 }
 
@@ -3157,7 +3570,7 @@ func ConditionDestroy(ctx context.Context, arg *Condition) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // EvaluationGetType wraps lttng_evaluation_get_type (lttng/condition/evaluation.h).
@@ -3166,12 +3579,18 @@ func EvaluationGetType(ctx context.Context, arg_evaluation *Evaluation) (Conditi
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_evaluation_get_type"); err != nil {
+		return 0, err
+	}
 	var native_evaluation *C.struct_lttng_evaluation
 	if err := arg_evaluation.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_evaluation = (*C.struct_lttng_evaluation)(arg_evaluation.ref.ptr)
-	result := C.lttng_evaluation_get_type(native_evaluation)
+	result := C.ctlgo_lttng_evaluation_get_type(native_evaluation)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return ConditionType(result), nil
 }
 
@@ -3182,7 +3601,7 @@ func EvaluationDestroy(ctx context.Context, arg *Evaluation) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ConditionEventRuleMatchesCreate wraps lttng_condition_event_rule_matches_create (lttng/condition/event-rule-matches.h).
@@ -3191,16 +3610,22 @@ func ConditionEventRuleMatchesCreate(ctx context.Context, arg_rule *EventRule) (
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_event_rule_matches_create", "lttng_condition_destroy"); err != nil {
+		return nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
-	result := C.lttng_condition_event_rule_matches_create(native_rule)
+	result := C.ctlgo_lttng_condition_event_rule_matches_create(native_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Condition{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_condition_destroy((*C.struct_lttng_condition)(p)) })}
+	out := &Condition{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_condition_destroy((*C.struct_lttng_condition)(p)) })}
 	return out, nil
 }
 
@@ -3210,13 +3635,19 @@ func ConditionEventRuleMatchesGetRule(ctx context.Context, arg_condition *Condit
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_event_rule_matches_get_rule"); err != nil {
+		return 0, nil, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
 	var native_rule *C.struct_lttng_event_rule
-	result := C.lttng_condition_event_rule_matches_get_rule(native_condition, &native_rule)
+	result := C.ctlgo_lttng_condition_event_rule_matches_get_rule(native_condition, &native_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_condition_event_rule_matches_get_rule", "lttng_condition_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -3233,13 +3664,19 @@ func EvaluationEventRuleMatchesGetCapturedValues(ctx context.Context, arg_evalua
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_evaluation_event_rule_matches_get_captured_values"); err != nil {
+		return 0, nil, err
+	}
 	var native_evaluation *C.struct_lttng_evaluation
 	if err := arg_evaluation.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_evaluation = (*C.struct_lttng_evaluation)(arg_evaluation.ref.ptr)
 	var native_field_val *C.struct_lttng_event_field_value
-	result := C.lttng_evaluation_event_rule_matches_get_captured_values(native_evaluation, &native_field_val)
+	result := C.ctlgo_lttng_evaluation_event_rule_matches_get_captured_values(native_evaluation, &native_field_val)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_evaluation_event_rule_matches_get_captured_values", "lttng_evaluation_event_rule_matches_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -3256,6 +3693,9 @@ func ConditionEventRuleMatchesAppendCaptureDescriptor(ctx context.Context, arg_c
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_event_rule_matches_append_capture_descriptor"); err != nil {
+		return 0, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(true); err != nil {
 		return 0, err
@@ -3269,7 +3709,10 @@ func ConditionEventRuleMatchesAppendCaptureDescriptor(ctx context.Context, arg_c
 		return 0, ErrReadOnly
 	}
 	native_expr = (*C.struct_lttng_event_expr)(arg_expr.ref.ptr)
-	result := C.lttng_condition_event_rule_matches_append_capture_descriptor(native_condition, native_expr)
+	result := C.ctlgo_lttng_condition_event_rule_matches_append_capture_descriptor(native_condition, native_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_condition_event_rule_matches_append_capture_descriptor", "lttng_condition_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -3285,13 +3728,19 @@ func ConditionEventRuleMatchesGetCaptureDescriptorCount(ctx context.Context, arg
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_event_rule_matches_get_capture_descriptor_count"); err != nil {
+		return 0, 0, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
 	var native_count C.uint
-	result := C.lttng_condition_event_rule_matches_get_capture_descriptor_count(native_condition, &native_count)
+	result := C.ctlgo_lttng_condition_event_rule_matches_get_capture_descriptor_count(native_condition, &native_count)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_condition_event_rule_matches_get_capture_descriptor_count", "lttng_condition_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -3304,12 +3753,18 @@ func ConditionEventRuleMatchesGetCaptureDescriptorAtIndex(ctx context.Context, a
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_event_rule_matches_get_capture_descriptor_at_index", "lttng_event_expr_destroy"); err != nil {
+		return nil, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
-	result := C.lttng_condition_event_rule_matches_get_capture_descriptor_at_index(native_condition, C.uint(arg_index))
+	result := C.ctlgo_lttng_condition_event_rule_matches_get_capture_descriptor_at_index(native_condition, C.uint(arg_index))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -3323,11 +3778,17 @@ func ConditionSessionConsumedSizeCreate(ctx context.Context) (*Condition, error)
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_condition_session_consumed_size_create()
+	if err := ctlstate.Require("lttng_condition_session_consumed_size_create", "lttng_condition_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_condition_session_consumed_size_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Condition{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_condition_destroy((*C.struct_lttng_condition)(p)) })}
+	out := &Condition{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_condition_destroy((*C.struct_lttng_condition)(p)) })}
 	return out, nil
 }
 
@@ -3337,13 +3798,19 @@ func ConditionSessionConsumedSizeGetThreshold(ctx context.Context, arg_condition
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_session_consumed_size_get_threshold"); err != nil {
+		return 0, 0, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
 	var native_threshold C.uint64_t
-	result := C.lttng_condition_session_consumed_size_get_threshold(native_condition, &native_threshold)
+	result := C.ctlgo_lttng_condition_session_consumed_size_get_threshold(native_condition, &native_threshold)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_condition_session_consumed_size_get_threshold", "lttng_condition_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -3356,12 +3823,18 @@ func ConditionSessionConsumedSizeSetThreshold(ctx context.Context, arg_condition
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_session_consumed_size_set_threshold"); err != nil {
+		return 0, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(true); err != nil {
 		return 0, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
-	result := C.lttng_condition_session_consumed_size_set_threshold(native_condition, C.uint64_t(arg_threshold))
+	result := C.ctlgo_lttng_condition_session_consumed_size_set_threshold(native_condition, C.uint64_t(arg_threshold))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_condition_session_consumed_size_set_threshold", "lttng_condition_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -3375,13 +3848,19 @@ func ConditionSessionConsumedSizeGetSessionName(ctx context.Context, arg_conditi
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_session_consumed_size_get_session_name"); err != nil {
+		return 0, nil, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
 	var native_session_name *C.char
-	result := C.lttng_condition_session_consumed_size_get_session_name(native_condition, &native_session_name)
+	result := C.ctlgo_lttng_condition_session_consumed_size_get_session_name(native_condition, &native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_condition_session_consumed_size_get_session_name", "lttng_condition_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -3394,6 +3873,9 @@ func ConditionSessionConsumedSizeSetSessionName(ctx context.Context, arg_conditi
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_session_consumed_size_set_session_name"); err != nil {
+		return 0, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(true); err != nil {
 		return 0, err
@@ -3404,7 +3886,10 @@ func ConditionSessionConsumedSizeSetSessionName(ctx context.Context, arg_conditi
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_condition_session_consumed_size_set_session_name(native_condition, native_session_name)
+	result := C.ctlgo_lttng_condition_session_consumed_size_set_session_name(native_condition, native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_condition_session_consumed_size_set_session_name", "lttng_condition_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -3418,13 +3903,19 @@ func EvaluationSessionConsumedSizeGetConsumedSize(ctx context.Context, arg_evalu
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_evaluation_session_consumed_size_get_consumed_size"); err != nil {
+		return 0, 0, err
+	}
 	var native_evaluation *C.struct_lttng_evaluation
 	if err := arg_evaluation.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_evaluation = (*C.struct_lttng_evaluation)(arg_evaluation.ref.ptr)
 	var native_consumed_size C.uint64_t
-	result := C.lttng_evaluation_session_consumed_size_get_consumed_size(native_evaluation, &native_consumed_size)
+	result := C.ctlgo_lttng_evaluation_session_consumed_size_get_consumed_size(native_evaluation, &native_consumed_size)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_evaluation_session_consumed_size_get_consumed_size", "lttng_evaluation_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -3437,11 +3928,17 @@ func ConditionSessionRotationOngoingCreate(ctx context.Context) (*Condition, err
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_condition_session_rotation_ongoing_create()
+	if err := ctlstate.Require("lttng_condition_session_rotation_ongoing_create", "lttng_condition_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_condition_session_rotation_ongoing_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Condition{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_condition_destroy((*C.struct_lttng_condition)(p)) })}
+	out := &Condition{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_condition_destroy((*C.struct_lttng_condition)(p)) })}
 	return out, nil
 }
 
@@ -3451,11 +3948,17 @@ func ConditionSessionRotationCompletedCreate(ctx context.Context) (*Condition, e
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_condition_session_rotation_completed_create()
+	if err := ctlstate.Require("lttng_condition_session_rotation_completed_create", "lttng_condition_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_condition_session_rotation_completed_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Condition{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_condition_destroy((*C.struct_lttng_condition)(p)) })}
+	out := &Condition{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_condition_destroy((*C.struct_lttng_condition)(p)) })}
 	return out, nil
 }
 
@@ -3465,13 +3968,19 @@ func ConditionSessionRotationGetSessionName(ctx context.Context, arg_condition *
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_session_rotation_get_session_name"); err != nil {
+		return 0, nil, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
 	var native_session_name *C.char
-	result := C.lttng_condition_session_rotation_get_session_name(native_condition, &native_session_name)
+	result := C.ctlgo_lttng_condition_session_rotation_get_session_name(native_condition, &native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_condition_session_rotation_get_session_name", "lttng_condition_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -3484,6 +3993,9 @@ func ConditionSessionRotationSetSessionName(ctx context.Context, arg_condition *
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_condition_session_rotation_set_session_name"); err != nil {
+		return 0, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(true); err != nil {
 		return 0, err
@@ -3494,7 +4006,10 @@ func ConditionSessionRotationSetSessionName(ctx context.Context, arg_condition *
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_condition_session_rotation_set_session_name(native_condition, native_session_name)
+	result := C.ctlgo_lttng_condition_session_rotation_set_session_name(native_condition, native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_condition_session_rotation_set_session_name", "lttng_condition_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -3508,13 +4023,19 @@ func EvaluationSessionRotationGetID(ctx context.Context, arg_evaluation *Evaluat
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_evaluation_session_rotation_get_id"); err != nil {
+		return 0, 0, err
+	}
 	var native_evaluation *C.struct_lttng_evaluation
 	if err := arg_evaluation.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_evaluation = (*C.struct_lttng_evaluation)(arg_evaluation.ref.ptr)
 	var native_id C.uint64_t
-	result := C.lttng_evaluation_session_rotation_get_id(native_evaluation, &native_id)
+	result := C.ctlgo_lttng_evaluation_session_rotation_get_id(native_evaluation, &native_id)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_evaluation_session_rotation_get_id", "lttng_evaluation_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -3527,13 +4048,19 @@ func EvaluationSessionRotationCompletedGetLocation(ctx context.Context, arg_eval
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_evaluation_session_rotation_completed_get_location"); err != nil {
+		return 0, nil, err
+	}
 	var native_evaluation *C.struct_lttng_evaluation
 	if err := arg_evaluation.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_evaluation = (*C.struct_lttng_evaluation)(arg_evaluation.ref.ptr)
 	var native_location *C.struct_lttng_trace_archive_location
-	result := C.lttng_evaluation_session_rotation_completed_get_location(native_evaluation, &native_location)
+	result := C.ctlgo_lttng_evaluation_session_rotation_completed_get_location(native_evaluation, &native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_evaluation_session_rotation_completed_get_location", "lttng_evaluation_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -3551,7 +4078,7 @@ func DestructionHandleDestroy(ctx context.Context, arg *DestructionHandle) error
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // DestructionHandleWaitForCompletion wraps lttng_destruction_handle_wait_for_completion (lttng/destruction-handle.h).
@@ -3560,6 +4087,9 @@ func DestructionHandleWaitForCompletion(ctx context.Context, arg_handle *Destruc
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_destruction_handle_wait_for_completion"); err != nil {
+		return 0, err
+	}
 	var native_handle *C.struct_lttng_destruction_handle
 	if err := arg_handle.resource().check(false); err != nil {
 		return 0, err
@@ -3568,7 +4098,10 @@ func DestructionHandleWaitForCompletion(ctx context.Context, arg_handle *Destruc
 	if int64(C.int(arg_timeout_ms)) != int64(arg_timeout_ms) {
 		return 0, ErrInvalidArgument
 	}
-	result := C.lttng_destruction_handle_wait_for_completion(native_handle, C.int(arg_timeout_ms))
+	result := C.ctlgo_lttng_destruction_handle_wait_for_completion(native_handle, C.int(arg_timeout_ms))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_destruction_handle_wait_for_completion", "lttng_destruction_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -3581,13 +4114,19 @@ func DestructionHandleGetResult(ctx context.Context, arg_handle *DestructionHand
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_destruction_handle_get_result"); err != nil {
+		return 0, 0, err
+	}
 	var native_handle *C.struct_lttng_destruction_handle
 	if err := arg_handle.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_handle = (*C.struct_lttng_destruction_handle)(arg_handle.ref.ptr)
 	var native_result C.enum_lttng_error_code
-	result := C.lttng_destruction_handle_get_result(native_handle, &native_result)
+	result := C.ctlgo_lttng_destruction_handle_get_result(native_handle, &native_result)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_destruction_handle_get_result", "lttng_destruction_handle_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -3600,13 +4139,19 @@ func DestructionHandleGetRotationState(ctx context.Context, arg_handle *Destruct
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_destruction_handle_get_rotation_state"); err != nil {
+		return 0, 0, err
+	}
 	var native_handle *C.struct_lttng_destruction_handle
 	if err := arg_handle.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_handle = (*C.struct_lttng_destruction_handle)(arg_handle.ref.ptr)
 	var native_rotation_state C.enum_lttng_rotation_state
-	result := C.lttng_destruction_handle_get_rotation_state(native_handle, &native_rotation_state)
+	result := C.ctlgo_lttng_destruction_handle_get_rotation_state(native_handle, &native_rotation_state)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_destruction_handle_get_rotation_state", "lttng_destruction_handle_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -3619,13 +4164,19 @@ func DestructionHandleGetArchiveLocation(ctx context.Context, arg_handle *Destru
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_destruction_handle_get_archive_location"); err != nil {
+		return 0, nil, err
+	}
 	var native_handle *C.struct_lttng_destruction_handle
 	if err := arg_handle.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_handle = (*C.struct_lttng_destruction_handle)(arg_handle.ref.ptr)
 	var native_location *C.struct_lttng_trace_archive_location
-	result := C.lttng_destruction_handle_get_archive_location(native_handle, &native_location)
+	result := C.ctlgo_lttng_destruction_handle_get_archive_location(native_handle, &native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_destruction_handle_get_archive_location", "lttng_destruction_handle_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -3642,13 +4193,19 @@ func ListDomains(ctx context.Context, arg_session_name *string) (int, *List[*Dom
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_list_domains"); err != nil {
+		return 0, nil, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, nil, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
 	var native_domains *C.struct_lttng_domain
-	result := C.lttng_list_domains(native_session_name, &native_domains)
+	result := C.ctlgo_lttng_list_domains(native_session_name, &native_domains)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_list_domains", "int", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -3666,16 +4223,22 @@ func ErrorQueryTriggerCreate(ctx context.Context, arg_trigger *Trigger) (*ErrorQ
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_error_query_trigger_create", "lttng_error_query_destroy"); err != nil {
+		return nil, err
+	}
 	var native_trigger *C.struct_lttng_trigger
 	if err := arg_trigger.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_trigger = (*C.struct_lttng_trigger)(arg_trigger.ref.ptr)
-	result := C.lttng_error_query_trigger_create(native_trigger)
+	result := C.ctlgo_lttng_error_query_trigger_create(native_trigger)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &ErrorQuery{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_error_query_destroy((*C.struct_lttng_error_query)(p)) })}
+	out := &ErrorQuery{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_error_query_destroy((*C.struct_lttng_error_query)(p)) })}
 	return out, nil
 }
 
@@ -3685,16 +4248,22 @@ func ErrorQueryConditionCreate(ctx context.Context, arg_trigger *Trigger) (*Erro
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_error_query_condition_create", "lttng_error_query_destroy"); err != nil {
+		return nil, err
+	}
 	var native_trigger *C.struct_lttng_trigger
 	if err := arg_trigger.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_trigger = (*C.struct_lttng_trigger)(arg_trigger.ref.ptr)
-	result := C.lttng_error_query_condition_create(native_trigger)
+	result := C.ctlgo_lttng_error_query_condition_create(native_trigger)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &ErrorQuery{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_error_query_destroy((*C.struct_lttng_error_query)(p)) })}
+	out := &ErrorQuery{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_error_query_destroy((*C.struct_lttng_error_query)(p)) })}
 	return out, nil
 }
 
@@ -3704,6 +4273,9 @@ func ErrorQueryActionCreate(ctx context.Context, arg_trigger *Trigger, arg_actio
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_error_query_action_create", "lttng_error_query_destroy"); err != nil {
+		return nil, err
+	}
 	var native_trigger *C.struct_lttng_trigger
 	if err := arg_trigger.resource().check(false); err != nil {
 		return nil, err
@@ -3714,11 +4286,14 @@ func ErrorQueryActionCreate(ctx context.Context, arg_trigger *Trigger, arg_actio
 		return nil, err
 	}
 	native_action_path = (*C.struct_lttng_action_path)(arg_action_path.ref.ptr)
-	result := C.lttng_error_query_action_create(native_trigger, native_action_path)
+	result := C.ctlgo_lttng_error_query_action_create(native_trigger, native_action_path)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &ErrorQuery{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_error_query_destroy((*C.struct_lttng_error_query)(p)) })}
+	out := &ErrorQuery{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_error_query_destroy((*C.struct_lttng_error_query)(p)) })}
 	return out, nil
 }
 
@@ -3729,7 +4304,7 @@ func ErrorQueryDestroy(ctx context.Context, arg *ErrorQuery) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ErrorQueryExecute wraps lttng_error_query_execute (lttng/error-query.h).
@@ -3738,6 +4313,9 @@ func ErrorQueryExecute(ctx context.Context, arg_query *ErrorQuery, arg_endpoint 
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_error_query_execute", "lttng_error_query_results_destroy"); err != nil {
+		return 0, nil, err
+	}
 	var native_query *C.struct_lttng_error_query
 	if err := arg_query.resource().check(false); err != nil {
 		return 0, nil, err
@@ -3749,13 +4327,18 @@ func ErrorQueryExecute(ctx context.Context, arg_query *ErrorQuery, arg_endpoint 
 	}
 	native_endpoint = (*C.struct_lttng_endpoint)(arg_endpoint.ref.ptr)
 	var native_results *C.struct_lttng_error_query_results
-	result := C.lttng_error_query_execute(native_query, native_endpoint, &native_results)
+	result := C.ctlgo_lttng_error_query_execute(native_query, native_endpoint, &native_results)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_error_query_execute", "lttng_error_code", int(result), true); err != nil {
 		return 0, nil, err
 	}
 	var out_results *ErrorQueryResults
 	if native_results != nil {
-		out_results = &ErrorQueryResults{ref: own(unsafe.Pointer(native_results), func(p unsafe.Pointer) { C.lttng_error_query_results_destroy((*C.struct_lttng_error_query_results)(p)) })}
+		out_results = &ErrorQueryResults{ref: own(unsafe.Pointer(native_results), func(p unsafe.Pointer) {
+			C.ctlgo_lttng_error_query_results_destroy((*C.struct_lttng_error_query_results)(p))
+		})}
 	}
 	return ErrorCode(result), out_results, nil
 }
@@ -3766,13 +4349,19 @@ func ErrorQueryResultsGetCount(ctx context.Context, arg_results *ErrorQueryResul
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_error_query_results_get_count"); err != nil {
+		return 0, 0, err
+	}
 	var native_results *C.struct_lttng_error_query_results
 	if err := arg_results.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_results = (*C.struct_lttng_error_query_results)(arg_results.ref.ptr)
 	var native_count C.uint
-	result := C.lttng_error_query_results_get_count(native_results, &native_count)
+	result := C.ctlgo_lttng_error_query_results_get_count(native_results, &native_count)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_error_query_results_get_count", "lttng_error_query_results_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -3785,13 +4374,19 @@ func ErrorQueryResultsGetResult(ctx context.Context, arg_results *ErrorQueryResu
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_error_query_results_get_result"); err != nil {
+		return 0, nil, err
+	}
 	var native_results *C.struct_lttng_error_query_results
 	if err := arg_results.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_results = (*C.struct_lttng_error_query_results)(arg_results.ref.ptr)
 	var native_result *C.struct_lttng_error_query_result
-	result := C.lttng_error_query_results_get_result(native_results, &native_result, C.uint(arg_index))
+	result := C.ctlgo_lttng_error_query_results_get_result(native_results, &native_result, C.uint(arg_index))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_error_query_results_get_result", "lttng_error_query_results_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -3809,7 +4404,7 @@ func ErrorQueryResultsDestroy(ctx context.Context, arg *ErrorQueryResults) error
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ErrorQueryResultGetType wraps lttng_error_query_result_get_type (lttng/error-query.h).
@@ -3818,12 +4413,18 @@ func ErrorQueryResultGetType(ctx context.Context, arg_result *ErrorQueryResult) 
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_error_query_result_get_type"); err != nil {
+		return 0, err
+	}
 	var native_result *C.struct_lttng_error_query_result
 	if err := arg_result.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_result = (*C.struct_lttng_error_query_result)(arg_result.ref.ptr)
-	result := C.lttng_error_query_result_get_type(native_result)
+	result := C.ctlgo_lttng_error_query_result_get_type(native_result)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return ErrorQueryResultType(result), nil
 }
 
@@ -3833,13 +4434,19 @@ func ErrorQueryResultGetName(ctx context.Context, arg_result *ErrorQueryResult) 
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_error_query_result_get_name"); err != nil {
+		return 0, nil, err
+	}
 	var native_result *C.struct_lttng_error_query_result
 	if err := arg_result.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_result = (*C.struct_lttng_error_query_result)(arg_result.ref.ptr)
 	var native_name *C.char
-	result := C.lttng_error_query_result_get_name(native_result, &native_name)
+	result := C.ctlgo_lttng_error_query_result_get_name(native_result, &native_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_error_query_result_get_name", "lttng_error_query_result_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -3852,13 +4459,19 @@ func ErrorQueryResultGetDescription(ctx context.Context, arg_result *ErrorQueryR
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_error_query_result_get_description"); err != nil {
+		return 0, nil, err
+	}
 	var native_result *C.struct_lttng_error_query_result
 	if err := arg_result.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_result = (*C.struct_lttng_error_query_result)(arg_result.ref.ptr)
 	var native_description *C.char
-	result := C.lttng_error_query_result_get_description(native_result, &native_description)
+	result := C.ctlgo_lttng_error_query_result_get_description(native_result, &native_description)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_error_query_result_get_description", "lttng_error_query_result_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -3871,13 +4484,19 @@ func ErrorQueryResultCounterGetValue(ctx context.Context, arg_result *ErrorQuery
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_error_query_result_counter_get_value"); err != nil {
+		return 0, 0, err
+	}
 	var native_result *C.struct_lttng_error_query_result
 	if err := arg_result.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_result = (*C.struct_lttng_error_query_result)(arg_result.ref.ptr)
 	var native_value C.uint64_t
-	result := C.lttng_error_query_result_counter_get_value(native_result, &native_value)
+	result := C.ctlgo_lttng_error_query_result_counter_get_value(native_result, &native_value)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_error_query_result_counter_get_value", "lttng_error_query_result_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -3890,12 +4509,18 @@ func EventExprGetType(ctx context.Context, arg_expr *EventExpr) (EventExprType, 
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_expr_get_type"); err != nil {
+		return 0, err
+	}
 	var native_expr *C.struct_lttng_event_expr
 	if err := arg_expr.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_expr = (*C.struct_lttng_event_expr)(arg_expr.ref.ptr)
-	result := C.lttng_event_expr_get_type(native_expr)
+	result := C.ctlgo_lttng_event_expr_get_type(native_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return EventExprType(result), nil
 }
 
@@ -3905,16 +4530,22 @@ func EventExprEventPayloadFieldCreate(ctx context.Context, arg_field_name *strin
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_expr_event_payload_field_create", "lttng_event_expr_destroy"); err != nil {
+		return nil, err
+	}
 	native_field_name, err := cstring(arg_field_name)
 	if err != nil {
 		return nil, err
 	}
 	defer C.free(unsafe.Pointer(native_field_name))
-	result := C.lttng_event_expr_event_payload_field_create(native_field_name)
+	result := C.ctlgo_lttng_event_expr_event_payload_field_create(native_field_name)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &EventExpr{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_event_expr_destroy((*C.struct_lttng_event_expr)(p)) })}
+	out := &EventExpr{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_event_expr_destroy((*C.struct_lttng_event_expr)(p)) })}
 	return out, nil
 }
 
@@ -3924,12 +4555,18 @@ func EventExprEventPayloadFieldGetName(ctx context.Context, arg_expr *EventExpr)
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_expr_event_payload_field_get_name"); err != nil {
+		return nil, err
+	}
 	var native_expr *C.struct_lttng_event_expr
 	if err := arg_expr.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_expr = (*C.struct_lttng_event_expr)(arg_expr.ref.ptr)
-	result := C.lttng_event_expr_event_payload_field_get_name(native_expr)
+	result := C.ctlgo_lttng_event_expr_event_payload_field_get_name(native_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -3939,16 +4576,22 @@ func EventExprChannelContextFieldCreate(ctx context.Context, arg_field_name *str
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_expr_channel_context_field_create", "lttng_event_expr_destroy"); err != nil {
+		return nil, err
+	}
 	native_field_name, err := cstring(arg_field_name)
 	if err != nil {
 		return nil, err
 	}
 	defer C.free(unsafe.Pointer(native_field_name))
-	result := C.lttng_event_expr_channel_context_field_create(native_field_name)
+	result := C.ctlgo_lttng_event_expr_channel_context_field_create(native_field_name)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &EventExpr{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_event_expr_destroy((*C.struct_lttng_event_expr)(p)) })}
+	out := &EventExpr{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_event_expr_destroy((*C.struct_lttng_event_expr)(p)) })}
 	return out, nil
 }
 
@@ -3958,12 +4601,18 @@ func EventExprChannelContextFieldGetName(ctx context.Context, arg_expr *EventExp
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_expr_channel_context_field_get_name"); err != nil {
+		return nil, err
+	}
 	var native_expr *C.struct_lttng_event_expr
 	if err := arg_expr.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_expr = (*C.struct_lttng_event_expr)(arg_expr.ref.ptr)
-	result := C.lttng_event_expr_channel_context_field_get_name(native_expr)
+	result := C.ctlgo_lttng_event_expr_channel_context_field_get_name(native_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -3973,6 +4622,9 @@ func EventExprAppSpecificContextFieldCreate(ctx context.Context, arg_provider_na
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_expr_app_specific_context_field_create", "lttng_event_expr_destroy"); err != nil {
+		return nil, err
+	}
 	native_provider_name, err := cstring(arg_provider_name)
 	if err != nil {
 		return nil, err
@@ -3983,11 +4635,14 @@ func EventExprAppSpecificContextFieldCreate(ctx context.Context, arg_provider_na
 		return nil, err
 	}
 	defer C.free(unsafe.Pointer(native_type_name))
-	result := C.lttng_event_expr_app_specific_context_field_create(native_provider_name, native_type_name)
+	result := C.ctlgo_lttng_event_expr_app_specific_context_field_create(native_provider_name, native_type_name)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &EventExpr{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_event_expr_destroy((*C.struct_lttng_event_expr)(p)) })}
+	out := &EventExpr{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_event_expr_destroy((*C.struct_lttng_event_expr)(p)) })}
 	return out, nil
 }
 
@@ -3997,12 +4652,18 @@ func EventExprAppSpecificContextFieldGetProviderName(ctx context.Context, arg_ex
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_expr_app_specific_context_field_get_provider_name"); err != nil {
+		return nil, err
+	}
 	var native_expr *C.struct_lttng_event_expr
 	if err := arg_expr.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_expr = (*C.struct_lttng_event_expr)(arg_expr.ref.ptr)
-	result := C.lttng_event_expr_app_specific_context_field_get_provider_name(native_expr)
+	result := C.ctlgo_lttng_event_expr_app_specific_context_field_get_provider_name(native_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -4012,12 +4673,18 @@ func EventExprAppSpecificContextFieldGetTypeName(ctx context.Context, arg_expr *
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_expr_app_specific_context_field_get_type_name"); err != nil {
+		return nil, err
+	}
 	var native_expr *C.struct_lttng_event_expr
 	if err := arg_expr.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_expr = (*C.struct_lttng_event_expr)(arg_expr.ref.ptr)
-	result := C.lttng_event_expr_app_specific_context_field_get_type_name(native_expr)
+	result := C.ctlgo_lttng_event_expr_app_specific_context_field_get_type_name(native_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -4027,6 +4694,9 @@ func EventExprArrayFieldElementCreate(ctx context.Context, arg_array_field_expr 
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_expr_array_field_element_create", "lttng_event_expr_destroy"); err != nil {
+		return nil, err
+	}
 	var native_array_field_expr *C.struct_lttng_event_expr
 	if err := arg_array_field_expr.resource().check(true); err != nil {
 		return nil, err
@@ -4035,11 +4705,14 @@ func EventExprArrayFieldElementCreate(ctx context.Context, arg_array_field_expr 
 		return nil, ErrReadOnly
 	}
 	native_array_field_expr = (*C.struct_lttng_event_expr)(arg_array_field_expr.ref.ptr)
-	result := C.lttng_event_expr_array_field_element_create(native_array_field_expr, C.uint(arg_index))
+	result := C.ctlgo_lttng_event_expr_array_field_element_create(native_array_field_expr, C.uint(arg_index))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &EventExpr{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_event_expr_destroy((*C.struct_lttng_event_expr)(p)) })}
+	out := &EventExpr{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_event_expr_destroy((*C.struct_lttng_event_expr)(p)) })}
 	arg_array_field_expr.ref.moved()
 	return out, nil
 }
@@ -4050,12 +4723,18 @@ func EventExprArrayFieldElementGetParentExpr(ctx context.Context, arg_expr *Even
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_expr_array_field_element_get_parent_expr", "lttng_event_expr_destroy"); err != nil {
+		return nil, err
+	}
 	var native_expr *C.struct_lttng_event_expr
 	if err := arg_expr.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_expr = (*C.struct_lttng_event_expr)(arg_expr.ref.ptr)
-	result := C.lttng_event_expr_array_field_element_get_parent_expr(native_expr)
+	result := C.ctlgo_lttng_event_expr_array_field_element_get_parent_expr(native_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -4069,13 +4748,19 @@ func EventExprArrayFieldElementGetIndex(ctx context.Context, arg_expr *EventExpr
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_expr_array_field_element_get_index"); err != nil {
+		return 0, 0, err
+	}
 	var native_expr *C.struct_lttng_event_expr
 	if err := arg_expr.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_expr = (*C.struct_lttng_event_expr)(arg_expr.ref.ptr)
 	var native_index C.uint
-	result := C.lttng_event_expr_array_field_element_get_index(native_expr, &native_index)
+	result := C.ctlgo_lttng_event_expr_array_field_element_get_index(native_expr, &native_index)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_event_expr_array_field_element_get_index", "lttng_event_expr_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -4088,6 +4773,9 @@ func EventExprIsEqual(ctx context.Context, arg_expr_a *EventExpr, arg_expr_b *Ev
 		return false, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_expr_is_equal"); err != nil {
+		return false, err
+	}
 	var native_expr_a *C.struct_lttng_event_expr
 	if err := arg_expr_a.resource().check(false); err != nil {
 		return false, err
@@ -4098,7 +4786,10 @@ func EventExprIsEqual(ctx context.Context, arg_expr_a *EventExpr, arg_expr_b *Ev
 		return false, err
 	}
 	native_expr_b = (*C.struct_lttng_event_expr)(arg_expr_b.ref.ptr)
-	result := C.lttng_event_expr_is_equal(native_expr_a, native_expr_b)
+	result := C.ctlgo_lttng_event_expr_is_equal(native_expr_a, native_expr_b)
+	if err := ctlstate.CallError(); err != nil {
+		return false, err
+	}
 	return bool(result), nil
 }
 
@@ -4109,7 +4800,7 @@ func EventExprDestroy(ctx context.Context, arg *EventExpr) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // EventFieldValueGetType wraps lttng_event_field_value_get_type (lttng/event-field-value.h).
@@ -4118,12 +4809,18 @@ func EventFieldValueGetType(ctx context.Context, arg_field_val *EventFieldValue)
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_field_value_get_type"); err != nil {
+		return 0, err
+	}
 	var native_field_val *C.struct_lttng_event_field_value
 	if err := arg_field_val.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_field_val = (*C.struct_lttng_event_field_value)(arg_field_val.ref.ptr)
-	result := C.lttng_event_field_value_get_type(native_field_val)
+	result := C.ctlgo_lttng_event_field_value_get_type(native_field_val)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return EventFieldValueType(result), nil
 }
 
@@ -4133,13 +4830,19 @@ func EventFieldValueUnsignedIntGetValue(ctx context.Context, arg_field_val *Even
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_field_value_unsigned_int_get_value"); err != nil {
+		return 0, 0, err
+	}
 	var native_field_val *C.struct_lttng_event_field_value
 	if err := arg_field_val.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_field_val = (*C.struct_lttng_event_field_value)(arg_field_val.ref.ptr)
 	var native_val C.uint64_t
-	result := C.lttng_event_field_value_unsigned_int_get_value(native_field_val, &native_val)
+	result := C.ctlgo_lttng_event_field_value_unsigned_int_get_value(native_field_val, &native_val)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_event_field_value_unsigned_int_get_value", "lttng_event_field_value_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -4152,13 +4855,19 @@ func EventFieldValueSignedIntGetValue(ctx context.Context, arg_field_val *EventF
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_field_value_signed_int_get_value"); err != nil {
+		return 0, 0, err
+	}
 	var native_field_val *C.struct_lttng_event_field_value
 	if err := arg_field_val.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_field_val = (*C.struct_lttng_event_field_value)(arg_field_val.ref.ptr)
 	var native_val C.int64_t
-	result := C.lttng_event_field_value_signed_int_get_value(native_field_val, &native_val)
+	result := C.ctlgo_lttng_event_field_value_signed_int_get_value(native_field_val, &native_val)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_event_field_value_signed_int_get_value", "lttng_event_field_value_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -4171,13 +4880,19 @@ func EventFieldValueRealGetValue(ctx context.Context, arg_field_val *EventFieldV
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_field_value_real_get_value"); err != nil {
+		return 0, 0, err
+	}
 	var native_field_val *C.struct_lttng_event_field_value
 	if err := arg_field_val.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_field_val = (*C.struct_lttng_event_field_value)(arg_field_val.ref.ptr)
 	var native_val C.double
-	result := C.lttng_event_field_value_real_get_value(native_field_val, &native_val)
+	result := C.ctlgo_lttng_event_field_value_real_get_value(native_field_val, &native_val)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_event_field_value_real_get_value", "lttng_event_field_value_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -4190,13 +4905,19 @@ func EventFieldValueStringGetValue(ctx context.Context, arg_field_val *EventFiel
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_field_value_string_get_value"); err != nil {
+		return 0, nil, err
+	}
 	var native_field_val *C.struct_lttng_event_field_value
 	if err := arg_field_val.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_field_val = (*C.struct_lttng_event_field_value)(arg_field_val.ref.ptr)
 	var native_val *C.char
-	result := C.lttng_event_field_value_string_get_value(native_field_val, &native_val)
+	result := C.ctlgo_lttng_event_field_value_string_get_value(native_field_val, &native_val)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_field_value_string_get_value", "lttng_event_field_value_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4209,13 +4930,19 @@ func EventFieldValueArrayGetLength(ctx context.Context, arg_field_val *EventFiel
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_field_value_array_get_length"); err != nil {
+		return 0, 0, err
+	}
 	var native_field_val *C.struct_lttng_event_field_value
 	if err := arg_field_val.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_field_val = (*C.struct_lttng_event_field_value)(arg_field_val.ref.ptr)
 	var native_length C.uint
-	result := C.lttng_event_field_value_array_get_length(native_field_val, &native_length)
+	result := C.ctlgo_lttng_event_field_value_array_get_length(native_field_val, &native_length)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_event_field_value_array_get_length", "lttng_event_field_value_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -4228,13 +4955,19 @@ func EventFieldValueArrayGetElementAtIndex(ctx context.Context, arg_field_val *E
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_field_value_array_get_element_at_index"); err != nil {
+		return 0, nil, err
+	}
 	var native_field_val *C.struct_lttng_event_field_value
 	if err := arg_field_val.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_field_val = (*C.struct_lttng_event_field_value)(arg_field_val.ref.ptr)
 	var native_elem_field_val *C.struct_lttng_event_field_value
-	result := C.lttng_event_field_value_array_get_element_at_index(native_field_val, C.uint(arg_index), &native_elem_field_val)
+	result := C.ctlgo_lttng_event_field_value_array_get_element_at_index(native_field_val, C.uint(arg_index), &native_elem_field_val)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_field_value_array_get_element_at_index", "lttng_event_field_value_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4251,12 +4984,18 @@ func EventRuleGetType(ctx context.Context, arg_rule *EventRule) (EventRuleType, 
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_get_type"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
-	result := C.lttng_event_rule_get_type(native_rule)
+	result := C.ctlgo_lttng_event_rule_get_type(native_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return EventRuleType(result), nil
 }
 
@@ -4267,7 +5006,7 @@ func EventRuleDestroy(ctx context.Context, arg *EventRule) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // EventRuleJULLoggingCreate wraps lttng_event_rule_jul_logging_create (lttng/event-rule/jul-logging.h).
@@ -4276,11 +5015,17 @@ func EventRuleJULLoggingCreate(ctx context.Context) (*EventRule, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_event_rule_jul_logging_create()
+	if err := ctlstate.Require("lttng_event_rule_jul_logging_create", "lttng_event_rule_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_event_rule_jul_logging_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
+	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
 	return out, nil
 }
 
@@ -4290,6 +5035,9 @@ func EventRuleJULLoggingSetNamePattern(ctx context.Context, arg_rule *EventRule,
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_jul_logging_set_name_pattern"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -4300,7 +5048,10 @@ func EventRuleJULLoggingSetNamePattern(ctx context.Context, arg_rule *EventRule,
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_pattern))
-	result := C.lttng_event_rule_jul_logging_set_name_pattern(native_rule, native_pattern)
+	result := C.ctlgo_lttng_event_rule_jul_logging_set_name_pattern(native_rule, native_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_jul_logging_set_name_pattern", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -4314,13 +5065,19 @@ func EventRuleJULLoggingGetNamePattern(ctx context.Context, arg_rule *EventRule)
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_jul_logging_get_name_pattern"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_pattern *C.char
-	result := C.lttng_event_rule_jul_logging_get_name_pattern(native_rule, &native_pattern)
+	result := C.ctlgo_lttng_event_rule_jul_logging_get_name_pattern(native_rule, &native_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_jul_logging_get_name_pattern", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4333,6 +5090,9 @@ func EventRuleJULLoggingSetFilter(ctx context.Context, arg_rule *EventRule, arg_
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_jul_logging_set_filter"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -4343,7 +5103,10 @@ func EventRuleJULLoggingSetFilter(ctx context.Context, arg_rule *EventRule, arg_
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_filter_expr))
-	result := C.lttng_event_rule_jul_logging_set_filter(native_rule, native_filter_expr)
+	result := C.ctlgo_lttng_event_rule_jul_logging_set_filter(native_rule, native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_jul_logging_set_filter", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -4357,13 +5120,19 @@ func EventRuleJULLoggingGetFilter(ctx context.Context, arg_rule *EventRule) (Eve
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_jul_logging_get_filter"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_filter_expr *C.char
-	result := C.lttng_event_rule_jul_logging_get_filter(native_rule, &native_filter_expr)
+	result := C.ctlgo_lttng_event_rule_jul_logging_get_filter(native_rule, &native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_jul_logging_get_filter", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4376,6 +5145,9 @@ func EventRuleJULLoggingSetLogLevelRule(ctx context.Context, arg_event_rule *Eve
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_jul_logging_set_log_level_rule"); err != nil {
+		return 0, err
+	}
 	var native_event_rule *C.struct_lttng_event_rule
 	if err := arg_event_rule.resource().check(true); err != nil {
 		return 0, err
@@ -4386,7 +5158,10 @@ func EventRuleJULLoggingSetLogLevelRule(ctx context.Context, arg_event_rule *Eve
 		return 0, err
 	}
 	native_log_level_rule = (*C.struct_lttng_log_level_rule)(arg_log_level_rule.ref.ptr)
-	result := C.lttng_event_rule_jul_logging_set_log_level_rule(native_event_rule, native_log_level_rule)
+	result := C.ctlgo_lttng_event_rule_jul_logging_set_log_level_rule(native_event_rule, native_log_level_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_jul_logging_set_log_level_rule", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -4400,13 +5175,19 @@ func EventRuleJULLoggingGetLogLevelRule(ctx context.Context, arg_event_rule *Eve
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_jul_logging_get_log_level_rule"); err != nil {
+		return 0, nil, err
+	}
 	var native_event_rule *C.struct_lttng_event_rule
 	if err := arg_event_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_event_rule = (*C.struct_lttng_event_rule)(arg_event_rule.ref.ptr)
 	var native_log_level_rule *C.struct_lttng_log_level_rule
-	result := C.lttng_event_rule_jul_logging_get_log_level_rule(native_event_rule, &native_log_level_rule)
+	result := C.ctlgo_lttng_event_rule_jul_logging_get_log_level_rule(native_event_rule, &native_log_level_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_jul_logging_get_log_level_rule", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4423,16 +5204,22 @@ func EventRuleKernelKprobeCreate(ctx context.Context, arg_location *KernelProbeL
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_kprobe_create", "lttng_event_rule_destroy"); err != nil {
+		return nil, err
+	}
 	var native_location *C.struct_lttng_kernel_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_location = (*C.struct_lttng_kernel_probe_location)(arg_location.ref.ptr)
-	result := C.lttng_event_rule_kernel_kprobe_create(native_location)
+	result := C.ctlgo_lttng_event_rule_kernel_kprobe_create(native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
+	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
 	return out, nil
 }
 
@@ -4442,13 +5229,19 @@ func EventRuleKernelKprobeGetLocation(ctx context.Context, arg_rule *EventRule) 
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_kprobe_get_location"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_location *C.struct_lttng_kernel_probe_location
-	result := C.lttng_event_rule_kernel_kprobe_get_location(native_rule, &native_location)
+	result := C.ctlgo_lttng_event_rule_kernel_kprobe_get_location(native_rule, &native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_kernel_kprobe_get_location", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4465,6 +5258,9 @@ func EventRuleKernelKprobeSetEventName(ctx context.Context, arg_rule *EventRule,
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_kprobe_set_event_name"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -4475,7 +5271,10 @@ func EventRuleKernelKprobeSetEventName(ctx context.Context, arg_rule *EventRule,
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_name))
-	result := C.lttng_event_rule_kernel_kprobe_set_event_name(native_rule, native_name)
+	result := C.ctlgo_lttng_event_rule_kernel_kprobe_set_event_name(native_rule, native_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_kernel_kprobe_set_event_name", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -4489,13 +5288,19 @@ func EventRuleKernelKprobeGetEventName(ctx context.Context, arg_rule *EventRule)
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_kprobe_get_event_name"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_name *C.char
-	result := C.lttng_event_rule_kernel_kprobe_get_event_name(native_rule, &native_name)
+	result := C.ctlgo_lttng_event_rule_kernel_kprobe_get_event_name(native_rule, &native_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_kernel_kprobe_get_event_name", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4508,14 +5313,20 @@ func EventRuleKernelSyscallCreate(ctx context.Context, arg_emission_site EventRu
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_syscall_create", "lttng_event_rule_destroy"); err != nil {
+		return nil, err
+	}
 	if int64(C.enum_lttng_event_rule_kernel_syscall_emission_site(arg_emission_site)) != int64(arg_emission_site) {
 		return nil, ErrInvalidArgument
 	}
-	result := C.lttng_event_rule_kernel_syscall_create(C.enum_lttng_event_rule_kernel_syscall_emission_site(arg_emission_site))
+	result := C.ctlgo_lttng_event_rule_kernel_syscall_create(C.enum_lttng_event_rule_kernel_syscall_emission_site(arg_emission_site))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
+	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
 	return out, nil
 }
 
@@ -4525,6 +5336,9 @@ func EventRuleKernelSyscallSetNamePattern(ctx context.Context, arg_rule *EventRu
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_syscall_set_name_pattern"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -4535,7 +5349,10 @@ func EventRuleKernelSyscallSetNamePattern(ctx context.Context, arg_rule *EventRu
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_pattern))
-	result := C.lttng_event_rule_kernel_syscall_set_name_pattern(native_rule, native_pattern)
+	result := C.ctlgo_lttng_event_rule_kernel_syscall_set_name_pattern(native_rule, native_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_kernel_syscall_set_name_pattern", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -4549,13 +5366,19 @@ func EventRuleKernelSyscallGetNamePattern(ctx context.Context, arg_rule *EventRu
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_syscall_get_name_pattern"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_pattern *C.char
-	result := C.lttng_event_rule_kernel_syscall_get_name_pattern(native_rule, &native_pattern)
+	result := C.ctlgo_lttng_event_rule_kernel_syscall_get_name_pattern(native_rule, &native_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_kernel_syscall_get_name_pattern", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4568,6 +5391,9 @@ func EventRuleKernelSyscallSetFilter(ctx context.Context, arg_rule *EventRule, a
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_syscall_set_filter"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -4578,7 +5404,10 @@ func EventRuleKernelSyscallSetFilter(ctx context.Context, arg_rule *EventRule, a
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_filter_expr))
-	result := C.lttng_event_rule_kernel_syscall_set_filter(native_rule, native_filter_expr)
+	result := C.ctlgo_lttng_event_rule_kernel_syscall_set_filter(native_rule, native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_kernel_syscall_set_filter", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -4592,13 +5421,19 @@ func EventRuleKernelSyscallGetFilter(ctx context.Context, arg_rule *EventRule) (
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_syscall_get_filter"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_filter_expr *C.char
-	result := C.lttng_event_rule_kernel_syscall_get_filter(native_rule, &native_filter_expr)
+	result := C.ctlgo_lttng_event_rule_kernel_syscall_get_filter(native_rule, &native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_kernel_syscall_get_filter", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4611,12 +5446,18 @@ func EventRuleKernelSyscallGetEmissionSite(ctx context.Context, arg_rule *EventR
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_syscall_get_emission_site"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
-	result := C.lttng_event_rule_kernel_syscall_get_emission_site(native_rule)
+	result := C.ctlgo_lttng_event_rule_kernel_syscall_get_emission_site(native_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return EventRuleKernelSyscallEmissionSite(result), nil
 }
 
@@ -4626,11 +5467,17 @@ func EventRuleKernelTracepointCreate(ctx context.Context) (*EventRule, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_event_rule_kernel_tracepoint_create()
+	if err := ctlstate.Require("lttng_event_rule_kernel_tracepoint_create", "lttng_event_rule_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_event_rule_kernel_tracepoint_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
+	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
 	return out, nil
 }
 
@@ -4640,6 +5487,9 @@ func EventRuleKernelTracepointSetNamePattern(ctx context.Context, arg_rule *Even
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_tracepoint_set_name_pattern"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -4650,7 +5500,10 @@ func EventRuleKernelTracepointSetNamePattern(ctx context.Context, arg_rule *Even
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_pattern))
-	result := C.lttng_event_rule_kernel_tracepoint_set_name_pattern(native_rule, native_pattern)
+	result := C.ctlgo_lttng_event_rule_kernel_tracepoint_set_name_pattern(native_rule, native_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_kernel_tracepoint_set_name_pattern", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -4664,13 +5517,19 @@ func EventRuleKernelTracepointGetNamePattern(ctx context.Context, arg_rule *Even
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_tracepoint_get_name_pattern"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_pattern *C.char
-	result := C.lttng_event_rule_kernel_tracepoint_get_name_pattern(native_rule, &native_pattern)
+	result := C.ctlgo_lttng_event_rule_kernel_tracepoint_get_name_pattern(native_rule, &native_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_kernel_tracepoint_get_name_pattern", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4683,6 +5542,9 @@ func EventRuleKernelTracepointSetFilter(ctx context.Context, arg_rule *EventRule
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_tracepoint_set_filter"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -4693,7 +5555,10 @@ func EventRuleKernelTracepointSetFilter(ctx context.Context, arg_rule *EventRule
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_filter_expr))
-	result := C.lttng_event_rule_kernel_tracepoint_set_filter(native_rule, native_filter_expr)
+	result := C.ctlgo_lttng_event_rule_kernel_tracepoint_set_filter(native_rule, native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_kernel_tracepoint_set_filter", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -4707,13 +5572,19 @@ func EventRuleKernelTracepointGetFilter(ctx context.Context, arg_rule *EventRule
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_tracepoint_get_filter"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_filter_expr *C.char
-	result := C.lttng_event_rule_kernel_tracepoint_get_filter(native_rule, &native_filter_expr)
+	result := C.ctlgo_lttng_event_rule_kernel_tracepoint_get_filter(native_rule, &native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_kernel_tracepoint_get_filter", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4726,16 +5597,22 @@ func EventRuleKernelUprobeCreate(ctx context.Context, arg_location *UserspacePro
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_uprobe_create", "lttng_event_rule_destroy"); err != nil {
+		return nil, err
+	}
 	var native_location *C.struct_lttng_userspace_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_location = (*C.struct_lttng_userspace_probe_location)(arg_location.ref.ptr)
-	result := C.lttng_event_rule_kernel_uprobe_create(native_location)
+	result := C.ctlgo_lttng_event_rule_kernel_uprobe_create(native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
+	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
 	return out, nil
 }
 
@@ -4745,13 +5622,19 @@ func EventRuleKernelUprobeGetLocation(ctx context.Context, arg_rule *EventRule) 
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_uprobe_get_location"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_location *C.struct_lttng_userspace_probe_location
-	result := C.lttng_event_rule_kernel_uprobe_get_location(native_rule, &native_location)
+	result := C.ctlgo_lttng_event_rule_kernel_uprobe_get_location(native_rule, &native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_kernel_uprobe_get_location", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4768,6 +5651,9 @@ func EventRuleKernelUprobeSetEventName(ctx context.Context, arg_rule *EventRule,
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_uprobe_set_event_name"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -4778,7 +5664,10 @@ func EventRuleKernelUprobeSetEventName(ctx context.Context, arg_rule *EventRule,
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_name))
-	result := C.lttng_event_rule_kernel_uprobe_set_event_name(native_rule, native_name)
+	result := C.ctlgo_lttng_event_rule_kernel_uprobe_set_event_name(native_rule, native_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_kernel_uprobe_set_event_name", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -4792,13 +5681,19 @@ func EventRuleKernelUprobeGetEventName(ctx context.Context, arg_rule *EventRule)
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_kernel_uprobe_get_event_name"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_name *C.char
-	result := C.lttng_event_rule_kernel_uprobe_get_event_name(native_rule, &native_name)
+	result := C.ctlgo_lttng_event_rule_kernel_uprobe_get_event_name(native_rule, &native_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_kernel_uprobe_get_event_name", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4811,11 +5706,17 @@ func EventRuleLog4jLoggingCreate(ctx context.Context) (*EventRule, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_event_rule_log4j_logging_create()
+	if err := ctlstate.Require("lttng_event_rule_log4j_logging_create", "lttng_event_rule_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_event_rule_log4j_logging_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
+	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
 	return out, nil
 }
 
@@ -4825,6 +5726,9 @@ func EventRuleLog4jLoggingSetNamePattern(ctx context.Context, arg_rule *EventRul
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_log4j_logging_set_name_pattern"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -4835,7 +5739,10 @@ func EventRuleLog4jLoggingSetNamePattern(ctx context.Context, arg_rule *EventRul
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_pattern))
-	result := C.lttng_event_rule_log4j_logging_set_name_pattern(native_rule, native_pattern)
+	result := C.ctlgo_lttng_event_rule_log4j_logging_set_name_pattern(native_rule, native_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_log4j_logging_set_name_pattern", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -4849,13 +5756,19 @@ func EventRuleLog4jLoggingGetNamePattern(ctx context.Context, arg_rule *EventRul
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_log4j_logging_get_name_pattern"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_pattern *C.char
-	result := C.lttng_event_rule_log4j_logging_get_name_pattern(native_rule, &native_pattern)
+	result := C.ctlgo_lttng_event_rule_log4j_logging_get_name_pattern(native_rule, &native_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_log4j_logging_get_name_pattern", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4868,6 +5781,9 @@ func EventRuleLog4jLoggingSetFilter(ctx context.Context, arg_rule *EventRule, ar
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_log4j_logging_set_filter"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -4878,7 +5794,10 @@ func EventRuleLog4jLoggingSetFilter(ctx context.Context, arg_rule *EventRule, ar
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_filter_expr))
-	result := C.lttng_event_rule_log4j_logging_set_filter(native_rule, native_filter_expr)
+	result := C.ctlgo_lttng_event_rule_log4j_logging_set_filter(native_rule, native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_log4j_logging_set_filter", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -4892,13 +5811,19 @@ func EventRuleLog4jLoggingGetFilter(ctx context.Context, arg_rule *EventRule) (E
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_log4j_logging_get_filter"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_filter_expr *C.char
-	result := C.lttng_event_rule_log4j_logging_get_filter(native_rule, &native_filter_expr)
+	result := C.ctlgo_lttng_event_rule_log4j_logging_get_filter(native_rule, &native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_log4j_logging_get_filter", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4911,6 +5836,9 @@ func EventRuleLog4jLoggingSetLogLevelRule(ctx context.Context, arg_event_rule *E
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_log4j_logging_set_log_level_rule"); err != nil {
+		return 0, err
+	}
 	var native_event_rule *C.struct_lttng_event_rule
 	if err := arg_event_rule.resource().check(true); err != nil {
 		return 0, err
@@ -4921,7 +5849,10 @@ func EventRuleLog4jLoggingSetLogLevelRule(ctx context.Context, arg_event_rule *E
 		return 0, err
 	}
 	native_log_level_rule = (*C.struct_lttng_log_level_rule)(arg_log_level_rule.ref.ptr)
-	result := C.lttng_event_rule_log4j_logging_set_log_level_rule(native_event_rule, native_log_level_rule)
+	result := C.ctlgo_lttng_event_rule_log4j_logging_set_log_level_rule(native_event_rule, native_log_level_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_log4j_logging_set_log_level_rule", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -4935,13 +5866,19 @@ func EventRuleLog4jLoggingGetLogLevelRule(ctx context.Context, arg_event_rule *E
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_log4j_logging_get_log_level_rule"); err != nil {
+		return 0, nil, err
+	}
 	var native_event_rule *C.struct_lttng_event_rule
 	if err := arg_event_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_event_rule = (*C.struct_lttng_event_rule)(arg_event_rule.ref.ptr)
 	var native_log_level_rule *C.struct_lttng_log_level_rule
-	result := C.lttng_event_rule_log4j_logging_get_log_level_rule(native_event_rule, &native_log_level_rule)
+	result := C.ctlgo_lttng_event_rule_log4j_logging_get_log_level_rule(native_event_rule, &native_log_level_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_log4j_logging_get_log_level_rule", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -4958,11 +5895,17 @@ func EventRuleLog4j2LoggingCreate(ctx context.Context) (*EventRule, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_event_rule_log4j2_logging_create()
+	if err := ctlstate.Require("lttng_event_rule_log4j2_logging_create", "lttng_event_rule_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_event_rule_log4j2_logging_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
+	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
 	return out, nil
 }
 
@@ -4972,6 +5915,9 @@ func EventRuleLog4j2LoggingSetNamePattern(ctx context.Context, arg_rule *EventRu
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_log4j2_logging_set_name_pattern"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -4982,7 +5928,10 @@ func EventRuleLog4j2LoggingSetNamePattern(ctx context.Context, arg_rule *EventRu
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_pattern))
-	result := C.lttng_event_rule_log4j2_logging_set_name_pattern(native_rule, native_pattern)
+	result := C.ctlgo_lttng_event_rule_log4j2_logging_set_name_pattern(native_rule, native_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_log4j2_logging_set_name_pattern", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -4996,13 +5945,19 @@ func EventRuleLog4j2LoggingGetNamePattern(ctx context.Context, arg_rule *EventRu
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_log4j2_logging_get_name_pattern"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_pattern *C.char
-	result := C.lttng_event_rule_log4j2_logging_get_name_pattern(native_rule, &native_pattern)
+	result := C.ctlgo_lttng_event_rule_log4j2_logging_get_name_pattern(native_rule, &native_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_log4j2_logging_get_name_pattern", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5015,6 +5970,9 @@ func EventRuleLog4j2LoggingSetFilter(ctx context.Context, arg_rule *EventRule, a
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_log4j2_logging_set_filter"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -5025,7 +5983,10 @@ func EventRuleLog4j2LoggingSetFilter(ctx context.Context, arg_rule *EventRule, a
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_filter_expr))
-	result := C.lttng_event_rule_log4j2_logging_set_filter(native_rule, native_filter_expr)
+	result := C.ctlgo_lttng_event_rule_log4j2_logging_set_filter(native_rule, native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_log4j2_logging_set_filter", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5039,13 +6000,19 @@ func EventRuleLog4j2LoggingGetFilter(ctx context.Context, arg_rule *EventRule) (
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_log4j2_logging_get_filter"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_filter_expr *C.char
-	result := C.lttng_event_rule_log4j2_logging_get_filter(native_rule, &native_filter_expr)
+	result := C.ctlgo_lttng_event_rule_log4j2_logging_get_filter(native_rule, &native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_log4j2_logging_get_filter", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5058,6 +6025,9 @@ func EventRuleLog4j2LoggingSetLogLevelRule(ctx context.Context, arg_event_rule *
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_log4j2_logging_set_log_level_rule"); err != nil {
+		return 0, err
+	}
 	var native_event_rule *C.struct_lttng_event_rule
 	if err := arg_event_rule.resource().check(true); err != nil {
 		return 0, err
@@ -5068,7 +6038,10 @@ func EventRuleLog4j2LoggingSetLogLevelRule(ctx context.Context, arg_event_rule *
 		return 0, err
 	}
 	native_log_level_rule = (*C.struct_lttng_log_level_rule)(arg_log_level_rule.ref.ptr)
-	result := C.lttng_event_rule_log4j2_logging_set_log_level_rule(native_event_rule, native_log_level_rule)
+	result := C.ctlgo_lttng_event_rule_log4j2_logging_set_log_level_rule(native_event_rule, native_log_level_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_log4j2_logging_set_log_level_rule", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5082,13 +6055,19 @@ func EventRuleLog4j2LoggingGetLogLevelRule(ctx context.Context, arg_event_rule *
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_log4j2_logging_get_log_level_rule"); err != nil {
+		return 0, nil, err
+	}
 	var native_event_rule *C.struct_lttng_event_rule
 	if err := arg_event_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_event_rule = (*C.struct_lttng_event_rule)(arg_event_rule.ref.ptr)
 	var native_log_level_rule *C.struct_lttng_log_level_rule
-	result := C.lttng_event_rule_log4j2_logging_get_log_level_rule(native_event_rule, &native_log_level_rule)
+	result := C.ctlgo_lttng_event_rule_log4j2_logging_get_log_level_rule(native_event_rule, &native_log_level_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_log4j2_logging_get_log_level_rule", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5105,11 +6084,17 @@ func EventRulePythonLoggingCreate(ctx context.Context) (*EventRule, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_event_rule_python_logging_create()
+	if err := ctlstate.Require("lttng_event_rule_python_logging_create", "lttng_event_rule_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_event_rule_python_logging_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
+	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
 	return out, nil
 }
 
@@ -5119,6 +6104,9 @@ func EventRulePythonLoggingSetNamePattern(ctx context.Context, arg_rule *EventRu
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_python_logging_set_name_pattern"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -5129,7 +6117,10 @@ func EventRulePythonLoggingSetNamePattern(ctx context.Context, arg_rule *EventRu
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_pattern))
-	result := C.lttng_event_rule_python_logging_set_name_pattern(native_rule, native_pattern)
+	result := C.ctlgo_lttng_event_rule_python_logging_set_name_pattern(native_rule, native_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_python_logging_set_name_pattern", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5143,13 +6134,19 @@ func EventRulePythonLoggingGetNamePattern(ctx context.Context, arg_rule *EventRu
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_python_logging_get_name_pattern"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_pattern *C.char
-	result := C.lttng_event_rule_python_logging_get_name_pattern(native_rule, &native_pattern)
+	result := C.ctlgo_lttng_event_rule_python_logging_get_name_pattern(native_rule, &native_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_python_logging_get_name_pattern", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5162,6 +6159,9 @@ func EventRulePythonLoggingSetFilter(ctx context.Context, arg_rule *EventRule, a
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_python_logging_set_filter"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -5172,7 +6172,10 @@ func EventRulePythonLoggingSetFilter(ctx context.Context, arg_rule *EventRule, a
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_filter_expr))
-	result := C.lttng_event_rule_python_logging_set_filter(native_rule, native_filter_expr)
+	result := C.ctlgo_lttng_event_rule_python_logging_set_filter(native_rule, native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_python_logging_set_filter", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5186,13 +6189,19 @@ func EventRulePythonLoggingGetFilter(ctx context.Context, arg_rule *EventRule) (
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_python_logging_get_filter"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_filter_expr *C.char
-	result := C.lttng_event_rule_python_logging_get_filter(native_rule, &native_filter_expr)
+	result := C.ctlgo_lttng_event_rule_python_logging_get_filter(native_rule, &native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_python_logging_get_filter", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5205,6 +6214,9 @@ func EventRulePythonLoggingSetLogLevelRule(ctx context.Context, arg_event_rule *
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_python_logging_set_log_level_rule"); err != nil {
+		return 0, err
+	}
 	var native_event_rule *C.struct_lttng_event_rule
 	if err := arg_event_rule.resource().check(true); err != nil {
 		return 0, err
@@ -5215,7 +6227,10 @@ func EventRulePythonLoggingSetLogLevelRule(ctx context.Context, arg_event_rule *
 		return 0, err
 	}
 	native_log_level_rule = (*C.struct_lttng_log_level_rule)(arg_log_level_rule.ref.ptr)
-	result := C.lttng_event_rule_python_logging_set_log_level_rule(native_event_rule, native_log_level_rule)
+	result := C.ctlgo_lttng_event_rule_python_logging_set_log_level_rule(native_event_rule, native_log_level_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_python_logging_set_log_level_rule", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5229,13 +6244,19 @@ func EventRulePythonLoggingGetLogLevelRule(ctx context.Context, arg_event_rule *
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_python_logging_get_log_level_rule"); err != nil {
+		return 0, nil, err
+	}
 	var native_event_rule *C.struct_lttng_event_rule
 	if err := arg_event_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_event_rule = (*C.struct_lttng_event_rule)(arg_event_rule.ref.ptr)
 	var native_log_level_rule *C.struct_lttng_log_level_rule
-	result := C.lttng_event_rule_python_logging_get_log_level_rule(native_event_rule, &native_log_level_rule)
+	result := C.ctlgo_lttng_event_rule_python_logging_get_log_level_rule(native_event_rule, &native_log_level_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_python_logging_get_log_level_rule", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5252,11 +6273,17 @@ func EventRuleUserTracepointCreate(ctx context.Context) (*EventRule, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_event_rule_user_tracepoint_create()
+	if err := ctlstate.Require("lttng_event_rule_user_tracepoint_create", "lttng_event_rule_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_event_rule_user_tracepoint_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
+	out := &EventRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_event_rule_destroy((*C.struct_lttng_event_rule)(p)) })}
 	return out, nil
 }
 
@@ -5266,6 +6293,9 @@ func EventRuleUserTracepointSetNamePattern(ctx context.Context, arg_rule *EventR
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_user_tracepoint_set_name_pattern"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -5276,7 +6306,10 @@ func EventRuleUserTracepointSetNamePattern(ctx context.Context, arg_rule *EventR
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_pattern))
-	result := C.lttng_event_rule_user_tracepoint_set_name_pattern(native_rule, native_pattern)
+	result := C.ctlgo_lttng_event_rule_user_tracepoint_set_name_pattern(native_rule, native_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_user_tracepoint_set_name_pattern", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5290,13 +6323,19 @@ func EventRuleUserTracepointGetNamePattern(ctx context.Context, arg_rule *EventR
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_user_tracepoint_get_name_pattern"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_pattern *C.char
-	result := C.lttng_event_rule_user_tracepoint_get_name_pattern(native_rule, &native_pattern)
+	result := C.ctlgo_lttng_event_rule_user_tracepoint_get_name_pattern(native_rule, &native_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_user_tracepoint_get_name_pattern", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5309,6 +6348,9 @@ func EventRuleUserTracepointSetFilter(ctx context.Context, arg_rule *EventRule, 
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_user_tracepoint_set_filter"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -5319,7 +6361,10 @@ func EventRuleUserTracepointSetFilter(ctx context.Context, arg_rule *EventRule, 
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_filter_expr))
-	result := C.lttng_event_rule_user_tracepoint_set_filter(native_rule, native_filter_expr)
+	result := C.ctlgo_lttng_event_rule_user_tracepoint_set_filter(native_rule, native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_user_tracepoint_set_filter", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5333,13 +6378,19 @@ func EventRuleUserTracepointGetFilter(ctx context.Context, arg_rule *EventRule) 
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_user_tracepoint_get_filter"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_filter_expr *C.char
-	result := C.lttng_event_rule_user_tracepoint_get_filter(native_rule, &native_filter_expr)
+	result := C.ctlgo_lttng_event_rule_user_tracepoint_get_filter(native_rule, &native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_user_tracepoint_get_filter", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5352,6 +6403,9 @@ func EventRuleUserTracepointSetLogLevelRule(ctx context.Context, arg_event_rule 
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_user_tracepoint_set_log_level_rule"); err != nil {
+		return 0, err
+	}
 	var native_event_rule *C.struct_lttng_event_rule
 	if err := arg_event_rule.resource().check(true); err != nil {
 		return 0, err
@@ -5362,7 +6416,10 @@ func EventRuleUserTracepointSetLogLevelRule(ctx context.Context, arg_event_rule 
 		return 0, err
 	}
 	native_log_level_rule = (*C.struct_lttng_log_level_rule)(arg_log_level_rule.ref.ptr)
-	result := C.lttng_event_rule_user_tracepoint_set_log_level_rule(native_event_rule, native_log_level_rule)
+	result := C.ctlgo_lttng_event_rule_user_tracepoint_set_log_level_rule(native_event_rule, native_log_level_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_user_tracepoint_set_log_level_rule", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5376,13 +6433,19 @@ func EventRuleUserTracepointGetLogLevelRule(ctx context.Context, arg_event_rule 
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_user_tracepoint_get_log_level_rule"); err != nil {
+		return 0, nil, err
+	}
 	var native_event_rule *C.struct_lttng_event_rule
 	if err := arg_event_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_event_rule = (*C.struct_lttng_event_rule)(arg_event_rule.ref.ptr)
 	var native_log_level_rule *C.struct_lttng_log_level_rule
-	result := C.lttng_event_rule_user_tracepoint_get_log_level_rule(native_event_rule, &native_log_level_rule)
+	result := C.ctlgo_lttng_event_rule_user_tracepoint_get_log_level_rule(native_event_rule, &native_log_level_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_user_tracepoint_get_log_level_rule", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5399,6 +6462,9 @@ func EventRuleUserTracepointAddNamePatternExclusion(ctx context.Context, arg_rul
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_user_tracepoint_add_name_pattern_exclusion"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(true); err != nil {
 		return 0, err
@@ -5409,7 +6475,10 @@ func EventRuleUserTracepointAddNamePatternExclusion(ctx context.Context, arg_rul
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_exclusion_pattern))
-	result := C.lttng_event_rule_user_tracepoint_add_name_pattern_exclusion(native_rule, native_exclusion_pattern)
+	result := C.ctlgo_lttng_event_rule_user_tracepoint_add_name_pattern_exclusion(native_rule, native_exclusion_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_rule_user_tracepoint_add_name_pattern_exclusion", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5423,13 +6492,19 @@ func EventRuleUserTracepointGetNamePatternExclusionCount(ctx context.Context, ar
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_user_tracepoint_get_name_pattern_exclusion_count"); err != nil {
+		return 0, 0, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_count C.uint
-	result := C.lttng_event_rule_user_tracepoint_get_name_pattern_exclusion_count(native_rule, &native_count)
+	result := C.ctlgo_lttng_event_rule_user_tracepoint_get_name_pattern_exclusion_count(native_rule, &native_count)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_event_rule_user_tracepoint_get_name_pattern_exclusion_count", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -5442,13 +6517,19 @@ func EventRuleUserTracepointGetNamePatternExclusionAtIndex(ctx context.Context, 
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_rule_user_tracepoint_get_name_pattern_exclusion_at_index"); err != nil {
+		return 0, nil, err
+	}
 	var native_rule *C.struct_lttng_event_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rule = (*C.struct_lttng_event_rule)(arg_rule.ref.ptr)
 	var native_exclusion_pattern *C.char
-	result := C.lttng_event_rule_user_tracepoint_get_name_pattern_exclusion_at_index(native_rule, C.uint(arg_index), &native_exclusion_pattern)
+	result := C.ctlgo_lttng_event_rule_user_tracepoint_get_name_pattern_exclusion_at_index(native_rule, C.uint(arg_index), &native_exclusion_pattern)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_rule_user_tracepoint_get_name_pattern_exclusion_at_index", "lttng_event_rule_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5461,6 +6542,9 @@ func ListEvents(ctx context.Context, arg_handle *Handle, arg_channel_name *strin
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_list_events"); err != nil {
+		return 0, nil, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(false); err != nil {
 		return 0, nil, err
@@ -5472,7 +6556,10 @@ func ListEvents(ctx context.Context, arg_handle *Handle, arg_channel_name *strin
 	}
 	defer C.free(unsafe.Pointer(native_channel_name))
 	var native_event_rules *C.struct_lttng_event
-	result := C.lttng_list_events(native_handle, native_channel_name, &native_event_rules)
+	result := C.ctlgo_lttng_list_events(native_handle, native_channel_name, &native_event_rules)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_list_events", "int", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5490,11 +6577,17 @@ func EventCreate(ctx context.Context) (*Event, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_event_create()
+	if err := ctlstate.Require("lttng_event_create", "lttng_event_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_event_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Event{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_event_destroy((*C.struct_lttng_event)(p)) })}
+	out := &Event{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_event_destroy((*C.struct_lttng_event)(p)) })}
 	return out, nil
 }
 
@@ -5505,7 +6598,7 @@ func EventDestroy(ctx context.Context, arg *Event) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // EventGetFilterExpression wraps lttng_event_get_filter_expression (lttng/event.h).
@@ -5514,13 +6607,19 @@ func EventGetFilterExpression(ctx context.Context, arg_event_rule *Event) (int, 
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_get_filter_expression"); err != nil {
+		return 0, nil, err
+	}
 	var native_event_rule *C.struct_lttng_event
 	if err := arg_event_rule.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_event_rule = (*C.struct_lttng_event)(arg_event_rule.ref.ptr)
 	var native_filter_expr *C.char
-	result := C.lttng_event_get_filter_expression(native_event_rule, &native_filter_expr)
+	result := C.ctlgo_lttng_event_get_filter_expression(native_event_rule, &native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_get_filter_expression", "int", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5533,12 +6632,18 @@ func EventGetExclusionNameCount(ctx context.Context, arg_event_rule *Event) (int
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_get_exclusion_name_count"); err != nil {
+		return 0, err
+	}
 	var native_event_rule *C.struct_lttng_event
 	if err := arg_event_rule.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_event_rule = (*C.struct_lttng_event)(arg_event_rule.ref.ptr)
-	result := C.lttng_event_get_exclusion_name_count(native_event_rule)
+	result := C.ctlgo_lttng_event_get_exclusion_name_count(native_event_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_get_exclusion_name_count", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5551,6 +6656,9 @@ func EventGetExclusionName(ctx context.Context, arg_event_rule *Event, arg_index
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_get_exclusion_name"); err != nil {
+		return 0, nil, err
+	}
 	var native_event_rule *C.struct_lttng_event
 	if err := arg_event_rule.resource().check(false); err != nil {
 		return 0, nil, err
@@ -5560,7 +6668,10 @@ func EventGetExclusionName(ctx context.Context, arg_event_rule *Event, arg_index
 		return 0, nil, ErrInvalidArgument
 	}
 	var native_event_name_exclusion *C.char
-	result := C.lttng_event_get_exclusion_name(native_event_rule, C.size_t(arg_index), &native_event_name_exclusion)
+	result := C.ctlgo_lttng_event_get_exclusion_name(native_event_rule, C.size_t(arg_index), &native_event_name_exclusion)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_event_get_exclusion_name", "int", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5573,12 +6684,18 @@ func EventGetUserspaceProbeLocation(ctx context.Context, arg_event_rule *Event) 
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_get_userspace_probe_location", "lttng_userspace_probe_location_destroy"); err != nil {
+		return nil, err
+	}
 	var native_event_rule *C.struct_lttng_event
 	if err := arg_event_rule.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_event_rule = (*C.struct_lttng_event)(arg_event_rule.ref.ptr)
-	result := C.lttng_event_get_userspace_probe_location(native_event_rule)
+	result := C.ctlgo_lttng_event_get_userspace_probe_location(native_event_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -5592,6 +6709,9 @@ func EventSetUserspaceProbeLocation(ctx context.Context, arg_event_rule *Event, 
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_event_set_userspace_probe_location"); err != nil {
+		return 0, err
+	}
 	var native_event_rule *C.struct_lttng_event
 	if err := arg_event_rule.resource().check(true); err != nil {
 		return 0, err
@@ -5605,7 +6725,10 @@ func EventSetUserspaceProbeLocation(ctx context.Context, arg_event_rule *Event, 
 		return 0, ErrReadOnly
 	}
 	native_location = (*C.struct_lttng_userspace_probe_location)(arg_location.ref.ptr)
-	result := C.lttng_event_set_userspace_probe_location(native_event_rule, native_location)
+	result := C.ctlgo_lttng_event_set_userspace_probe_location(native_event_rule, native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_event_set_userspace_probe_location", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5621,13 +6744,19 @@ func ListTracepoints(ctx context.Context, arg_handle *Handle) (int, *List[*Event
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_list_tracepoints"); err != nil {
+		return 0, nil, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_handle = (*C.struct_lttng_handle)(arg_handle.ref.ptr)
 	var native_descrs *C.struct_lttng_event
-	result := C.lttng_list_tracepoints(native_handle, &native_descrs)
+	result := C.ctlgo_lttng_list_tracepoints(native_handle, &native_descrs)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_list_tracepoints", "int", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5645,13 +6774,19 @@ func ListTracepointFields(ctx context.Context, arg_handle *Handle) (int, *List[*
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_list_tracepoint_fields"); err != nil {
+		return 0, nil, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_handle = (*C.struct_lttng_handle)(arg_handle.ref.ptr)
 	var native_fields *C.struct_lttng_event_field
-	result := C.lttng_list_tracepoint_fields(native_handle, &native_fields)
+	result := C.ctlgo_lttng_list_tracepoint_fields(native_handle, &native_fields)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_list_tracepoint_fields", "int", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5669,8 +6804,14 @@ func ListSyscalls(ctx context.Context) (int, *List[*Event], error) {
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_list_syscalls"); err != nil {
+		return 0, nil, err
+	}
 	var native_descrs *C.struct_lttng_event
-	result := C.lttng_list_syscalls(&native_descrs)
+	result := C.ctlgo_lttng_list_syscalls(&native_descrs)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_list_syscalls", "int", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -5688,6 +6829,9 @@ func AddContext(ctx context.Context, arg_handle *Handle, arg_context_field_descr
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_add_context"); err != nil {
+		return 0, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(true); err != nil {
 		return 0, err
@@ -5708,7 +6852,10 @@ func AddContext(ctx context.Context, arg_handle *Handle, arg_context_field_descr
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_channel_name))
-	result := C.lttng_add_context(native_handle, native_context_field_descriptor, native_event_name, native_channel_name)
+	result := C.ctlgo_lttng_add_context(native_handle, native_context_field_descriptor, native_event_name, native_channel_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_add_context", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5723,6 +6870,9 @@ func EnableEvent(ctx context.Context, arg_handle *Handle, arg_event_rule *Event,
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_enable_event"); err != nil {
+		return 0, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(true); err != nil {
 		return 0, err
@@ -5738,7 +6888,10 @@ func EnableEvent(ctx context.Context, arg_handle *Handle, arg_event_rule *Event,
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_channel_name))
-	result := C.lttng_enable_event(native_handle, native_event_rule, native_channel_name)
+	result := C.ctlgo_lttng_enable_event(native_handle, native_event_rule, native_channel_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_enable_event", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5753,6 +6906,9 @@ func EnableEventWithFilter(ctx context.Context, arg_handle *Handle, arg_event_ru
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_enable_event_with_filter"); err != nil {
+		return 0, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(true); err != nil {
 		return 0, err
@@ -5773,7 +6929,10 @@ func EnableEventWithFilter(ctx context.Context, arg_handle *Handle, arg_event_ru
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_filter_expr))
-	result := C.lttng_enable_event_with_filter(native_handle, native_event_rule, native_channel_name, native_filter_expr)
+	result := C.ctlgo_lttng_enable_event_with_filter(native_handle, native_event_rule, native_channel_name, native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_enable_event_with_filter", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5788,6 +6947,9 @@ func EnableEventWithExclusions(ctx context.Context, arg_handle *Handle, arg_even
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_enable_event_with_exclusions"); err != nil {
+		return 0, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(true); err != nil {
 		return 0, err
@@ -5827,7 +6989,10 @@ func EnableEventWithExclusions(ctx context.Context, arg_handle *Handle, arg_even
 			unsafe.Slice(native_event_name_exclusions, len(arg_event_name_exclusions))[i] = p
 		}
 	}
-	result := C.lttng_enable_event_with_exclusions(native_handle, native_event_rule, native_channel_name, native_filter_expr, C.int(len(arg_event_name_exclusions)), native_event_name_exclusions)
+	result := C.ctlgo_lttng_enable_event_with_exclusions(native_handle, native_event_rule, native_channel_name, native_filter_expr, C.int(len(arg_event_name_exclusions)), native_event_name_exclusions)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_enable_event_with_exclusions", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5842,6 +7007,9 @@ func DisableEvent(ctx context.Context, arg_handle *Handle, arg_event_rule_name *
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_disable_event"); err != nil {
+		return 0, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(true); err != nil {
 		return 0, err
@@ -5857,7 +7025,10 @@ func DisableEvent(ctx context.Context, arg_handle *Handle, arg_event_rule_name *
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_channel_name))
-	result := C.lttng_disable_event(native_handle, native_event_rule_name, native_channel_name)
+	result := C.ctlgo_lttng_disable_event(native_handle, native_event_rule_name, native_channel_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_disable_event", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5871,6 +7042,9 @@ func DisableEventExt(ctx context.Context, arg_handle *Handle, arg_event_rule *Ev
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_disable_event_ext"); err != nil {
+		return 0, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(true); err != nil {
 		return 0, err
@@ -5891,7 +7065,10 @@ func DisableEventExt(ctx context.Context, arg_handle *Handle, arg_event_rule *Ev
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_filter_expr))
-	result := C.lttng_disable_event_ext(native_handle, native_event_rule, native_channel_name, native_filter_expr)
+	result := C.ctlgo_lttng_disable_event_ext(native_handle, native_event_rule, native_channel_name, native_filter_expr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_disable_event_ext", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -5906,6 +7083,9 @@ func CreateHandle(ctx context.Context, arg_session_name *string, arg_domain *Dom
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_create_handle", "lttng_destroy_handle"); err != nil {
+		return nil, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return nil, err
@@ -5918,11 +7098,14 @@ func CreateHandle(ctx context.Context, arg_session_name *string, arg_domain *Dom
 		}
 		native_domain = (*C.struct_lttng_domain)(arg_domain.ref.ptr)
 	}
-	result := C.lttng_create_handle(native_session_name, native_domain)
+	result := C.ctlgo_lttng_create_handle(native_session_name, native_domain)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Handle{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_destroy_handle((*C.struct_lttng_handle)(p)) })}
+	out := &Handle{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_destroy_handle((*C.struct_lttng_handle)(p)) })}
 	return out, nil
 }
 
@@ -5933,7 +7116,7 @@ func DestroyHandle(ctx context.Context, arg *Handle) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // HealthCreateSessiond wraps lttng_health_create_sessiond (lttng/health.h).
@@ -5942,11 +7125,17 @@ func HealthCreateSessiond(ctx context.Context) (*Health, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_health_create_sessiond()
+	if err := ctlstate.Require("lttng_health_create_sessiond", "lttng_health_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_health_create_sessiond()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Health{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_health_destroy((*C.struct_lttng_health)(p)) })}
+	out := &Health{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_health_destroy((*C.struct_lttng_health)(p)) })}
 	return out, nil
 }
 
@@ -5956,14 +7145,20 @@ func HealthCreateConsumerd(ctx context.Context, arg_consumerd HealthConsumerd) (
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_health_create_consumerd", "lttng_health_destroy"); err != nil {
+		return nil, err
+	}
 	if int64(C.enum_lttng_health_consumerd(arg_consumerd)) != int64(arg_consumerd) {
 		return nil, ErrInvalidArgument
 	}
-	result := C.lttng_health_create_consumerd(C.enum_lttng_health_consumerd(arg_consumerd))
+	result := C.ctlgo_lttng_health_create_consumerd(C.enum_lttng_health_consumerd(arg_consumerd))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Health{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_health_destroy((*C.struct_lttng_health)(p)) })}
+	out := &Health{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_health_destroy((*C.struct_lttng_health)(p)) })}
 	return out, nil
 }
 
@@ -5973,16 +7168,22 @@ func HealthCreateRelayd(ctx context.Context, arg_path *string) (*Health, error) 
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_health_create_relayd", "lttng_health_destroy"); err != nil {
+		return nil, err
+	}
 	native_path, err := cstring(arg_path)
 	if err != nil {
 		return nil, err
 	}
 	defer C.free(unsafe.Pointer(native_path))
-	result := C.lttng_health_create_relayd(native_path)
+	result := C.ctlgo_lttng_health_create_relayd(native_path)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Health{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_health_destroy((*C.struct_lttng_health)(p)) })}
+	out := &Health{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_health_destroy((*C.struct_lttng_health)(p)) })}
 	return out, nil
 }
 
@@ -5993,7 +7194,7 @@ func HealthDestroy(ctx context.Context, arg *Health) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // HealthQuery wraps lttng_health_query (lttng/health.h).
@@ -6002,12 +7203,18 @@ func HealthQuery(ctx context.Context, arg_health *Health) (int, error) {
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_health_query"); err != nil {
+		return 0, err
+	}
 	var native_health *C.struct_lttng_health
 	if err := arg_health.resource().check(true); err != nil {
 		return 0, err
 	}
 	native_health = (*C.struct_lttng_health)(arg_health.ref.ptr)
-	result := C.lttng_health_query(native_health)
+	result := C.ctlgo_lttng_health_query(native_health)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_health_query", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6021,12 +7228,18 @@ func HealthState(ctx context.Context, arg_health *Health) (int, error) {
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_health_state"); err != nil {
+		return 0, err
+	}
 	var native_health *C.struct_lttng_health
 	if err := arg_health.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_health = (*C.struct_lttng_health)(arg_health.ref.ptr)
-	result := C.lttng_health_state(native_health)
+	result := C.ctlgo_lttng_health_state(native_health)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_health_state", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6039,12 +7252,18 @@ func HealthGetNrThreads(ctx context.Context, arg_health *Health) (int, error) {
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_health_get_nr_threads"); err != nil {
+		return 0, err
+	}
 	var native_health *C.struct_lttng_health
 	if err := arg_health.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_health = (*C.struct_lttng_health)(arg_health.ref.ptr)
-	result := C.lttng_health_get_nr_threads(native_health)
+	result := C.ctlgo_lttng_health_get_nr_threads(native_health)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_health_get_nr_threads", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6057,12 +7276,18 @@ func HealthGetThread(ctx context.Context, arg_health *Health, arg_nth_thread uin
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_health_get_thread"); err != nil {
+		return nil, err
+	}
 	var native_health *C.struct_lttng_health
 	if err := arg_health.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_health = (*C.struct_lttng_health)(arg_health.ref.ptr)
-	result := C.lttng_health_get_thread(native_health, C.uint(arg_nth_thread))
+	result := C.ctlgo_lttng_health_get_thread(native_health, C.uint(arg_nth_thread))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -6076,12 +7301,18 @@ func HealthThreadState(ctx context.Context, arg_thread *HealthThread) (int, erro
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_health_thread_state"); err != nil {
+		return 0, err
+	}
 	var native_thread *C.struct_lttng_health_thread
 	if err := arg_thread.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_thread = (*C.struct_lttng_health_thread)(arg_thread.ref.ptr)
-	result := C.lttng_health_thread_state(native_thread)
+	result := C.ctlgo_lttng_health_thread_state(native_thread)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_health_thread_state", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6094,12 +7325,18 @@ func HealthThreadName(ctx context.Context, arg_thread *HealthThread) (*string, e
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_health_thread_name"); err != nil {
+		return nil, err
+	}
 	var native_thread *C.struct_lttng_health_thread
 	if err := arg_thread.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_thread = (*C.struct_lttng_health_thread)(arg_thread.ref.ptr)
-	result := C.lttng_health_thread_name(native_thread)
+	result := C.ctlgo_lttng_health_thread_name(native_thread)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -6109,12 +7346,18 @@ func KernelProbeLocationGetType(ctx context.Context, arg_location *KernelProbeLo
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_kernel_probe_location_get_type"); err != nil {
+		return 0, err
+	}
 	var native_location *C.struct_lttng_kernel_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_location = (*C.struct_lttng_kernel_probe_location)(arg_location.ref.ptr)
-	result := C.lttng_kernel_probe_location_get_type(native_location)
+	result := C.ctlgo_lttng_kernel_probe_location_get_type(native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return KernelProbeLocationType(result), nil
 }
 
@@ -6125,7 +7368,7 @@ func KernelProbeLocationDestroy(ctx context.Context, arg *KernelProbeLocation) e
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // KernelProbeLocationSymbolCreate wraps lttng_kernel_probe_location_symbol_create (lttng/kernel-probe.h).
@@ -6134,17 +7377,23 @@ func KernelProbeLocationSymbolCreate(ctx context.Context, arg_symbol_name *strin
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_kernel_probe_location_symbol_create", "lttng_kernel_probe_location_destroy"); err != nil {
+		return nil, err
+	}
 	native_symbol_name, err := cstring(arg_symbol_name)
 	if err != nil {
 		return nil, err
 	}
 	defer C.free(unsafe.Pointer(native_symbol_name))
-	result := C.lttng_kernel_probe_location_symbol_create(native_symbol_name, C.uint64_t(arg_offset))
+	result := C.ctlgo_lttng_kernel_probe_location_symbol_create(native_symbol_name, C.uint64_t(arg_offset))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
 	out := &KernelProbeLocation{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
-		C.lttng_kernel_probe_location_destroy((*C.struct_lttng_kernel_probe_location)(p))
+		C.ctlgo_lttng_kernel_probe_location_destroy((*C.struct_lttng_kernel_probe_location)(p))
 	})}
 	return out, nil
 }
@@ -6155,12 +7404,18 @@ func KernelProbeLocationSymbolGetName(ctx context.Context, arg_location *KernelP
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_kernel_probe_location_symbol_get_name"); err != nil {
+		return nil, err
+	}
 	var native_location *C.struct_lttng_kernel_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_location = (*C.struct_lttng_kernel_probe_location)(arg_location.ref.ptr)
-	result := C.lttng_kernel_probe_location_symbol_get_name(native_location)
+	result := C.ctlgo_lttng_kernel_probe_location_symbol_get_name(native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -6170,13 +7425,19 @@ func KernelProbeLocationSymbolGetOffset(ctx context.Context, arg_location *Kerne
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_kernel_probe_location_symbol_get_offset"); err != nil {
+		return 0, 0, err
+	}
 	var native_location *C.struct_lttng_kernel_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_location = (*C.struct_lttng_kernel_probe_location)(arg_location.ref.ptr)
 	var native_offset C.uint64_t
-	result := C.lttng_kernel_probe_location_symbol_get_offset(native_location, &native_offset)
+	result := C.ctlgo_lttng_kernel_probe_location_symbol_get_offset(native_location, &native_offset)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_kernel_probe_location_symbol_get_offset", "lttng_kernel_probe_location_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -6189,12 +7450,18 @@ func KernelProbeLocationAddressCreate(ctx context.Context, arg_address uint64) (
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_kernel_probe_location_address_create(C.uint64_t(arg_address))
+	if err := ctlstate.Require("lttng_kernel_probe_location_address_create", "lttng_kernel_probe_location_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_kernel_probe_location_address_create(C.uint64_t(arg_address))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
 	out := &KernelProbeLocation{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
-		C.lttng_kernel_probe_location_destroy((*C.struct_lttng_kernel_probe_location)(p))
+		C.ctlgo_lttng_kernel_probe_location_destroy((*C.struct_lttng_kernel_probe_location)(p))
 	})}
 	return out, nil
 }
@@ -6205,13 +7472,19 @@ func KernelProbeLocationAddressGetAddress(ctx context.Context, arg_location *Ker
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_kernel_probe_location_address_get_address"); err != nil {
+		return 0, 0, err
+	}
 	var native_location *C.struct_lttng_kernel_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_location = (*C.struct_lttng_kernel_probe_location)(arg_location.ref.ptr)
 	var native_address C.uint64_t
-	result := C.lttng_kernel_probe_location_address_get_address(native_location, &native_address)
+	result := C.ctlgo_lttng_kernel_probe_location_address_get_address(native_location, &native_address)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_kernel_probe_location_address_get_address", "lttng_kernel_probe_location_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -6224,11 +7497,19 @@ func LoadSessionAttrCreate(ctx context.Context) (*LoadSessionAttr, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_load_session_attr_create()
+	if err := ctlstate.Require("lttng_load_session_attr_create", "lttng_load_session_attr_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_load_session_attr_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &LoadSessionAttr{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_load_session_attr_destroy((*C.struct_lttng_load_session_attr)(p)) })}
+	out := &LoadSessionAttr{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
+		C.ctlgo_lttng_load_session_attr_destroy((*C.struct_lttng_load_session_attr)(p))
+	})}
 	return out, nil
 }
 
@@ -6239,7 +7520,7 @@ func LoadSessionAttrDestroy(ctx context.Context, arg *LoadSessionAttr) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // LoadSessionAttrGetSessionName wraps lttng_load_session_attr_get_session_name (lttng/load.h).
@@ -6248,12 +7529,18 @@ func LoadSessionAttrGetSessionName(ctx context.Context, arg_attr *LoadSessionAtt
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_load_session_attr_get_session_name"); err != nil {
+		return nil, err
+	}
 	var native_attr *C.struct_lttng_load_session_attr
 	if err := arg_attr.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_attr = (*C.struct_lttng_load_session_attr)(arg_attr.ref.ptr)
-	result := C.lttng_load_session_attr_get_session_name(native_attr)
+	result := C.ctlgo_lttng_load_session_attr_get_session_name(native_attr)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -6263,12 +7550,18 @@ func LoadSessionAttrGetInputURL(ctx context.Context, arg_attr *LoadSessionAttr) 
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_load_session_attr_get_input_url"); err != nil {
+		return nil, err
+	}
 	var native_attr *C.struct_lttng_load_session_attr
 	if err := arg_attr.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_attr = (*C.struct_lttng_load_session_attr)(arg_attr.ref.ptr)
-	result := C.lttng_load_session_attr_get_input_url(native_attr)
+	result := C.ctlgo_lttng_load_session_attr_get_input_url(native_attr)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -6278,12 +7571,18 @@ func LoadSessionAttrGetOverwrite(ctx context.Context, arg_attr *LoadSessionAttr)
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_load_session_attr_get_overwrite"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_load_session_attr
 	if err := arg_attr.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_attr = (*C.struct_lttng_load_session_attr)(arg_attr.ref.ptr)
-	result := C.lttng_load_session_attr_get_overwrite(native_attr)
+	result := C.ctlgo_lttng_load_session_attr_get_overwrite(native_attr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_load_session_attr_get_overwrite", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6296,12 +7595,18 @@ func LoadSessionAttrGetOverrideURL(ctx context.Context, arg_attr *LoadSessionAtt
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_load_session_attr_get_override_url"); err != nil {
+		return nil, err
+	}
 	var native_attr *C.struct_lttng_load_session_attr
 	if err := arg_attr.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_attr = (*C.struct_lttng_load_session_attr)(arg_attr.ref.ptr)
-	result := C.lttng_load_session_attr_get_override_url(native_attr)
+	result := C.ctlgo_lttng_load_session_attr_get_override_url(native_attr)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -6311,12 +7616,18 @@ func LoadSessionAttrGetOverrideCtrlURL(ctx context.Context, arg_attr *LoadSessio
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_load_session_attr_get_override_ctrl_url"); err != nil {
+		return nil, err
+	}
 	var native_attr *C.struct_lttng_load_session_attr
 	if err := arg_attr.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_attr = (*C.struct_lttng_load_session_attr)(arg_attr.ref.ptr)
-	result := C.lttng_load_session_attr_get_override_ctrl_url(native_attr)
+	result := C.ctlgo_lttng_load_session_attr_get_override_ctrl_url(native_attr)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -6326,12 +7637,18 @@ func LoadSessionAttrGetOverrideDataURL(ctx context.Context, arg_attr *LoadSessio
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_load_session_attr_get_override_data_url"); err != nil {
+		return nil, err
+	}
 	var native_attr *C.struct_lttng_load_session_attr
 	if err := arg_attr.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_attr = (*C.struct_lttng_load_session_attr)(arg_attr.ref.ptr)
-	result := C.lttng_load_session_attr_get_override_data_url(native_attr)
+	result := C.ctlgo_lttng_load_session_attr_get_override_data_url(native_attr)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -6341,12 +7658,18 @@ func LoadSessionAttrGetOverrideSessionName(ctx context.Context, arg_attr *LoadSe
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_load_session_attr_get_override_session_name"); err != nil {
+		return nil, err
+	}
 	var native_attr *C.struct_lttng_load_session_attr
 	if err := arg_attr.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_attr = (*C.struct_lttng_load_session_attr)(arg_attr.ref.ptr)
-	result := C.lttng_load_session_attr_get_override_session_name(native_attr)
+	result := C.ctlgo_lttng_load_session_attr_get_override_session_name(native_attr)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -6356,6 +7679,9 @@ func LoadSessionAttrSetSessionName(ctx context.Context, arg_attr *LoadSessionAtt
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_load_session_attr_set_session_name"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_load_session_attr
 	if err := arg_attr.resource().check(true); err != nil {
 		return 0, err
@@ -6366,7 +7692,10 @@ func LoadSessionAttrSetSessionName(ctx context.Context, arg_attr *LoadSessionAtt
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_load_session_attr_set_session_name(native_attr, native_session_name)
+	result := C.ctlgo_lttng_load_session_attr_set_session_name(native_attr, native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_load_session_attr_set_session_name", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6380,6 +7709,9 @@ func LoadSessionAttrSetInputURL(ctx context.Context, arg_attr *LoadSessionAttr, 
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_load_session_attr_set_input_url"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_load_session_attr
 	if err := arg_attr.resource().check(true); err != nil {
 		return 0, err
@@ -6390,7 +7722,10 @@ func LoadSessionAttrSetInputURL(ctx context.Context, arg_attr *LoadSessionAttr, 
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_url))
-	result := C.lttng_load_session_attr_set_input_url(native_attr, native_url)
+	result := C.ctlgo_lttng_load_session_attr_set_input_url(native_attr, native_url)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_load_session_attr_set_input_url", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6404,6 +7739,9 @@ func LoadSessionAttrSetOverwrite(ctx context.Context, arg_attr *LoadSessionAttr,
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_load_session_attr_set_overwrite"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_load_session_attr
 	if err := arg_attr.resource().check(true); err != nil {
 		return 0, err
@@ -6412,7 +7750,10 @@ func LoadSessionAttrSetOverwrite(ctx context.Context, arg_attr *LoadSessionAttr,
 	if int64(C.int(arg_overwrite)) != int64(arg_overwrite) {
 		return 0, ErrInvalidArgument
 	}
-	result := C.lttng_load_session_attr_set_overwrite(native_attr, C.int(arg_overwrite))
+	result := C.ctlgo_lttng_load_session_attr_set_overwrite(native_attr, C.int(arg_overwrite))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_load_session_attr_set_overwrite", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6426,6 +7767,9 @@ func LoadSessionAttrSetOverrideURL(ctx context.Context, arg_attr *LoadSessionAtt
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_load_session_attr_set_override_url"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_load_session_attr
 	if err := arg_attr.resource().check(true); err != nil {
 		return 0, err
@@ -6436,7 +7780,10 @@ func LoadSessionAttrSetOverrideURL(ctx context.Context, arg_attr *LoadSessionAtt
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_url))
-	result := C.lttng_load_session_attr_set_override_url(native_attr, native_url)
+	result := C.ctlgo_lttng_load_session_attr_set_override_url(native_attr, native_url)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_load_session_attr_set_override_url", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6450,6 +7797,9 @@ func LoadSessionAttrSetOverrideCtrlURL(ctx context.Context, arg_attr *LoadSessio
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_load_session_attr_set_override_ctrl_url"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_load_session_attr
 	if err := arg_attr.resource().check(true); err != nil {
 		return 0, err
@@ -6460,7 +7810,10 @@ func LoadSessionAttrSetOverrideCtrlURL(ctx context.Context, arg_attr *LoadSessio
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_url))
-	result := C.lttng_load_session_attr_set_override_ctrl_url(native_attr, native_url)
+	result := C.ctlgo_lttng_load_session_attr_set_override_ctrl_url(native_attr, native_url)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_load_session_attr_set_override_ctrl_url", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6474,6 +7827,9 @@ func LoadSessionAttrSetOverrideDataURL(ctx context.Context, arg_attr *LoadSessio
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_load_session_attr_set_override_data_url"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_load_session_attr
 	if err := arg_attr.resource().check(true); err != nil {
 		return 0, err
@@ -6484,7 +7840,10 @@ func LoadSessionAttrSetOverrideDataURL(ctx context.Context, arg_attr *LoadSessio
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_url))
-	result := C.lttng_load_session_attr_set_override_data_url(native_attr, native_url)
+	result := C.ctlgo_lttng_load_session_attr_set_override_data_url(native_attr, native_url)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_load_session_attr_set_override_data_url", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6498,6 +7857,9 @@ func LoadSessionAttrSetOverrideSessionName(ctx context.Context, arg_attr *LoadSe
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_load_session_attr_set_override_session_name"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_load_session_attr
 	if err := arg_attr.resource().check(true); err != nil {
 		return 0, err
@@ -6508,7 +7870,10 @@ func LoadSessionAttrSetOverrideSessionName(ctx context.Context, arg_attr *LoadSe
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_load_session_attr_set_override_session_name(native_attr, native_session_name)
+	result := C.ctlgo_lttng_load_session_attr_set_override_session_name(native_attr, native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_load_session_attr_set_override_session_name", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6522,12 +7887,18 @@ func LoadSession(ctx context.Context, arg_attr *LoadSessionAttr) (int, error) {
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_load_session"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_load_session_attr
 	if err := arg_attr.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_attr = (*C.struct_lttng_load_session_attr)(arg_attr.ref.ptr)
-	result := C.lttng_load_session(native_attr)
+	result := C.ctlgo_lttng_load_session(native_attr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_load_session", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6540,12 +7911,18 @@ func TraceArchiveLocationGetType(ctx context.Context, arg_location *TraceArchive
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_trace_archive_location_get_type"); err != nil {
+		return 0, err
+	}
 	var native_location *C.struct_lttng_trace_archive_location
 	if err := arg_location.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_location = (*C.struct_lttng_trace_archive_location)(arg_location.ref.ptr)
-	result := C.lttng_trace_archive_location_get_type(native_location)
+	result := C.ctlgo_lttng_trace_archive_location_get_type(native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return TraceArchiveLocationType(result), nil
 }
 
@@ -6555,13 +7932,19 @@ func TraceArchiveLocationLocalGetAbsolutePath(ctx context.Context, arg_location 
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_trace_archive_location_local_get_absolute_path"); err != nil {
+		return 0, nil, err
+	}
 	var native_location *C.struct_lttng_trace_archive_location
 	if err := arg_location.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_location = (*C.struct_lttng_trace_archive_location)(arg_location.ref.ptr)
 	var native_absolute_path *C.char
-	result := C.lttng_trace_archive_location_local_get_absolute_path(native_location, &native_absolute_path)
+	result := C.ctlgo_lttng_trace_archive_location_local_get_absolute_path(native_location, &native_absolute_path)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_trace_archive_location_local_get_absolute_path", "lttng_trace_archive_location_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -6574,13 +7957,19 @@ func TraceArchiveLocationRelayGetHost(ctx context.Context, arg_location *TraceAr
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_trace_archive_location_relay_get_host"); err != nil {
+		return 0, nil, err
+	}
 	var native_location *C.struct_lttng_trace_archive_location
 	if err := arg_location.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_location = (*C.struct_lttng_trace_archive_location)(arg_location.ref.ptr)
 	var native_relay_host *C.char
-	result := C.lttng_trace_archive_location_relay_get_host(native_location, &native_relay_host)
+	result := C.ctlgo_lttng_trace_archive_location_relay_get_host(native_location, &native_relay_host)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_trace_archive_location_relay_get_host", "lttng_trace_archive_location_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -6593,13 +7982,19 @@ func TraceArchiveLocationRelayGetControlPort(ctx context.Context, arg_location *
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_trace_archive_location_relay_get_control_port"); err != nil {
+		return 0, 0, err
+	}
 	var native_location *C.struct_lttng_trace_archive_location
 	if err := arg_location.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_location = (*C.struct_lttng_trace_archive_location)(arg_location.ref.ptr)
 	var native_control_port C.uint16_t
-	result := C.lttng_trace_archive_location_relay_get_control_port(native_location, &native_control_port)
+	result := C.ctlgo_lttng_trace_archive_location_relay_get_control_port(native_location, &native_control_port)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_trace_archive_location_relay_get_control_port", "lttng_trace_archive_location_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -6612,13 +8007,19 @@ func TraceArchiveLocationRelayGetDataPort(ctx context.Context, arg_location *Tra
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_trace_archive_location_relay_get_data_port"); err != nil {
+		return 0, 0, err
+	}
 	var native_location *C.struct_lttng_trace_archive_location
 	if err := arg_location.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_location = (*C.struct_lttng_trace_archive_location)(arg_location.ref.ptr)
 	var native_data_port C.uint16_t
-	result := C.lttng_trace_archive_location_relay_get_data_port(native_location, &native_data_port)
+	result := C.ctlgo_lttng_trace_archive_location_relay_get_data_port(native_location, &native_data_port)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_trace_archive_location_relay_get_data_port", "lttng_trace_archive_location_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -6631,13 +8032,19 @@ func TraceArchiveLocationRelayGetProtocolType(ctx context.Context, arg_location 
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_trace_archive_location_relay_get_protocol_type"); err != nil {
+		return 0, 0, err
+	}
 	var native_location *C.struct_lttng_trace_archive_location
 	if err := arg_location.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_location = (*C.struct_lttng_trace_archive_location)(arg_location.ref.ptr)
 	var native_protocol C.enum_lttng_trace_archive_location_relay_protocol_type
-	result := C.lttng_trace_archive_location_relay_get_protocol_type(native_location, &native_protocol)
+	result := C.ctlgo_lttng_trace_archive_location_relay_get_protocol_type(native_location, &native_protocol)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_trace_archive_location_relay_get_protocol_type", "lttng_trace_archive_location_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -6650,13 +8057,19 @@ func TraceArchiveLocationRelayGetRelativePath(ctx context.Context, arg_location 
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_trace_archive_location_relay_get_relative_path"); err != nil {
+		return 0, nil, err
+	}
 	var native_location *C.struct_lttng_trace_archive_location
 	if err := arg_location.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_location = (*C.struct_lttng_trace_archive_location)(arg_location.ref.ptr)
 	var native_relative_path *C.char
-	result := C.lttng_trace_archive_location_relay_get_relative_path(native_location, &native_relative_path)
+	result := C.ctlgo_lttng_trace_archive_location_relay_get_relative_path(native_location, &native_relative_path)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_trace_archive_location_relay_get_relative_path", "lttng_trace_archive_location_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -6669,12 +8082,18 @@ func LogLevelRuleGetType(ctx context.Context, arg_rule *LogLevelRule) (LogLevelR
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_log_level_rule_get_type"); err != nil {
+		return 0, err
+	}
 	var native_rule *C.struct_lttng_log_level_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_rule = (*C.struct_lttng_log_level_rule)(arg_rule.ref.ptr)
-	result := C.lttng_log_level_rule_get_type(native_rule)
+	result := C.ctlgo_lttng_log_level_rule_get_type(native_rule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return LogLevelRuleType(result), nil
 }
 
@@ -6684,14 +8103,20 @@ func LogLevelRuleExactlyCreate(ctx context.Context, arg_level int) (*LogLevelRul
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_log_level_rule_exactly_create", "lttng_log_level_rule_destroy"); err != nil {
+		return nil, err
+	}
 	if int64(C.int(arg_level)) != int64(arg_level) {
 		return nil, ErrInvalidArgument
 	}
-	result := C.lttng_log_level_rule_exactly_create(C.int(arg_level))
+	result := C.ctlgo_lttng_log_level_rule_exactly_create(C.int(arg_level))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &LogLevelRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_log_level_rule_destroy((*C.struct_lttng_log_level_rule)(p)) })}
+	out := &LogLevelRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_log_level_rule_destroy((*C.struct_lttng_log_level_rule)(p)) })}
 	return out, nil
 }
 
@@ -6701,13 +8126,19 @@ func LogLevelRuleExactlyGetLevel(ctx context.Context, arg_rule *LogLevelRule) (L
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_log_level_rule_exactly_get_level"); err != nil {
+		return 0, 0, err
+	}
 	var native_rule *C.struct_lttng_log_level_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_rule = (*C.struct_lttng_log_level_rule)(arg_rule.ref.ptr)
 	var native_level C.int
-	result := C.lttng_log_level_rule_exactly_get_level(native_rule, &native_level)
+	result := C.ctlgo_lttng_log_level_rule_exactly_get_level(native_rule, &native_level)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_log_level_rule_exactly_get_level", "lttng_log_level_rule_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -6720,14 +8151,20 @@ func LogLevelRuleAtLeastAsSevereAsCreate(ctx context.Context, arg_level int) (*L
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_log_level_rule_at_least_as_severe_as_create", "lttng_log_level_rule_destroy"); err != nil {
+		return nil, err
+	}
 	if int64(C.int(arg_level)) != int64(arg_level) {
 		return nil, ErrInvalidArgument
 	}
-	result := C.lttng_log_level_rule_at_least_as_severe_as_create(C.int(arg_level))
+	result := C.ctlgo_lttng_log_level_rule_at_least_as_severe_as_create(C.int(arg_level))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &LogLevelRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_log_level_rule_destroy((*C.struct_lttng_log_level_rule)(p)) })}
+	out := &LogLevelRule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_log_level_rule_destroy((*C.struct_lttng_log_level_rule)(p)) })}
 	return out, nil
 }
 
@@ -6737,13 +8174,19 @@ func LogLevelRuleAtLeastAsSevereAsGetLevel(ctx context.Context, arg_rule *LogLev
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_log_level_rule_at_least_as_severe_as_get_level"); err != nil {
+		return 0, 0, err
+	}
 	var native_rule *C.struct_lttng_log_level_rule
 	if err := arg_rule.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_rule = (*C.struct_lttng_log_level_rule)(arg_rule.ref.ptr)
 	var native_level C.int
-	result := C.lttng_log_level_rule_at_least_as_severe_as_get_level(native_rule, &native_level)
+	result := C.ctlgo_lttng_log_level_rule_at_least_as_severe_as_get_level(native_rule, &native_level)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_log_level_rule_at_least_as_severe_as_get_level", "lttng_log_level_rule_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -6757,7 +8200,7 @@ func LogLevelRuleDestroy(ctx context.Context, arg *LogLevelRule) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // Strerror wraps lttng_strerror (lttng/lttng-error.h).
@@ -6766,10 +8209,16 @@ func Strerror(ctx context.Context, arg_error_code int) (*string, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_strerror"); err != nil {
+		return nil, err
+	}
 	if int64(C.int(arg_error_code)) != int64(arg_error_code) {
 		return nil, ErrInvalidArgument
 	}
-	result := C.lttng_strerror(C.int(arg_error_code))
+	result := C.ctlgo_lttng_strerror(C.int(arg_error_code))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -6779,7 +8228,13 @@ func SessionDaemonAlive(ctx context.Context) (int, error) {
 		return 0, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_session_daemon_alive()
+	if err := ctlstate.Require("lttng_session_daemon_alive"); err != nil {
+		return 0, err
+	}
+	result := C.ctlgo_lttng_session_daemon_alive()
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_session_daemon_alive", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6792,12 +8247,18 @@ func SetTracingGroup(ctx context.Context, arg_group *string) (int, error) {
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_set_tracing_group"); err != nil {
+		return 0, err
+	}
 	native_group, err := cstring(arg_group)
 	if err != nil {
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_group))
-	result := C.lttng_set_tracing_group(native_group)
+	result := C.ctlgo_lttng_set_tracing_group(native_group)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_set_tracing_group", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6810,6 +8271,9 @@ func RegisterConsumer(ctx context.Context, arg_handle *Handle, arg_socket_path *
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_register_consumer"); err != nil {
+		return 0, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(true); err != nil {
 		return 0, err
@@ -6820,7 +8284,10 @@ func RegisterConsumer(ctx context.Context, arg_handle *Handle, arg_socket_path *
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_socket_path))
-	result := C.lttng_register_consumer(native_handle, native_socket_path)
+	result := C.ctlgo_lttng_register_consumer(native_handle, native_socket_path)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_register_consumer", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6834,12 +8301,18 @@ func StartTracing(ctx context.Context, arg_session_name *string) (int, error) {
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_start_tracing"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_start_tracing(native_session_name)
+	result := C.ctlgo_lttng_start_tracing(native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_start_tracing", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6852,12 +8325,18 @@ func StopTracing(ctx context.Context, arg_session_name *string) (int, error) {
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_stop_tracing"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_stop_tracing(native_session_name)
+	result := C.ctlgo_lttng_stop_tracing(native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_stop_tracing", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6870,12 +8349,18 @@ func StopTracingNoWait(ctx context.Context, arg_session_name *string) (int, erro
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_stop_tracing_no_wait"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_stop_tracing_no_wait(native_session_name)
+	result := C.ctlgo_lttng_stop_tracing_no_wait(native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_stop_tracing_no_wait", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6888,6 +8373,9 @@ func Calibrate(ctx context.Context, arg_handle *Handle, arg_calibrate *Calibrati
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_calibrate"); err != nil {
+		return 0, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(false); err != nil {
 		return 0, err
@@ -6898,7 +8386,10 @@ func Calibrate(ctx context.Context, arg_handle *Handle, arg_calibrate *Calibrati
 		return 0, err
 	}
 	native_calibrate = (*C.struct_lttng_calibrate)(arg_calibrate.ref.ptr)
-	result := C.lttng_calibrate(native_handle, native_calibrate)
+	result := C.ctlgo_lttng_calibrate(native_handle, native_calibrate)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_calibrate", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6911,6 +8402,9 @@ func SetConsumerURL(ctx context.Context, arg_handle *Handle, arg_control_url *st
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_set_consumer_url"); err != nil {
+		return 0, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(true); err != nil {
 		return 0, err
@@ -6926,7 +8420,10 @@ func SetConsumerURL(ctx context.Context, arg_handle *Handle, arg_control_url *st
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_data_url))
-	result := C.lttng_set_consumer_url(native_handle, native_control_url, native_data_url)
+	result := C.ctlgo_lttng_set_consumer_url(native_handle, native_control_url, native_data_url)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_set_consumer_url", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6940,12 +8437,18 @@ func DataPending(ctx context.Context, arg_session_name *string) (int, error) {
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_data_pending"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_data_pending(native_session_name)
+	result := C.ctlgo_lttng_data_pending(native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_data_pending", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6958,8 +8461,14 @@ func GetKernelTracerStatus(ctx context.Context) (ErrorCode, KernelTracerStatus, 
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_get_kernel_tracer_status"); err != nil {
+		return 0, 0, err
+	}
 	var native_status C.enum_lttng_kernel_tracer_status
-	result := C.lttng_get_kernel_tracer_status(&native_status)
+	result := C.ctlgo_lttng_get_kernel_tracer_status(&native_status)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_get_kernel_tracer_status", "lttng_error_code", int(result), true); err != nil {
 		return 0, 0, err
 	}
@@ -6972,12 +8481,18 @@ func MetadataRegenerate(ctx context.Context, arg_session_name *string) (int, err
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_metadata_regenerate"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_metadata_regenerate(native_session_name)
+	result := C.ctlgo_lttng_metadata_regenerate(native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_metadata_regenerate", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -6990,12 +8505,18 @@ func RegenerateMetadata(ctx context.Context, arg_session_name *string) (int, err
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_regenerate_metadata"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_regenerate_metadata(native_session_name)
+	result := C.ctlgo_lttng_regenerate_metadata(native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_regenerate_metadata", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7008,12 +8529,18 @@ func RegenerateStatedump(ctx context.Context, arg_session_name *string) (int, er
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_regenerate_statedump"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_regenerate_statedump(native_session_name)
+	result := C.ctlgo_lttng_regenerate_statedump(native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_regenerate_statedump", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7026,17 +8553,23 @@ func NotificationChannelCreate(ctx context.Context, arg_endpoint *Endpoint) (*No
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_notification_channel_create", "lttng_notification_channel_destroy"); err != nil {
+		return nil, err
+	}
 	var native_endpoint *C.struct_lttng_endpoint
 	if err := arg_endpoint.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_endpoint = (*C.struct_lttng_endpoint)(arg_endpoint.ref.ptr)
-	result := C.lttng_notification_channel_create(native_endpoint)
+	result := C.ctlgo_lttng_notification_channel_create(native_endpoint)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
 	out := &NotificationChannel{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
-		C.lttng_notification_channel_destroy((*C.struct_lttng_notification_channel)(p))
+		C.ctlgo_lttng_notification_channel_destroy((*C.struct_lttng_notification_channel)(p))
 	})}
 	return out, nil
 }
@@ -7047,19 +8580,25 @@ func NotificationChannelGetNextNotification(ctx context.Context, arg_channel *No
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_notification_channel_get_next_notification", "lttng_notification_destroy"); err != nil {
+		return 0, nil, err
+	}
 	var native_channel *C.struct_lttng_notification_channel
 	if err := arg_channel.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_channel = (*C.struct_lttng_notification_channel)(arg_channel.ref.ptr)
 	var native_notification *C.struct_lttng_notification
-	result := C.lttng_notification_channel_get_next_notification(native_channel, &native_notification)
+	result := C.ctlgo_lttng_notification_channel_get_next_notification(native_channel, &native_notification)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_notification_channel_get_next_notification", "lttng_notification_channel_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
 	var out_notification *Notification
 	if native_notification != nil {
-		out_notification = &Notification{ref: own(unsafe.Pointer(native_notification), func(p unsafe.Pointer) { C.lttng_notification_destroy((*C.struct_lttng_notification)(p)) })}
+		out_notification = &Notification{ref: own(unsafe.Pointer(native_notification), func(p unsafe.Pointer) { C.ctlgo_lttng_notification_destroy((*C.struct_lttng_notification)(p)) })}
 	}
 	return NotificationChannelStatus(result), out_notification, nil
 }
@@ -7070,13 +8609,19 @@ func NotificationChannelHasPendingNotification(ctx context.Context, arg_channel 
 		return 0, false, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_notification_channel_has_pending_notification"); err != nil {
+		return 0, false, err
+	}
 	var native_channel *C.struct_lttng_notification_channel
 	if err := arg_channel.resource().check(false); err != nil {
 		return 0, false, err
 	}
 	native_channel = (*C.struct_lttng_notification_channel)(arg_channel.ref.ptr)
 	var native_notification_avail C.bool
-	result := C.lttng_notification_channel_has_pending_notification(native_channel, &native_notification_avail)
+	result := C.ctlgo_lttng_notification_channel_has_pending_notification(native_channel, &native_notification_avail)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, false, err
+	}
 	if err := statusError("lttng_notification_channel_has_pending_notification", "lttng_notification_channel_status", int(result), false); err != nil {
 		return 0, false, err
 	}
@@ -7089,6 +8634,9 @@ func NotificationChannelSubscribe(ctx context.Context, arg_channel *Notification
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_notification_channel_subscribe"); err != nil {
+		return 0, err
+	}
 	var native_channel *C.struct_lttng_notification_channel
 	if err := arg_channel.resource().check(false); err != nil {
 		return 0, err
@@ -7099,7 +8647,10 @@ func NotificationChannelSubscribe(ctx context.Context, arg_channel *Notification
 		return 0, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
-	result := C.lttng_notification_channel_subscribe(native_channel, native_condition)
+	result := C.ctlgo_lttng_notification_channel_subscribe(native_channel, native_condition)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_notification_channel_subscribe", "lttng_notification_channel_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7112,6 +8663,9 @@ func NotificationChannelUnsubscribe(ctx context.Context, arg_channel *Notificati
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_notification_channel_unsubscribe"); err != nil {
+		return 0, err
+	}
 	var native_channel *C.struct_lttng_notification_channel
 	if err := arg_channel.resource().check(false); err != nil {
 		return 0, err
@@ -7122,7 +8676,10 @@ func NotificationChannelUnsubscribe(ctx context.Context, arg_channel *Notificati
 		return 0, err
 	}
 	native_condition = (*C.struct_lttng_condition)(arg_condition.ref.ptr)
-	result := C.lttng_notification_channel_unsubscribe(native_channel, native_condition)
+	result := C.ctlgo_lttng_notification_channel_unsubscribe(native_channel, native_condition)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_notification_channel_unsubscribe", "lttng_notification_channel_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7136,7 +8693,7 @@ func NotificationChannelDestroy(ctx context.Context, arg *NotificationChannel) e
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // NotificationGetCondition wraps lttng_notification_get_condition (lttng/notification/notification.h).
@@ -7145,12 +8702,18 @@ func NotificationGetCondition(ctx context.Context, arg_notification *Notificatio
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_notification_get_condition", "lttng_condition_destroy"); err != nil {
+		return nil, err
+	}
 	var native_notification *C.struct_lttng_notification
 	if err := arg_notification.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_notification = (*C.struct_lttng_notification)(arg_notification.ref.ptr)
-	result := C.lttng_notification_get_condition(native_notification)
+	result := C.ctlgo_lttng_notification_get_condition(native_notification)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -7164,12 +8727,18 @@ func NotificationGetEvaluation(ctx context.Context, arg_notification *Notificati
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_notification_get_evaluation", "lttng_evaluation_destroy"); err != nil {
+		return nil, err
+	}
 	var native_notification *C.struct_lttng_notification
 	if err := arg_notification.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_notification = (*C.struct_lttng_notification)(arg_notification.ref.ptr)
-	result := C.lttng_notification_get_evaluation(native_notification)
+	result := C.ctlgo_lttng_notification_get_evaluation(native_notification)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -7183,12 +8752,18 @@ func NotificationGetTrigger(ctx context.Context, arg_notification *Notification)
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_notification_get_trigger", "lttng_trigger_destroy"); err != nil {
+		return nil, err
+	}
 	var native_notification *C.struct_lttng_notification
 	if err := arg_notification.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_notification = (*C.struct_lttng_notification)(arg_notification.ref.ptr)
-	result := C.lttng_notification_get_trigger(native_notification)
+	result := C.ctlgo_lttng_notification_get_trigger(native_notification)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -7203,7 +8778,7 @@ func NotificationDestroy(ctx context.Context, arg *Notification) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // RotationHandleGetState wraps lttng_rotation_handle_get_state (lttng/rotation.h).
@@ -7212,13 +8787,19 @@ func RotationHandleGetState(ctx context.Context, arg_rotation_handle *RotationHa
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_rotation_handle_get_state"); err != nil {
+		return 0, 0, err
+	}
 	var native_rotation_handle *C.struct_lttng_rotation_handle
 	if err := arg_rotation_handle.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_rotation_handle = (*C.struct_lttng_rotation_handle)(arg_rotation_handle.ref.ptr)
 	var native_rotation_state C.enum_lttng_rotation_state
-	result := C.lttng_rotation_handle_get_state(native_rotation_handle, &native_rotation_state)
+	result := C.ctlgo_lttng_rotation_handle_get_state(native_rotation_handle, &native_rotation_state)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_rotation_handle_get_state", "lttng_rotation_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -7231,13 +8812,19 @@ func RotationHandleGetArchiveLocation(ctx context.Context, arg_rotation_handle *
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_rotation_handle_get_archive_location"); err != nil {
+		return 0, nil, err
+	}
 	var native_rotation_handle *C.struct_lttng_rotation_handle
 	if err := arg_rotation_handle.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_rotation_handle = (*C.struct_lttng_rotation_handle)(arg_rotation_handle.ref.ptr)
 	var native_location *C.struct_lttng_trace_archive_location
-	result := C.lttng_rotation_handle_get_archive_location(native_rotation_handle, &native_location)
+	result := C.ctlgo_lttng_rotation_handle_get_archive_location(native_rotation_handle, &native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_rotation_handle_get_archive_location", "lttng_rotation_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -7255,7 +8842,7 @@ func RotationHandleDestroy(ctx context.Context, arg *RotationHandle) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // RotateSession wraps lttng_rotate_session (lttng/rotation.h).
@@ -7264,6 +8851,9 @@ func RotateSession(ctx context.Context, arg_session_name *string, arg_descriptor
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_rotate_session", "lttng_rotation_handle_destroy"); err != nil {
+		return 0, nil, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, nil, err
@@ -7277,13 +8867,16 @@ func RotateSession(ctx context.Context, arg_session_name *string, arg_descriptor
 		native_descriptor = (*C.struct_lttng_rotation_immediate_descriptor)(arg_descriptor.ref.ptr)
 	}
 	var native_rotation_handle *C.struct_lttng_rotation_handle
-	result := C.lttng_rotate_session(native_session_name, native_descriptor, &native_rotation_handle)
+	result := C.ctlgo_lttng_rotate_session(native_session_name, native_descriptor, &native_rotation_handle)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_rotate_session", "int", int(result), false); err != nil {
 		return 0, nil, err
 	}
 	var out_rotation_handle *RotationHandle
 	if native_rotation_handle != nil {
-		out_rotation_handle = &RotationHandle{ref: own(unsafe.Pointer(native_rotation_handle), func(p unsafe.Pointer) { C.lttng_rotation_handle_destroy((*C.struct_lttng_rotation_handle)(p)) })}
+		out_rotation_handle = &RotationHandle{ref: own(unsafe.Pointer(native_rotation_handle), func(p unsafe.Pointer) { C.ctlgo_lttng_rotation_handle_destroy((*C.struct_lttng_rotation_handle)(p)) })}
 	}
 	return int(result), out_rotation_handle, nil
 }
@@ -7294,12 +8887,18 @@ func RotationScheduleGetType(ctx context.Context, arg_schedule *RotationSchedule
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_rotation_schedule_get_type"); err != nil {
+		return 0, err
+	}
 	var native_schedule *C.struct_lttng_rotation_schedule
 	if err := arg_schedule.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_schedule = (*C.struct_lttng_rotation_schedule)(arg_schedule.ref.ptr)
-	result := C.lttng_rotation_schedule_get_type(native_schedule)
+	result := C.ctlgo_lttng_rotation_schedule_get_type(native_schedule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return RotationScheduleType(result), nil
 }
 
@@ -7309,11 +8908,19 @@ func RotationScheduleSizeThresholdCreate(ctx context.Context) (*RotationSchedule
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_rotation_schedule_size_threshold_create()
+	if err := ctlstate.Require("lttng_rotation_schedule_size_threshold_create", "lttng_rotation_schedule_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_rotation_schedule_size_threshold_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &RotationSchedule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_rotation_schedule_destroy((*C.struct_lttng_rotation_schedule)(p)) })}
+	out := &RotationSchedule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
+		C.ctlgo_lttng_rotation_schedule_destroy((*C.struct_lttng_rotation_schedule)(p))
+	})}
 	return out, nil
 }
 
@@ -7323,13 +8930,19 @@ func RotationScheduleSizeThresholdGetThreshold(ctx context.Context, arg_schedule
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_rotation_schedule_size_threshold_get_threshold"); err != nil {
+		return 0, 0, err
+	}
 	var native_schedule *C.struct_lttng_rotation_schedule
 	if err := arg_schedule.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_schedule = (*C.struct_lttng_rotation_schedule)(arg_schedule.ref.ptr)
 	var native_size_threshold_bytes C.uint64_t
-	result := C.lttng_rotation_schedule_size_threshold_get_threshold(native_schedule, &native_size_threshold_bytes)
+	result := C.ctlgo_lttng_rotation_schedule_size_threshold_get_threshold(native_schedule, &native_size_threshold_bytes)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_rotation_schedule_size_threshold_get_threshold", "lttng_rotation_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -7342,12 +8955,18 @@ func RotationScheduleSizeThresholdSetThreshold(ctx context.Context, arg_schedule
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_rotation_schedule_size_threshold_set_threshold"); err != nil {
+		return 0, err
+	}
 	var native_schedule *C.struct_lttng_rotation_schedule
 	if err := arg_schedule.resource().check(true); err != nil {
 		return 0, err
 	}
 	native_schedule = (*C.struct_lttng_rotation_schedule)(arg_schedule.ref.ptr)
-	result := C.lttng_rotation_schedule_size_threshold_set_threshold(native_schedule, C.uint64_t(arg_size_threshold_bytes))
+	result := C.ctlgo_lttng_rotation_schedule_size_threshold_set_threshold(native_schedule, C.uint64_t(arg_size_threshold_bytes))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_rotation_schedule_size_threshold_set_threshold", "lttng_rotation_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7361,11 +8980,19 @@ func RotationSchedulePeriodicCreate(ctx context.Context) (*RotationSchedule, err
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_rotation_schedule_periodic_create()
+	if err := ctlstate.Require("lttng_rotation_schedule_periodic_create", "lttng_rotation_schedule_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_rotation_schedule_periodic_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &RotationSchedule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_rotation_schedule_destroy((*C.struct_lttng_rotation_schedule)(p)) })}
+	out := &RotationSchedule{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
+		C.ctlgo_lttng_rotation_schedule_destroy((*C.struct_lttng_rotation_schedule)(p))
+	})}
 	return out, nil
 }
 
@@ -7375,13 +9002,19 @@ func RotationSchedulePeriodicGetPeriod(ctx context.Context, arg_schedule *Rotati
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_rotation_schedule_periodic_get_period"); err != nil {
+		return 0, 0, err
+	}
 	var native_schedule *C.struct_lttng_rotation_schedule
 	if err := arg_schedule.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_schedule = (*C.struct_lttng_rotation_schedule)(arg_schedule.ref.ptr)
 	var native_period_us C.uint64_t
-	result := C.lttng_rotation_schedule_periodic_get_period(native_schedule, &native_period_us)
+	result := C.ctlgo_lttng_rotation_schedule_periodic_get_period(native_schedule, &native_period_us)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_rotation_schedule_periodic_get_period", "lttng_rotation_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -7394,12 +9027,18 @@ func RotationSchedulePeriodicSetPeriod(ctx context.Context, arg_schedule *Rotati
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_rotation_schedule_periodic_set_period"); err != nil {
+		return 0, err
+	}
 	var native_schedule *C.struct_lttng_rotation_schedule
 	if err := arg_schedule.resource().check(true); err != nil {
 		return 0, err
 	}
 	native_schedule = (*C.struct_lttng_rotation_schedule)(arg_schedule.ref.ptr)
-	result := C.lttng_rotation_schedule_periodic_set_period(native_schedule, C.uint64_t(arg_period_us))
+	result := C.ctlgo_lttng_rotation_schedule_periodic_set_period(native_schedule, C.uint64_t(arg_period_us))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_rotation_schedule_periodic_set_period", "lttng_rotation_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7414,7 +9053,7 @@ func RotationScheduleDestroy(ctx context.Context, arg *RotationSchedule) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // RotationSchedulesDestroy wraps lttng_rotation_schedules_destroy. Close is an idempotent equivalent.
@@ -7424,7 +9063,7 @@ func RotationSchedulesDestroy(ctx context.Context, arg *RotationSchedules) error
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // RotationSchedulesGetCount wraps lttng_rotation_schedules_get_count (lttng/rotation.h).
@@ -7433,13 +9072,19 @@ func RotationSchedulesGetCount(ctx context.Context, arg_schedules *RotationSched
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_rotation_schedules_get_count"); err != nil {
+		return 0, 0, err
+	}
 	var native_schedules *C.struct_lttng_rotation_schedules
 	if err := arg_schedules.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_schedules = (*C.struct_lttng_rotation_schedules)(arg_schedules.ref.ptr)
 	var native_count C.uint
-	result := C.lttng_rotation_schedules_get_count(native_schedules, &native_count)
+	result := C.ctlgo_lttng_rotation_schedules_get_count(native_schedules, &native_count)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_rotation_schedules_get_count", "lttng_rotation_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -7452,12 +9097,18 @@ func RotationSchedulesGetAtIndex(ctx context.Context, arg_schedules *RotationSch
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_rotation_schedules_get_at_index", "lttng_rotation_schedule_destroy"); err != nil {
+		return nil, err
+	}
 	var native_schedules *C.struct_lttng_rotation_schedules
 	if err := arg_schedules.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_schedules = (*C.struct_lttng_rotation_schedules)(arg_schedules.ref.ptr)
-	result := C.lttng_rotation_schedules_get_at_index(native_schedules, C.uint(arg_index))
+	result := C.ctlgo_lttng_rotation_schedules_get_at_index(native_schedules, C.uint(arg_index))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -7471,6 +9122,9 @@ func SessionAddRotationSchedule(ctx context.Context, arg_session_name *string, a
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_session_add_rotation_schedule"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
@@ -7481,7 +9135,10 @@ func SessionAddRotationSchedule(ctx context.Context, arg_session_name *string, a
 		return 0, err
 	}
 	native_schedule = (*C.struct_lttng_rotation_schedule)(arg_schedule.ref.ptr)
-	result := C.lttng_session_add_rotation_schedule(native_session_name, native_schedule)
+	result := C.ctlgo_lttng_session_add_rotation_schedule(native_session_name, native_schedule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_session_add_rotation_schedule", "lttng_rotation_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7494,6 +9151,9 @@ func SessionRemoveRotationSchedule(ctx context.Context, arg_session_name *string
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_session_remove_rotation_schedule"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
@@ -7504,7 +9164,10 @@ func SessionRemoveRotationSchedule(ctx context.Context, arg_session_name *string
 		return 0, err
 	}
 	native_schedule = (*C.struct_lttng_rotation_schedule)(arg_schedule.ref.ptr)
-	result := C.lttng_session_remove_rotation_schedule(native_session_name, native_schedule)
+	result := C.ctlgo_lttng_session_remove_rotation_schedule(native_session_name, native_schedule)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_session_remove_rotation_schedule", "lttng_rotation_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7517,19 +9180,27 @@ func SessionListRotationSchedules(ctx context.Context, arg_session_name *string)
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_session_list_rotation_schedules", "lttng_rotation_schedules_destroy"); err != nil {
+		return 0, nil, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, nil, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
 	var native_schedules *C.struct_lttng_rotation_schedules
-	result := C.lttng_session_list_rotation_schedules(native_session_name, &native_schedules)
+	result := C.ctlgo_lttng_session_list_rotation_schedules(native_session_name, &native_schedules)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_session_list_rotation_schedules", "int", int(result), false); err != nil {
 		return 0, nil, err
 	}
 	var out_schedules *RotationSchedules
 	if native_schedules != nil {
-		out_schedules = &RotationSchedules{ref: own(unsafe.Pointer(native_schedules), func(p unsafe.Pointer) { C.lttng_rotation_schedules_destroy((*C.struct_lttng_rotation_schedules)(p)) })}
+		out_schedules = &RotationSchedules{ref: own(unsafe.Pointer(native_schedules), func(p unsafe.Pointer) {
+			C.ctlgo_lttng_rotation_schedules_destroy((*C.struct_lttng_rotation_schedules)(p))
+		})}
 	}
 	return int(result), out_schedules, nil
 }
@@ -7540,11 +9211,19 @@ func SaveSessionAttrCreate(ctx context.Context) (*SaveSessionAttr, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_save_session_attr_create()
+	if err := ctlstate.Require("lttng_save_session_attr_create", "lttng_save_session_attr_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_save_session_attr_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &SaveSessionAttr{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_save_session_attr_destroy((*C.struct_lttng_save_session_attr)(p)) })}
+	out := &SaveSessionAttr{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
+		C.ctlgo_lttng_save_session_attr_destroy((*C.struct_lttng_save_session_attr)(p))
+	})}
 	return out, nil
 }
 
@@ -7555,7 +9234,7 @@ func SaveSessionAttrDestroy(ctx context.Context, arg *SaveSessionAttr) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // SaveSessionAttrGetSessionName wraps lttng_save_session_attr_get_session_name (lttng/save.h).
@@ -7564,12 +9243,18 @@ func SaveSessionAttrGetSessionName(ctx context.Context, arg_attr *SaveSessionAtt
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_save_session_attr_get_session_name"); err != nil {
+		return nil, err
+	}
 	var native_attr *C.struct_lttng_save_session_attr
 	if err := arg_attr.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_attr = (*C.struct_lttng_save_session_attr)(arg_attr.ref.ptr)
-	result := C.lttng_save_session_attr_get_session_name(native_attr)
+	result := C.ctlgo_lttng_save_session_attr_get_session_name(native_attr)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -7579,12 +9264,18 @@ func SaveSessionAttrGetOutputURL(ctx context.Context, arg_attr *SaveSessionAttr)
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_save_session_attr_get_output_url"); err != nil {
+		return nil, err
+	}
 	var native_attr *C.struct_lttng_save_session_attr
 	if err := arg_attr.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_attr = (*C.struct_lttng_save_session_attr)(arg_attr.ref.ptr)
-	result := C.lttng_save_session_attr_get_output_url(native_attr)
+	result := C.ctlgo_lttng_save_session_attr_get_output_url(native_attr)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -7594,12 +9285,18 @@ func SaveSessionAttrGetOverwrite(ctx context.Context, arg_attr *SaveSessionAttr)
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_save_session_attr_get_overwrite"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_save_session_attr
 	if err := arg_attr.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_attr = (*C.struct_lttng_save_session_attr)(arg_attr.ref.ptr)
-	result := C.lttng_save_session_attr_get_overwrite(native_attr)
+	result := C.ctlgo_lttng_save_session_attr_get_overwrite(native_attr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_save_session_attr_get_overwrite", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7612,12 +9309,18 @@ func SaveSessionAttrGetOmitName(ctx context.Context, arg_attr *SaveSessionAttr) 
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_save_session_attr_get_omit_name"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_save_session_attr
 	if err := arg_attr.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_attr = (*C.struct_lttng_save_session_attr)(arg_attr.ref.ptr)
-	result := C.lttng_save_session_attr_get_omit_name(native_attr)
+	result := C.ctlgo_lttng_save_session_attr_get_omit_name(native_attr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_save_session_attr_get_omit_name", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7630,12 +9333,18 @@ func SaveSessionAttrGetOmitOutput(ctx context.Context, arg_attr *SaveSessionAttr
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_save_session_attr_get_omit_output"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_save_session_attr
 	if err := arg_attr.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_attr = (*C.struct_lttng_save_session_attr)(arg_attr.ref.ptr)
-	result := C.lttng_save_session_attr_get_omit_output(native_attr)
+	result := C.ctlgo_lttng_save_session_attr_get_omit_output(native_attr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_save_session_attr_get_omit_output", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7648,6 +9357,9 @@ func SaveSessionAttrSetSessionName(ctx context.Context, arg_attr *SaveSessionAtt
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_save_session_attr_set_session_name"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_save_session_attr
 	if err := arg_attr.resource().check(true); err != nil {
 		return 0, err
@@ -7658,7 +9370,10 @@ func SaveSessionAttrSetSessionName(ctx context.Context, arg_attr *SaveSessionAtt
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_save_session_attr_set_session_name(native_attr, native_session_name)
+	result := C.ctlgo_lttng_save_session_attr_set_session_name(native_attr, native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_save_session_attr_set_session_name", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7672,6 +9387,9 @@ func SaveSessionAttrSetOutputURL(ctx context.Context, arg_attr *SaveSessionAttr,
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_save_session_attr_set_output_url"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_save_session_attr
 	if err := arg_attr.resource().check(true); err != nil {
 		return 0, err
@@ -7682,7 +9400,10 @@ func SaveSessionAttrSetOutputURL(ctx context.Context, arg_attr *SaveSessionAttr,
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_url))
-	result := C.lttng_save_session_attr_set_output_url(native_attr, native_url)
+	result := C.ctlgo_lttng_save_session_attr_set_output_url(native_attr, native_url)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_save_session_attr_set_output_url", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7696,6 +9417,9 @@ func SaveSessionAttrSetOverwrite(ctx context.Context, arg_attr *SaveSessionAttr,
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_save_session_attr_set_overwrite"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_save_session_attr
 	if err := arg_attr.resource().check(true); err != nil {
 		return 0, err
@@ -7704,7 +9428,10 @@ func SaveSessionAttrSetOverwrite(ctx context.Context, arg_attr *SaveSessionAttr,
 	if int64(C.int(arg_overwrite)) != int64(arg_overwrite) {
 		return 0, ErrInvalidArgument
 	}
-	result := C.lttng_save_session_attr_set_overwrite(native_attr, C.int(arg_overwrite))
+	result := C.ctlgo_lttng_save_session_attr_set_overwrite(native_attr, C.int(arg_overwrite))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_save_session_attr_set_overwrite", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7718,6 +9445,9 @@ func SaveSessionAttrSetOmitName(ctx context.Context, arg_attr *SaveSessionAttr, 
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_save_session_attr_set_omit_name"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_save_session_attr
 	if err := arg_attr.resource().check(true); err != nil {
 		return 0, err
@@ -7726,7 +9456,10 @@ func SaveSessionAttrSetOmitName(ctx context.Context, arg_attr *SaveSessionAttr, 
 	if int64(C.int(arg_omit_name)) != int64(arg_omit_name) {
 		return 0, ErrInvalidArgument
 	}
-	result := C.lttng_save_session_attr_set_omit_name(native_attr, C.int(arg_omit_name))
+	result := C.ctlgo_lttng_save_session_attr_set_omit_name(native_attr, C.int(arg_omit_name))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_save_session_attr_set_omit_name", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7740,6 +9473,9 @@ func SaveSessionAttrSetOmitOutput(ctx context.Context, arg_attr *SaveSessionAttr
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_save_session_attr_set_omit_output"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_save_session_attr
 	if err := arg_attr.resource().check(true); err != nil {
 		return 0, err
@@ -7748,7 +9484,10 @@ func SaveSessionAttrSetOmitOutput(ctx context.Context, arg_attr *SaveSessionAttr
 	if int64(C.int(arg_omit_output)) != int64(arg_omit_output) {
 		return 0, ErrInvalidArgument
 	}
-	result := C.lttng_save_session_attr_set_omit_output(native_attr, C.int(arg_omit_output))
+	result := C.ctlgo_lttng_save_session_attr_set_omit_output(native_attr, C.int(arg_omit_output))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_save_session_attr_set_omit_output", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7762,12 +9501,18 @@ func SaveSession(ctx context.Context, arg_attr *SaveSessionAttr) (int, error) {
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_save_session"); err != nil {
+		return 0, err
+	}
 	var native_attr *C.struct_lttng_save_session_attr
 	if err := arg_attr.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_attr = (*C.struct_lttng_save_session_attr)(arg_attr.ref.ptr)
-	result := C.lttng_save_session(native_attr)
+	result := C.ctlgo_lttng_save_session(native_attr)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_save_session", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -7780,16 +9525,24 @@ func SessionDescriptorCreate(ctx context.Context, arg_session_name *string) (*Se
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_session_descriptor_create", "lttng_session_descriptor_destroy"); err != nil {
+		return nil, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return nil, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_session_descriptor_create(native_session_name)
+	result := C.ctlgo_lttng_session_descriptor_create(native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p)) })}
+	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
+		C.ctlgo_lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p))
+	})}
 	return out, nil
 }
 
@@ -7799,6 +9552,9 @@ func SessionDescriptorLocalCreate(ctx context.Context, arg_session_name *string,
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_session_descriptor_local_create", "lttng_session_descriptor_destroy"); err != nil {
+		return nil, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return nil, err
@@ -7809,11 +9565,16 @@ func SessionDescriptorLocalCreate(ctx context.Context, arg_session_name *string,
 		return nil, err
 	}
 	defer C.free(unsafe.Pointer(native_trace_dir))
-	result := C.lttng_session_descriptor_local_create(native_session_name, native_trace_dir)
+	result := C.ctlgo_lttng_session_descriptor_local_create(native_session_name, native_trace_dir)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p)) })}
+	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
+		C.ctlgo_lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p))
+	})}
 	return out, nil
 }
 
@@ -7823,6 +9584,9 @@ func SessionDescriptorNetworkCreate(ctx context.Context, arg_session_name *strin
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_session_descriptor_network_create", "lttng_session_descriptor_destroy"); err != nil {
+		return nil, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return nil, err
@@ -7838,11 +9602,16 @@ func SessionDescriptorNetworkCreate(ctx context.Context, arg_session_name *strin
 		return nil, err
 	}
 	defer C.free(unsafe.Pointer(native_data_url))
-	result := C.lttng_session_descriptor_network_create(native_session_name, native_control_url, native_data_url)
+	result := C.ctlgo_lttng_session_descriptor_network_create(native_session_name, native_control_url, native_data_url)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p)) })}
+	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
+		C.ctlgo_lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p))
+	})}
 	return out, nil
 }
 
@@ -7852,16 +9621,24 @@ func SessionDescriptorSnapshotCreate(ctx context.Context, arg_session_name *stri
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_session_descriptor_snapshot_create", "lttng_session_descriptor_destroy"); err != nil {
+		return nil, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return nil, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_session_descriptor_snapshot_create(native_session_name)
+	result := C.ctlgo_lttng_session_descriptor_snapshot_create(native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p)) })}
+	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
+		C.ctlgo_lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p))
+	})}
 	return out, nil
 }
 
@@ -7871,6 +9648,9 @@ func SessionDescriptorSnapshotLocalCreate(ctx context.Context, arg_session_name 
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_session_descriptor_snapshot_local_create", "lttng_session_descriptor_destroy"); err != nil {
+		return nil, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return nil, err
@@ -7881,11 +9661,16 @@ func SessionDescriptorSnapshotLocalCreate(ctx context.Context, arg_session_name 
 		return nil, err
 	}
 	defer C.free(unsafe.Pointer(native_trace_dir))
-	result := C.lttng_session_descriptor_snapshot_local_create(native_session_name, native_trace_dir)
+	result := C.ctlgo_lttng_session_descriptor_snapshot_local_create(native_session_name, native_trace_dir)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p)) })}
+	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
+		C.ctlgo_lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p))
+	})}
 	return out, nil
 }
 
@@ -7895,6 +9680,9 @@ func SessionDescriptorSnapshotNetworkCreate(ctx context.Context, arg_session_nam
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_session_descriptor_snapshot_network_create", "lttng_session_descriptor_destroy"); err != nil {
+		return nil, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return nil, err
@@ -7910,11 +9698,16 @@ func SessionDescriptorSnapshotNetworkCreate(ctx context.Context, arg_session_nam
 		return nil, err
 	}
 	defer C.free(unsafe.Pointer(native_data_url))
-	result := C.lttng_session_descriptor_snapshot_network_create(native_session_name, native_control_url, native_data_url)
+	result := C.ctlgo_lttng_session_descriptor_snapshot_network_create(native_session_name, native_control_url, native_data_url)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p)) })}
+	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
+		C.ctlgo_lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p))
+	})}
 	return out, nil
 }
 
@@ -7924,16 +9717,24 @@ func SessionDescriptorLiveCreate(ctx context.Context, arg_name *string, arg_live
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_session_descriptor_live_create", "lttng_session_descriptor_destroy"); err != nil {
+		return nil, err
+	}
 	native_name, err := cstring(arg_name)
 	if err != nil {
 		return nil, err
 	}
 	defer C.free(unsafe.Pointer(native_name))
-	result := C.lttng_session_descriptor_live_create(native_name, C.ulonglong(arg_live_timer_interval_us))
+	result := C.ctlgo_lttng_session_descriptor_live_create(native_name, C.ulonglong(arg_live_timer_interval_us))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p)) })}
+	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
+		C.ctlgo_lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p))
+	})}
 	return out, nil
 }
 
@@ -7943,6 +9744,9 @@ func SessionDescriptorLiveNetworkCreate(ctx context.Context, arg_session_name *s
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_session_descriptor_live_network_create", "lttng_session_descriptor_destroy"); err != nil {
+		return nil, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return nil, err
@@ -7958,11 +9762,16 @@ func SessionDescriptorLiveNetworkCreate(ctx context.Context, arg_session_name *s
 		return nil, err
 	}
 	defer C.free(unsafe.Pointer(native_data_url))
-	result := C.lttng_session_descriptor_live_network_create(native_session_name, native_control_url, native_data_url, C.ulonglong(arg_live_timer_period))
+	result := C.ctlgo_lttng_session_descriptor_live_network_create(native_session_name, native_control_url, native_data_url, C.ulonglong(arg_live_timer_period))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p)) })}
+	out := &SessionDescriptor{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
+		C.ctlgo_lttng_session_descriptor_destroy((*C.struct_lttng_session_descriptor)(p))
+	})}
 	return out, nil
 }
 
@@ -7972,13 +9781,19 @@ func SessionDescriptorGetSessionName(ctx context.Context, arg_session_descriptor
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_session_descriptor_get_session_name"); err != nil {
+		return 0, nil, err
+	}
 	var native_session_descriptor *C.struct_lttng_session_descriptor
 	if err := arg_session_descriptor.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_session_descriptor = (*C.struct_lttng_session_descriptor)(arg_session_descriptor.ref.ptr)
 	var native_session_name *C.char
-	result := C.lttng_session_descriptor_get_session_name(native_session_descriptor, &native_session_name)
+	result := C.ctlgo_lttng_session_descriptor_get_session_name(native_session_descriptor, &native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_session_descriptor_get_session_name", "lttng_session_descriptor_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -7992,7 +9807,7 @@ func SessionDescriptorDestroy(ctx context.Context, arg *SessionDescriptor) error
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // CreateSessionExt wraps lttng_create_session_ext (lttng/session.h).
@@ -8001,12 +9816,18 @@ func CreateSessionExt(ctx context.Context, arg_session_descriptor *SessionDescri
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_create_session_ext"); err != nil {
+		return 0, err
+	}
 	var native_session_descriptor *C.struct_lttng_session_descriptor
 	if err := arg_session_descriptor.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_session_descriptor = (*C.struct_lttng_session_descriptor)(arg_session_descriptor.ref.ptr)
-	result := C.lttng_create_session_ext(native_session_descriptor)
+	result := C.ctlgo_lttng_create_session_ext(native_session_descriptor)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_create_session_ext", "lttng_error_code", int(result), true); err != nil {
 		return 0, err
 	}
@@ -8019,6 +9840,9 @@ func CreateSession(ctx context.Context, arg_session_name *string, arg_output_url
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_create_session"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
@@ -8029,7 +9853,10 @@ func CreateSession(ctx context.Context, arg_session_name *string, arg_output_url
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_output_url))
-	result := C.lttng_create_session(native_session_name, native_output_url)
+	result := C.ctlgo_lttng_create_session(native_session_name, native_output_url)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_create_session", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8042,6 +9869,9 @@ func CreateSessionSnapshot(ctx context.Context, arg_session_name *string, arg_ou
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_create_session_snapshot"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
@@ -8052,7 +9882,10 @@ func CreateSessionSnapshot(ctx context.Context, arg_session_name *string, arg_ou
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_output_url))
-	result := C.lttng_create_session_snapshot(native_session_name, native_output_url)
+	result := C.ctlgo_lttng_create_session_snapshot(native_session_name, native_output_url)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_create_session_snapshot", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8065,6 +9898,9 @@ func CreateSessionLive(ctx context.Context, arg_session_name *string, arg_output
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_create_session_live"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
@@ -8075,7 +9911,10 @@ func CreateSessionLive(ctx context.Context, arg_session_name *string, arg_output
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_output_url))
-	result := C.lttng_create_session_live(native_session_name, native_output_url, C.uint(arg_live_timer_period))
+	result := C.ctlgo_lttng_create_session_live(native_session_name, native_output_url, C.uint(arg_live_timer_period))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_create_session_live", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8088,12 +9927,18 @@ func DestroySession(ctx context.Context, arg_session_name *string) (int, error) 
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_destroy_session"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_destroy_session(native_session_name)
+	result := C.ctlgo_lttng_destroy_session(native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_destroy_session", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8106,12 +9951,18 @@ func DestroySessionNoWait(ctx context.Context, arg_session_name *string) (int, e
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_destroy_session_no_wait"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
-	result := C.lttng_destroy_session_no_wait(native_session_name)
+	result := C.ctlgo_lttng_destroy_session_no_wait(native_session_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_destroy_session_no_wait", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8124,19 +9975,27 @@ func DestroySessionExt(ctx context.Context, arg_session_name *string) (ErrorCode
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_destroy_session_ext", "lttng_destruction_handle_destroy"); err != nil {
+		return 0, nil, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, nil, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
 	var native_handle *C.struct_lttng_destruction_handle
-	result := C.lttng_destroy_session_ext(native_session_name, &native_handle)
+	result := C.ctlgo_lttng_destroy_session_ext(native_session_name, &native_handle)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_destroy_session_ext", "lttng_error_code", int(result), true); err != nil {
 		return 0, nil, err
 	}
 	var out_handle *DestructionHandle
 	if native_handle != nil {
-		out_handle = &DestructionHandle{ref: own(unsafe.Pointer(native_handle), func(p unsafe.Pointer) { C.lttng_destruction_handle_destroy((*C.struct_lttng_destruction_handle)(p)) })}
+		out_handle = &DestructionHandle{ref: own(unsafe.Pointer(native_handle), func(p unsafe.Pointer) {
+			C.ctlgo_lttng_destruction_handle_destroy((*C.struct_lttng_destruction_handle)(p))
+		})}
 	}
 	return ErrorCode(result), out_handle, nil
 }
@@ -8147,8 +10006,14 @@ func ListSessions(ctx context.Context) (int, *List[*Session], error) {
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_list_sessions"); err != nil {
+		return 0, nil, err
+	}
 	var native_sessions *C.struct_lttng_session
-	result := C.lttng_list_sessions(&native_sessions)
+	result := C.ctlgo_lttng_list_sessions(&native_sessions)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_list_sessions", "int", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -8166,13 +10031,19 @@ func SessionGetCreationTime(ctx context.Context, arg_session *Session) (ErrorCod
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_session_get_creation_time"); err != nil {
+		return 0, 0, err
+	}
 	var native_session *C.struct_lttng_session
 	if err := arg_session.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_session = (*C.struct_lttng_session)(arg_session.ref.ptr)
 	var native_creation_timestamp C.uint64_t
-	result := C.lttng_session_get_creation_time(native_session, &native_creation_timestamp)
+	result := C.ctlgo_lttng_session_get_creation_time(native_session, &native_creation_timestamp)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_session_get_creation_time", "lttng_error_code", int(result), true); err != nil {
 		return 0, 0, err
 	}
@@ -8185,6 +10056,9 @@ func SetSessionShmPath(ctx context.Context, arg_session_name *string, arg_shm_di
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_set_session_shm_path"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
@@ -8195,7 +10069,10 @@ func SetSessionShmPath(ctx context.Context, arg_session_name *string, arg_shm_di
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_shm_dir))
-	result := C.lttng_set_session_shm_path(native_session_name, native_shm_dir)
+	result := C.ctlgo_lttng_set_session_shm_path(native_session_name, native_shm_dir)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_set_session_shm_path", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8208,13 +10085,19 @@ func GetSessionShmPathOverride(ctx context.Context, arg_session *Session) (GetSe
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_get_session_shm_path_override"); err != nil {
+		return 0, nil, err
+	}
 	var native_session *C.struct_lttng_session
 	if err := arg_session.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_session = (*C.struct_lttng_session)(arg_session.ref.ptr)
 	var native_shm_dir *C.char
-	result := C.lttng_get_session_shm_path_override(native_session, &native_shm_dir)
+	result := C.ctlgo_lttng_get_session_shm_path_override(native_session, &native_shm_dir)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_get_session_shm_path_override", "lttng_get_session_shm_path_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -8227,11 +10110,17 @@ func SnapshotOutputCreate(ctx context.Context) (*SnapshotOutput, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_snapshot_output_create()
+	if err := ctlstate.Require("lttng_snapshot_output_create", "lttng_snapshot_output_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_snapshot_output_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &SnapshotOutput{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_snapshot_output_destroy((*C.struct_lttng_snapshot_output)(p)) })}
+	out := &SnapshotOutput{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_snapshot_output_destroy((*C.struct_lttng_snapshot_output)(p)) })}
 	return out, nil
 }
 
@@ -8242,7 +10131,7 @@ func SnapshotOutputDestroy(ctx context.Context, arg *SnapshotOutput) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // SnapshotOutputGetID wraps lttng_snapshot_output_get_id (lttng/snapshot.h).
@@ -8251,12 +10140,18 @@ func SnapshotOutputGetID(ctx context.Context, arg_output *SnapshotOutput) (uint3
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_output_get_id"); err != nil {
+		return 0, err
+	}
 	var native_output *C.struct_lttng_snapshot_output
 	if err := arg_output.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_snapshot_output_get_id(native_output)
+	result := C.ctlgo_lttng_snapshot_output_get_id(native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return uint32(result), nil
 }
 
@@ -8266,12 +10161,18 @@ func SnapshotOutputGetMaxsize(ctx context.Context, arg_output *SnapshotOutput) (
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_output_get_maxsize"); err != nil {
+		return 0, err
+	}
 	var native_output *C.struct_lttng_snapshot_output
 	if err := arg_output.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_snapshot_output_get_maxsize(native_output)
+	result := C.ctlgo_lttng_snapshot_output_get_maxsize(native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return uint64(result), nil
 }
 
@@ -8281,12 +10182,18 @@ func SnapshotOutputGetName(ctx context.Context, arg_output *SnapshotOutput) (*st
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_output_get_name"); err != nil {
+		return nil, err
+	}
 	var native_output *C.struct_lttng_snapshot_output
 	if err := arg_output.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_snapshot_output_get_name(native_output)
+	result := C.ctlgo_lttng_snapshot_output_get_name(native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -8296,12 +10203,18 @@ func SnapshotOutputGetCtrlURL(ctx context.Context, arg_output *SnapshotOutput) (
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_output_get_ctrl_url"); err != nil {
+		return nil, err
+	}
 	var native_output *C.struct_lttng_snapshot_output
 	if err := arg_output.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_snapshot_output_get_ctrl_url(native_output)
+	result := C.ctlgo_lttng_snapshot_output_get_ctrl_url(native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -8311,12 +10224,18 @@ func SnapshotOutputGetDataURL(ctx context.Context, arg_output *SnapshotOutput) (
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_output_get_data_url"); err != nil {
+		return nil, err
+	}
 	var native_output *C.struct_lttng_snapshot_output
 	if err := arg_output.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_snapshot_output_get_data_url(native_output)
+	result := C.ctlgo_lttng_snapshot_output_get_data_url(native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -8326,12 +10245,18 @@ func SnapshotOutputSetID(ctx context.Context, arg_id uint32, arg_output *Snapsho
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_output_set_id"); err != nil {
+		return 0, err
+	}
 	var native_output *C.struct_lttng_snapshot_output
 	if err := arg_output.resource().check(true); err != nil {
 		return 0, err
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_snapshot_output_set_id(C.uint32_t(arg_id), native_output)
+	result := C.ctlgo_lttng_snapshot_output_set_id(C.uint32_t(arg_id), native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_snapshot_output_set_id", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8345,12 +10270,18 @@ func SnapshotOutputSetSize(ctx context.Context, arg_size uint64, arg_output *Sna
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_output_set_size"); err != nil {
+		return 0, err
+	}
 	var native_output *C.struct_lttng_snapshot_output
 	if err := arg_output.resource().check(true); err != nil {
 		return 0, err
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_snapshot_output_set_size(C.uint64_t(arg_size), native_output)
+	result := C.ctlgo_lttng_snapshot_output_set_size(C.uint64_t(arg_size), native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_snapshot_output_set_size", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8364,6 +10295,9 @@ func SnapshotOutputSetName(ctx context.Context, arg_name *string, arg_output *Sn
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_output_set_name"); err != nil {
+		return 0, err
+	}
 	native_name, err := cstring(arg_name)
 	if err != nil {
 		return 0, err
@@ -8374,7 +10308,10 @@ func SnapshotOutputSetName(ctx context.Context, arg_name *string, arg_output *Sn
 		return 0, err
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_snapshot_output_set_name(native_name, native_output)
+	result := C.ctlgo_lttng_snapshot_output_set_name(native_name, native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_snapshot_output_set_name", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8388,6 +10325,9 @@ func SnapshotOutputSetLocalPath(ctx context.Context, arg_path *string, arg_outpu
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_output_set_local_path"); err != nil {
+		return 0, err
+	}
 	native_path, err := cstring(arg_path)
 	if err != nil {
 		return 0, err
@@ -8398,7 +10338,10 @@ func SnapshotOutputSetLocalPath(ctx context.Context, arg_path *string, arg_outpu
 		return 0, err
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_snapshot_output_set_local_path(native_path, native_output)
+	result := C.ctlgo_lttng_snapshot_output_set_local_path(native_path, native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_snapshot_output_set_local_path", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8412,6 +10355,9 @@ func SnapshotOutputSetNetworkURL(ctx context.Context, arg_url *string, arg_outpu
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_output_set_network_url"); err != nil {
+		return 0, err
+	}
 	native_url, err := cstring(arg_url)
 	if err != nil {
 		return 0, err
@@ -8422,7 +10368,10 @@ func SnapshotOutputSetNetworkURL(ctx context.Context, arg_url *string, arg_outpu
 		return 0, err
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_snapshot_output_set_network_url(native_url, native_output)
+	result := C.ctlgo_lttng_snapshot_output_set_network_url(native_url, native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_snapshot_output_set_network_url", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8436,6 +10385,9 @@ func SnapshotOutputSetNetworkURLS(ctx context.Context, arg_ctrl_url *string, arg
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_output_set_network_urls"); err != nil {
+		return 0, err
+	}
 	native_ctrl_url, err := cstring(arg_ctrl_url)
 	if err != nil {
 		return 0, err
@@ -8451,7 +10403,10 @@ func SnapshotOutputSetNetworkURLS(ctx context.Context, arg_ctrl_url *string, arg
 		return 0, err
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_snapshot_output_set_network_urls(native_ctrl_url, native_data_url, native_output)
+	result := C.ctlgo_lttng_snapshot_output_set_network_urls(native_ctrl_url, native_data_url, native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_snapshot_output_set_network_urls", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8465,6 +10420,9 @@ func SnapshotOutputSetCtrlURL(ctx context.Context, arg_url *string, arg_output *
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_output_set_ctrl_url"); err != nil {
+		return 0, err
+	}
 	native_url, err := cstring(arg_url)
 	if err != nil {
 		return 0, err
@@ -8475,7 +10433,10 @@ func SnapshotOutputSetCtrlURL(ctx context.Context, arg_url *string, arg_output *
 		return 0, err
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_snapshot_output_set_ctrl_url(native_url, native_output)
+	result := C.ctlgo_lttng_snapshot_output_set_ctrl_url(native_url, native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_snapshot_output_set_ctrl_url", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8489,6 +10450,9 @@ func SnapshotOutputSetDataURL(ctx context.Context, arg_url *string, arg_output *
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_output_set_data_url"); err != nil {
+		return 0, err
+	}
 	native_url, err := cstring(arg_url)
 	if err != nil {
 		return 0, err
@@ -8499,7 +10463,10 @@ func SnapshotOutputSetDataURL(ctx context.Context, arg_url *string, arg_output *
 		return 0, err
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_snapshot_output_set_data_url(native_url, native_output)
+	result := C.ctlgo_lttng_snapshot_output_set_data_url(native_url, native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_snapshot_output_set_data_url", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8513,6 +10480,9 @@ func SnapshotAddOutput(ctx context.Context, arg_session_name *string, arg_output
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_add_output"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
@@ -8523,7 +10493,10 @@ func SnapshotAddOutput(ctx context.Context, arg_session_name *string, arg_output
 		return 0, err
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_snapshot_add_output(native_session_name, native_output)
+	result := C.ctlgo_lttng_snapshot_add_output(native_session_name, native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_snapshot_add_output", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8537,6 +10510,9 @@ func SnapshotDelOutput(ctx context.Context, arg_session_name *string, arg_output
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_del_output"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
@@ -8547,7 +10523,10 @@ func SnapshotDelOutput(ctx context.Context, arg_session_name *string, arg_output
 		return 0, err
 	}
 	native_output = (*C.struct_lttng_snapshot_output)(arg_output.ref.ptr)
-	result := C.lttng_snapshot_del_output(native_session_name, native_output)
+	result := C.ctlgo_lttng_snapshot_del_output(native_session_name, native_output)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_snapshot_del_output", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8560,20 +10539,26 @@ func SnapshotListOutput(ctx context.Context, arg_session_name *string) (int, *Sn
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_list_output", "lttng_snapshot_output_list_destroy"); err != nil {
+		return 0, nil, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, nil, err
 	}
 	defer C.free(unsafe.Pointer(native_session_name))
 	var native_list *C.struct_lttng_snapshot_output_list
-	result := C.lttng_snapshot_list_output(native_session_name, &native_list)
+	result := C.ctlgo_lttng_snapshot_list_output(native_session_name, &native_list)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_snapshot_list_output", "int", int(result), false); err != nil {
 		return 0, nil, err
 	}
 	var out_list *SnapshotOutputList
 	if native_list != nil {
 		out_list = &SnapshotOutputList{ref: own(unsafe.Pointer(native_list), func(p unsafe.Pointer) {
-			C.lttng_snapshot_output_list_destroy((*C.struct_lttng_snapshot_output_list)(p))
+			C.ctlgo_lttng_snapshot_output_list_destroy((*C.struct_lttng_snapshot_output_list)(p))
 		})}
 	}
 	return int(result), out_list, nil
@@ -8585,12 +10570,18 @@ func SnapshotOutputListGetNext(ctx context.Context, arg_list *SnapshotOutputList
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_output_list_get_next", "lttng_snapshot_output_destroy"); err != nil {
+		return nil, err
+	}
 	var native_list *C.struct_lttng_snapshot_output_list
 	if err := arg_list.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_list = (*C.struct_lttng_snapshot_output_list)(arg_list.ref.ptr)
-	result := C.lttng_snapshot_output_list_get_next(native_list)
+	result := C.ctlgo_lttng_snapshot_output_list_get_next(native_list)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -8605,7 +10596,7 @@ func SnapshotOutputListDestroy(ctx context.Context, arg *SnapshotOutputList) err
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // SnapshotRecord wraps lttng_snapshot_record (lttng/snapshot.h).
@@ -8614,6 +10605,9 @@ func SnapshotRecord(ctx context.Context, arg_session_name *string, arg_output *S
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_snapshot_record"); err != nil {
+		return 0, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, err
@@ -8629,7 +10623,10 @@ func SnapshotRecord(ctx context.Context, arg_session_name *string, arg_output *S
 	if int64(C.int(arg_wait)) != int64(arg_wait) {
 		return 0, ErrInvalidArgument
 	}
-	result := C.lttng_snapshot_record(native_session_name, native_output, C.int(arg_wait))
+	result := C.ctlgo_lttng_snapshot_record(native_session_name, native_output, C.int(arg_wait))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_snapshot_record", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8642,6 +10639,9 @@ func SessionGetTrackerHandle(ctx context.Context, arg_session_name *string, arg_
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_session_get_tracker_handle", "lttng_process_attr_tracker_handle_destroy"); err != nil {
+		return 0, nil, err
+	}
 	native_session_name, err := cstring(arg_session_name)
 	if err != nil {
 		return 0, nil, err
@@ -8654,14 +10654,17 @@ func SessionGetTrackerHandle(ctx context.Context, arg_session_name *string, arg_
 		return 0, nil, ErrInvalidArgument
 	}
 	var native_out_tracker_handle *C.struct_lttng_process_attr_tracker_handle
-	result := C.lttng_session_get_tracker_handle(native_session_name, C.enum_lttng_domain_type(arg_domain), C.enum_lttng_process_attr(arg_process_attr), &native_out_tracker_handle)
+	result := C.ctlgo_lttng_session_get_tracker_handle(native_session_name, C.enum_lttng_domain_type(arg_domain), C.enum_lttng_process_attr(arg_process_attr), &native_out_tracker_handle)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_session_get_tracker_handle", "lttng_error_code", int(result), true); err != nil {
 		return 0, nil, err
 	}
 	var out_out_tracker_handle *ProcessAttrTrackerHandle
 	if native_out_tracker_handle != nil {
 		out_out_tracker_handle = &ProcessAttrTrackerHandle{ref: own(unsafe.Pointer(native_out_tracker_handle), func(p unsafe.Pointer) {
-			C.lttng_process_attr_tracker_handle_destroy((*C.struct_lttng_process_attr_tracker_handle)(p))
+			C.ctlgo_lttng_process_attr_tracker_handle_destroy((*C.struct_lttng_process_attr_tracker_handle)(p))
 		})}
 	}
 	return ErrorCode(result), out_out_tracker_handle, nil
@@ -8674,7 +10677,7 @@ func ProcessAttrTrackerHandleDestroy(ctx context.Context, arg *ProcessAttrTracke
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // ProcessAttrTrackerHandleGetTrackingPolicy wraps lttng_process_attr_tracker_handle_get_tracking_policy (lttng/tracker.h).
@@ -8683,13 +10686,19 @@ func ProcessAttrTrackerHandleGetTrackingPolicy(ctx context.Context, arg_tracker_
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_tracker_handle_get_tracking_policy"); err != nil {
+		return 0, 0, err
+	}
 	var native_tracker_handle *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_tracker_handle.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_tracker_handle = (*C.struct_lttng_process_attr_tracker_handle)(arg_tracker_handle.ref.ptr)
 	var native_policy C.enum_lttng_tracking_policy
-	result := C.lttng_process_attr_tracker_handle_get_tracking_policy(native_tracker_handle, &native_policy)
+	result := C.ctlgo_lttng_process_attr_tracker_handle_get_tracking_policy(native_tracker_handle, &native_policy)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_process_attr_tracker_handle_get_tracking_policy", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -8702,6 +10711,9 @@ func ProcessAttrTrackerHandleSetTrackingPolicy(ctx context.Context, arg_tracker_
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_tracker_handle_set_tracking_policy"); err != nil {
+		return 0, err
+	}
 	var native_tracker_handle *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_tracker_handle.resource().check(false); err != nil {
 		return 0, err
@@ -8710,7 +10722,10 @@ func ProcessAttrTrackerHandleSetTrackingPolicy(ctx context.Context, arg_tracker_
 	if int64(C.enum_lttng_tracking_policy(arg_policy)) != int64(arg_policy) {
 		return 0, ErrInvalidArgument
 	}
-	result := C.lttng_process_attr_tracker_handle_set_tracking_policy(native_tracker_handle, C.enum_lttng_tracking_policy(arg_policy))
+	result := C.ctlgo_lttng_process_attr_tracker_handle_set_tracking_policy(native_tracker_handle, C.enum_lttng_tracking_policy(arg_policy))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_tracker_handle_set_tracking_policy", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8723,12 +10738,18 @@ func ProcessAttrProcessIDTrackerHandleAddPID(ctx context.Context, arg_process_id
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_process_id_tracker_handle_add_pid"); err != nil {
+		return 0, err
+	}
 	var native_process_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_process_id_tracker.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_process_id_tracker = (*C.struct_lttng_process_attr_tracker_handle)(arg_process_id_tracker.ref.ptr)
-	result := C.lttng_process_attr_process_id_tracker_handle_add_pid(native_process_id_tracker, C.pid_t(arg_pid))
+	result := C.ctlgo_lttng_process_attr_process_id_tracker_handle_add_pid(native_process_id_tracker, C.pid_t(arg_pid))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_process_id_tracker_handle_add_pid", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8741,12 +10762,18 @@ func ProcessAttrProcessIDTrackerHandleRemovePID(ctx context.Context, arg_process
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_process_id_tracker_handle_remove_pid"); err != nil {
+		return 0, err
+	}
 	var native_process_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_process_id_tracker.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_process_id_tracker = (*C.struct_lttng_process_attr_tracker_handle)(arg_process_id_tracker.ref.ptr)
-	result := C.lttng_process_attr_process_id_tracker_handle_remove_pid(native_process_id_tracker, C.pid_t(arg_pid))
+	result := C.ctlgo_lttng_process_attr_process_id_tracker_handle_remove_pid(native_process_id_tracker, C.pid_t(arg_pid))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_process_id_tracker_handle_remove_pid", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8759,12 +10786,18 @@ func ProcessAttrVirtualProcessIDTrackerHandleAddPID(ctx context.Context, arg_pro
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_virtual_process_id_tracker_handle_add_pid"); err != nil {
+		return 0, err
+	}
 	var native_process_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_process_id_tracker.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_process_id_tracker = (*C.struct_lttng_process_attr_tracker_handle)(arg_process_id_tracker.ref.ptr)
-	result := C.lttng_process_attr_virtual_process_id_tracker_handle_add_pid(native_process_id_tracker, C.pid_t(arg_vpid))
+	result := C.ctlgo_lttng_process_attr_virtual_process_id_tracker_handle_add_pid(native_process_id_tracker, C.pid_t(arg_vpid))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_virtual_process_id_tracker_handle_add_pid", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8777,12 +10810,18 @@ func ProcessAttrVirtualProcessIDTrackerHandleRemovePID(ctx context.Context, arg_
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_virtual_process_id_tracker_handle_remove_pid"); err != nil {
+		return 0, err
+	}
 	var native_process_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_process_id_tracker.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_process_id_tracker = (*C.struct_lttng_process_attr_tracker_handle)(arg_process_id_tracker.ref.ptr)
-	result := C.lttng_process_attr_virtual_process_id_tracker_handle_remove_pid(native_process_id_tracker, C.pid_t(arg_vpid))
+	result := C.ctlgo_lttng_process_attr_virtual_process_id_tracker_handle_remove_pid(native_process_id_tracker, C.pid_t(arg_vpid))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_virtual_process_id_tracker_handle_remove_pid", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8795,12 +10834,18 @@ func ProcessAttrUserIDTrackerHandleAddUID(ctx context.Context, arg_user_id_track
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_user_id_tracker_handle_add_uid"); err != nil {
+		return 0, err
+	}
 	var native_user_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_user_id_tracker.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_user_id_tracker = (*C.struct_lttng_process_attr_tracker_handle)(arg_user_id_tracker.ref.ptr)
-	result := C.lttng_process_attr_user_id_tracker_handle_add_uid(native_user_id_tracker, C.uid_t(arg_uid))
+	result := C.ctlgo_lttng_process_attr_user_id_tracker_handle_add_uid(native_user_id_tracker, C.uid_t(arg_uid))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_user_id_tracker_handle_add_uid", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8813,12 +10858,18 @@ func ProcessAttrUserIDTrackerHandleRemoveUID(ctx context.Context, arg_user_id_tr
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_user_id_tracker_handle_remove_uid"); err != nil {
+		return 0, err
+	}
 	var native_user_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_user_id_tracker.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_user_id_tracker = (*C.struct_lttng_process_attr_tracker_handle)(arg_user_id_tracker.ref.ptr)
-	result := C.lttng_process_attr_user_id_tracker_handle_remove_uid(native_user_id_tracker, C.uid_t(arg_uid))
+	result := C.ctlgo_lttng_process_attr_user_id_tracker_handle_remove_uid(native_user_id_tracker, C.uid_t(arg_uid))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_user_id_tracker_handle_remove_uid", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8831,6 +10882,9 @@ func ProcessAttrUserIDTrackerHandleAddUserName(ctx context.Context, arg_user_id_
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_user_id_tracker_handle_add_user_name"); err != nil {
+		return 0, err
+	}
 	var native_user_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_user_id_tracker.resource().check(false); err != nil {
 		return 0, err
@@ -8841,7 +10895,10 @@ func ProcessAttrUserIDTrackerHandleAddUserName(ctx context.Context, arg_user_id_
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_user_name))
-	result := C.lttng_process_attr_user_id_tracker_handle_add_user_name(native_user_id_tracker, native_user_name)
+	result := C.ctlgo_lttng_process_attr_user_id_tracker_handle_add_user_name(native_user_id_tracker, native_user_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_user_id_tracker_handle_add_user_name", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8854,6 +10911,9 @@ func ProcessAttrUserIDTrackerHandleRemoveUserName(ctx context.Context, arg_user_
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_user_id_tracker_handle_remove_user_name"); err != nil {
+		return 0, err
+	}
 	var native_user_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_user_id_tracker.resource().check(false); err != nil {
 		return 0, err
@@ -8864,7 +10924,10 @@ func ProcessAttrUserIDTrackerHandleRemoveUserName(ctx context.Context, arg_user_
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_user_name))
-	result := C.lttng_process_attr_user_id_tracker_handle_remove_user_name(native_user_id_tracker, native_user_name)
+	result := C.ctlgo_lttng_process_attr_user_id_tracker_handle_remove_user_name(native_user_id_tracker, native_user_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_user_id_tracker_handle_remove_user_name", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8877,12 +10940,18 @@ func ProcessAttrVirtualUserIDTrackerHandleAddUID(ctx context.Context, arg_user_i
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_virtual_user_id_tracker_handle_add_uid"); err != nil {
+		return 0, err
+	}
 	var native_user_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_user_id_tracker.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_user_id_tracker = (*C.struct_lttng_process_attr_tracker_handle)(arg_user_id_tracker.ref.ptr)
-	result := C.lttng_process_attr_virtual_user_id_tracker_handle_add_uid(native_user_id_tracker, C.uid_t(arg_vuid))
+	result := C.ctlgo_lttng_process_attr_virtual_user_id_tracker_handle_add_uid(native_user_id_tracker, C.uid_t(arg_vuid))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_virtual_user_id_tracker_handle_add_uid", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8895,12 +10964,18 @@ func ProcessAttrVirtualUserIDTrackerHandleRemoveUID(ctx context.Context, arg_use
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_virtual_user_id_tracker_handle_remove_uid"); err != nil {
+		return 0, err
+	}
 	var native_user_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_user_id_tracker.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_user_id_tracker = (*C.struct_lttng_process_attr_tracker_handle)(arg_user_id_tracker.ref.ptr)
-	result := C.lttng_process_attr_virtual_user_id_tracker_handle_remove_uid(native_user_id_tracker, C.uid_t(arg_vuid))
+	result := C.ctlgo_lttng_process_attr_virtual_user_id_tracker_handle_remove_uid(native_user_id_tracker, C.uid_t(arg_vuid))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_virtual_user_id_tracker_handle_remove_uid", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8913,6 +10988,9 @@ func ProcessAttrVirtualUserIDTrackerHandleAddUserName(ctx context.Context, arg_u
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_virtual_user_id_tracker_handle_add_user_name"); err != nil {
+		return 0, err
+	}
 	var native_user_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_user_id_tracker.resource().check(false); err != nil {
 		return 0, err
@@ -8923,7 +11001,10 @@ func ProcessAttrVirtualUserIDTrackerHandleAddUserName(ctx context.Context, arg_u
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_virtual_user_name))
-	result := C.lttng_process_attr_virtual_user_id_tracker_handle_add_user_name(native_user_id_tracker, native_virtual_user_name)
+	result := C.ctlgo_lttng_process_attr_virtual_user_id_tracker_handle_add_user_name(native_user_id_tracker, native_virtual_user_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_virtual_user_id_tracker_handle_add_user_name", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8936,6 +11017,9 @@ func ProcessAttrVirtualUserIDTrackerHandleRemoveUserName(ctx context.Context, ar
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_virtual_user_id_tracker_handle_remove_user_name"); err != nil {
+		return 0, err
+	}
 	var native_user_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_user_id_tracker.resource().check(false); err != nil {
 		return 0, err
@@ -8946,7 +11030,10 @@ func ProcessAttrVirtualUserIDTrackerHandleRemoveUserName(ctx context.Context, ar
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_virtual_user_name))
-	result := C.lttng_process_attr_virtual_user_id_tracker_handle_remove_user_name(native_user_id_tracker, native_virtual_user_name)
+	result := C.ctlgo_lttng_process_attr_virtual_user_id_tracker_handle_remove_user_name(native_user_id_tracker, native_virtual_user_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_virtual_user_id_tracker_handle_remove_user_name", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8959,12 +11046,18 @@ func ProcessAttrGroupIDTrackerHandleAddGID(ctx context.Context, arg_group_id_tra
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_group_id_tracker_handle_add_gid"); err != nil {
+		return 0, err
+	}
 	var native_group_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_group_id_tracker.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_group_id_tracker = (*C.struct_lttng_process_attr_tracker_handle)(arg_group_id_tracker.ref.ptr)
-	result := C.lttng_process_attr_group_id_tracker_handle_add_gid(native_group_id_tracker, C.gid_t(arg_gid))
+	result := C.ctlgo_lttng_process_attr_group_id_tracker_handle_add_gid(native_group_id_tracker, C.gid_t(arg_gid))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_group_id_tracker_handle_add_gid", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8977,12 +11070,18 @@ func ProcessAttrGroupIDTrackerHandleRemoveGID(ctx context.Context, arg_group_id_
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_group_id_tracker_handle_remove_gid"); err != nil {
+		return 0, err
+	}
 	var native_group_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_group_id_tracker.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_group_id_tracker = (*C.struct_lttng_process_attr_tracker_handle)(arg_group_id_tracker.ref.ptr)
-	result := C.lttng_process_attr_group_id_tracker_handle_remove_gid(native_group_id_tracker, C.gid_t(arg_gid))
+	result := C.ctlgo_lttng_process_attr_group_id_tracker_handle_remove_gid(native_group_id_tracker, C.gid_t(arg_gid))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_group_id_tracker_handle_remove_gid", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -8995,6 +11094,9 @@ func ProcessAttrGroupIDTrackerHandleAddGroupName(ctx context.Context, arg_group_
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_group_id_tracker_handle_add_group_name"); err != nil {
+		return 0, err
+	}
 	var native_group_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_group_id_tracker.resource().check(false); err != nil {
 		return 0, err
@@ -9005,7 +11107,10 @@ func ProcessAttrGroupIDTrackerHandleAddGroupName(ctx context.Context, arg_group_
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_group_name))
-	result := C.lttng_process_attr_group_id_tracker_handle_add_group_name(native_group_id_tracker, native_group_name)
+	result := C.ctlgo_lttng_process_attr_group_id_tracker_handle_add_group_name(native_group_id_tracker, native_group_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_group_id_tracker_handle_add_group_name", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -9018,6 +11123,9 @@ func ProcessAttrGroupIDTrackerHandleRemoveGroupName(ctx context.Context, arg_gro
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_group_id_tracker_handle_remove_group_name"); err != nil {
+		return 0, err
+	}
 	var native_group_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_group_id_tracker.resource().check(false); err != nil {
 		return 0, err
@@ -9028,7 +11136,10 @@ func ProcessAttrGroupIDTrackerHandleRemoveGroupName(ctx context.Context, arg_gro
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_group_name))
-	result := C.lttng_process_attr_group_id_tracker_handle_remove_group_name(native_group_id_tracker, native_group_name)
+	result := C.ctlgo_lttng_process_attr_group_id_tracker_handle_remove_group_name(native_group_id_tracker, native_group_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_group_id_tracker_handle_remove_group_name", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -9041,12 +11152,18 @@ func ProcessAttrVirtualGroupIDTrackerHandleAddGID(ctx context.Context, arg_group
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_virtual_group_id_tracker_handle_add_gid"); err != nil {
+		return 0, err
+	}
 	var native_group_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_group_id_tracker.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_group_id_tracker = (*C.struct_lttng_process_attr_tracker_handle)(arg_group_id_tracker.ref.ptr)
-	result := C.lttng_process_attr_virtual_group_id_tracker_handle_add_gid(native_group_id_tracker, C.gid_t(arg_vgid))
+	result := C.ctlgo_lttng_process_attr_virtual_group_id_tracker_handle_add_gid(native_group_id_tracker, C.gid_t(arg_vgid))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_virtual_group_id_tracker_handle_add_gid", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -9059,12 +11176,18 @@ func ProcessAttrVirtualGroupIDTrackerHandleRemoveGID(ctx context.Context, arg_gr
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_virtual_group_id_tracker_handle_remove_gid"); err != nil {
+		return 0, err
+	}
 	var native_group_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_group_id_tracker.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_group_id_tracker = (*C.struct_lttng_process_attr_tracker_handle)(arg_group_id_tracker.ref.ptr)
-	result := C.lttng_process_attr_virtual_group_id_tracker_handle_remove_gid(native_group_id_tracker, C.gid_t(arg_vgid))
+	result := C.ctlgo_lttng_process_attr_virtual_group_id_tracker_handle_remove_gid(native_group_id_tracker, C.gid_t(arg_vgid))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_virtual_group_id_tracker_handle_remove_gid", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -9077,6 +11200,9 @@ func ProcessAttrVirtualGroupIDTrackerHandleAddGroupName(ctx context.Context, arg
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_virtual_group_id_tracker_handle_add_group_name"); err != nil {
+		return 0, err
+	}
 	var native_group_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_group_id_tracker.resource().check(false); err != nil {
 		return 0, err
@@ -9087,7 +11213,10 @@ func ProcessAttrVirtualGroupIDTrackerHandleAddGroupName(ctx context.Context, arg
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_virtual_group_name))
-	result := C.lttng_process_attr_virtual_group_id_tracker_handle_add_group_name(native_group_id_tracker, native_virtual_group_name)
+	result := C.ctlgo_lttng_process_attr_virtual_group_id_tracker_handle_add_group_name(native_group_id_tracker, native_virtual_group_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_virtual_group_id_tracker_handle_add_group_name", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -9100,6 +11229,9 @@ func ProcessAttrVirtualGroupIDTrackerHandleRemoveGroupName(ctx context.Context, 
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_virtual_group_id_tracker_handle_remove_group_name"); err != nil {
+		return 0, err
+	}
 	var native_group_id_tracker *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_group_id_tracker.resource().check(false); err != nil {
 		return 0, err
@@ -9110,7 +11242,10 @@ func ProcessAttrVirtualGroupIDTrackerHandleRemoveGroupName(ctx context.Context, 
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_virtual_group_name))
-	result := C.lttng_process_attr_virtual_group_id_tracker_handle_remove_group_name(native_group_id_tracker, native_virtual_group_name)
+	result := C.ctlgo_lttng_process_attr_virtual_group_id_tracker_handle_remove_group_name(native_group_id_tracker, native_virtual_group_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_process_attr_virtual_group_id_tracker_handle_remove_group_name", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -9123,13 +11258,19 @@ func ProcessAttrTrackerHandleGetInclusionSet(ctx context.Context, arg_tracker_ha
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_tracker_handle_get_inclusion_set"); err != nil {
+		return 0, nil, err
+	}
 	var native_tracker_handle *C.struct_lttng_process_attr_tracker_handle
 	if err := arg_tracker_handle.resource().check(true); err != nil {
 		return 0, nil, err
 	}
 	native_tracker_handle = (*C.struct_lttng_process_attr_tracker_handle)(arg_tracker_handle.ref.ptr)
 	var native_values *C.struct_lttng_process_attr_values
-	result := C.lttng_process_attr_tracker_handle_get_inclusion_set(native_tracker_handle, &native_values)
+	result := C.ctlgo_lttng_process_attr_tracker_handle_get_inclusion_set(native_tracker_handle, &native_values)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_process_attr_tracker_handle_get_inclusion_set", "lttng_process_attr_tracker_handle_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -9147,13 +11288,19 @@ func ProcessAttrValuesGetCount(ctx context.Context, arg_values *ProcessAttrValue
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_values_get_count"); err != nil {
+		return 0, 0, err
+	}
 	var native_values *C.struct_lttng_process_attr_values
 	if err := arg_values.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_values = (*C.struct_lttng_process_attr_values)(arg_values.ref.ptr)
 	var native_count C.uint
-	result := C.lttng_process_attr_values_get_count(native_values, &native_count)
+	result := C.ctlgo_lttng_process_attr_values_get_count(native_values, &native_count)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_process_attr_values_get_count", "lttng_process_attr_values_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -9166,12 +11313,18 @@ func ProcessAttrValuesGetTypeAtIndex(ctx context.Context, arg_values *ProcessAtt
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_values_get_type_at_index"); err != nil {
+		return 0, err
+	}
 	var native_values *C.struct_lttng_process_attr_values
 	if err := arg_values.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_values = (*C.struct_lttng_process_attr_values)(arg_values.ref.ptr)
-	result := C.lttng_process_attr_values_get_type_at_index(native_values, C.uint(arg_index))
+	result := C.ctlgo_lttng_process_attr_values_get_type_at_index(native_values, C.uint(arg_index))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return ProcessAttrValueType(result), nil
 }
 
@@ -9181,13 +11334,19 @@ func ProcessAttrValuesGetPIDAtIndex(ctx context.Context, arg_values *ProcessAttr
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_values_get_pid_at_index"); err != nil {
+		return 0, 0, err
+	}
 	var native_values *C.struct_lttng_process_attr_values
 	if err := arg_values.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_values = (*C.struct_lttng_process_attr_values)(arg_values.ref.ptr)
 	var native_pid C.pid_t
-	result := C.lttng_process_attr_values_get_pid_at_index(native_values, C.uint(arg_index), &native_pid)
+	result := C.ctlgo_lttng_process_attr_values_get_pid_at_index(native_values, C.uint(arg_index), &native_pid)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_process_attr_values_get_pid_at_index", "lttng_process_attr_values_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -9200,13 +11359,19 @@ func ProcessAttrValuesGetUIDAtIndex(ctx context.Context, arg_values *ProcessAttr
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_values_get_uid_at_index"); err != nil {
+		return 0, 0, err
+	}
 	var native_values *C.struct_lttng_process_attr_values
 	if err := arg_values.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_values = (*C.struct_lttng_process_attr_values)(arg_values.ref.ptr)
 	var native_uid C.uid_t
-	result := C.lttng_process_attr_values_get_uid_at_index(native_values, C.uint(arg_index), &native_uid)
+	result := C.ctlgo_lttng_process_attr_values_get_uid_at_index(native_values, C.uint(arg_index), &native_uid)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_process_attr_values_get_uid_at_index", "lttng_process_attr_values_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -9219,13 +11384,19 @@ func ProcessAttrValuesGetUserNameAtIndex(ctx context.Context, arg_values *Proces
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_values_get_user_name_at_index"); err != nil {
+		return 0, nil, err
+	}
 	var native_values *C.struct_lttng_process_attr_values
 	if err := arg_values.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_values = (*C.struct_lttng_process_attr_values)(arg_values.ref.ptr)
 	var native_user_name *C.char
-	result := C.lttng_process_attr_values_get_user_name_at_index(native_values, C.uint(arg_index), &native_user_name)
+	result := C.ctlgo_lttng_process_attr_values_get_user_name_at_index(native_values, C.uint(arg_index), &native_user_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_process_attr_values_get_user_name_at_index", "lttng_process_attr_values_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -9238,13 +11409,19 @@ func ProcessAttrValuesGetGIDAtIndex(ctx context.Context, arg_values *ProcessAttr
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_values_get_gid_at_index"); err != nil {
+		return 0, 0, err
+	}
 	var native_values *C.struct_lttng_process_attr_values
 	if err := arg_values.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_values = (*C.struct_lttng_process_attr_values)(arg_values.ref.ptr)
 	var native_gid C.gid_t
-	result := C.lttng_process_attr_values_get_gid_at_index(native_values, C.uint(arg_index), &native_gid)
+	result := C.ctlgo_lttng_process_attr_values_get_gid_at_index(native_values, C.uint(arg_index), &native_gid)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_process_attr_values_get_gid_at_index", "lttng_process_attr_values_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -9257,13 +11434,19 @@ func ProcessAttrValuesGetGroupNameAtIndex(ctx context.Context, arg_values *Proce
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_process_attr_values_get_group_name_at_index"); err != nil {
+		return 0, nil, err
+	}
 	var native_values *C.struct_lttng_process_attr_values
 	if err := arg_values.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_values = (*C.struct_lttng_process_attr_values)(arg_values.ref.ptr)
 	var native_group_name *C.char
-	result := C.lttng_process_attr_values_get_group_name_at_index(native_values, C.uint(arg_index), &native_group_name)
+	result := C.ctlgo_lttng_process_attr_values_get_group_name_at_index(native_values, C.uint(arg_index), &native_group_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_process_attr_values_get_group_name_at_index", "lttng_process_attr_values_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -9276,6 +11459,9 @@ func ListTrackerPids(ctx context.Context, arg_handle *Handle) (int, int, []int32
 		return 0, 0, nil, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_list_tracker_pids"); err != nil {
+		return 0, 0, nil, 0, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(false); err != nil {
 		return 0, 0, nil, 0, err
@@ -9284,7 +11470,10 @@ func ListTrackerPids(ctx context.Context, arg_handle *Handle) (int, int, []int32
 	var native_enabled C.int
 	var native_pids *C.int32_t
 	var native_nr_pids C.size_t
-	result := C.lttng_list_tracker_pids(native_handle, &native_enabled, &native_pids, &native_nr_pids)
+	result := C.ctlgo_lttng_list_tracker_pids(native_handle, &native_enabled, &native_pids, &native_nr_pids)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, nil, 0, err
+	}
 	if err := statusError("lttng_list_tracker_pids", "int", int(result), false); err != nil {
 		return 0, 0, nil, 0, err
 	}
@@ -9302,6 +11491,9 @@ func TrackPID(ctx context.Context, arg_handle *Handle, arg_pid int) (int, error)
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_track_pid"); err != nil {
+		return 0, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(false); err != nil {
 		return 0, err
@@ -9310,7 +11502,10 @@ func TrackPID(ctx context.Context, arg_handle *Handle, arg_pid int) (int, error)
 	if int64(C.int(arg_pid)) != int64(arg_pid) {
 		return 0, ErrInvalidArgument
 	}
-	result := C.lttng_track_pid(native_handle, C.int(arg_pid))
+	result := C.ctlgo_lttng_track_pid(native_handle, C.int(arg_pid))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_track_pid", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -9323,6 +11518,9 @@ func UntrackPID(ctx context.Context, arg_handle *Handle, arg_pid int) (int, erro
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_untrack_pid"); err != nil {
+		return 0, err
+	}
 	var native_handle *C.struct_lttng_handle
 	if err := arg_handle.resource().check(false); err != nil {
 		return 0, err
@@ -9331,7 +11529,10 @@ func UntrackPID(ctx context.Context, arg_handle *Handle, arg_pid int) (int, erro
 	if int64(C.int(arg_pid)) != int64(arg_pid) {
 		return 0, ErrInvalidArgument
 	}
-	result := C.lttng_untrack_pid(native_handle, C.int(arg_pid))
+	result := C.ctlgo_lttng_untrack_pid(native_handle, C.int(arg_pid))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_untrack_pid", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -9344,6 +11545,9 @@ func TriggerCreate(ctx context.Context, arg_condition *Condition, arg_action *Ac
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_trigger_create", "lttng_trigger_destroy"); err != nil {
+		return nil, err
+	}
 	var native_condition *C.struct_lttng_condition
 	if err := arg_condition.resource().check(false); err != nil {
 		return nil, err
@@ -9354,11 +11558,15 @@ func TriggerCreate(ctx context.Context, arg_condition *Condition, arg_action *Ac
 		return nil, err
 	}
 	native_action = (*C.struct_lttng_action)(arg_action.ref.ptr)
-	result := C.lttng_trigger_create(native_condition, native_action)
+	result := C.ctlgo_lttng_trigger_create(native_condition, native_action)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
-	out := &Trigger{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.lttng_trigger_destroy((*C.struct_lttng_trigger)(p)) })}
+	out := &Trigger{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) { C.ctlgo_lttng_trigger_destroy((*C.struct_lttng_trigger)(p)) })}
+	out.ref.retained = []*resource{arg_condition.ref.retain(), arg_action.ref.retain()}
 	return out, nil
 }
 
@@ -9368,12 +11576,18 @@ func TriggerSetOwnerUID(ctx context.Context, arg_trigger *Trigger, arg_uid uint3
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_trigger_set_owner_uid"); err != nil {
+		return 0, err
+	}
 	var native_trigger *C.struct_lttng_trigger
 	if err := arg_trigger.resource().check(true); err != nil {
 		return 0, err
 	}
 	native_trigger = (*C.struct_lttng_trigger)(arg_trigger.ref.ptr)
-	result := C.lttng_trigger_set_owner_uid(native_trigger, C.uid_t(arg_uid))
+	result := C.ctlgo_lttng_trigger_set_owner_uid(native_trigger, C.uid_t(arg_uid))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_trigger_set_owner_uid", "lttng_trigger_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -9387,13 +11601,19 @@ func TriggerGetOwnerUID(ctx context.Context, arg_trigger *Trigger) (TriggerStatu
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_trigger_get_owner_uid"); err != nil {
+		return 0, 0, err
+	}
 	var native_trigger *C.struct_lttng_trigger
 	if err := arg_trigger.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_trigger = (*C.struct_lttng_trigger)(arg_trigger.ref.ptr)
 	var native_uid C.uid_t
-	result := C.lttng_trigger_get_owner_uid(native_trigger, &native_uid)
+	result := C.ctlgo_lttng_trigger_get_owner_uid(native_trigger, &native_uid)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_trigger_get_owner_uid", "lttng_trigger_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -9406,12 +11626,18 @@ func TriggerGetCondition(ctx context.Context, arg_trigger *Trigger) (*Condition,
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_trigger_get_condition", "lttng_condition_destroy"); err != nil {
+		return nil, err
+	}
 	var native_trigger *C.struct_lttng_trigger
 	if err := arg_trigger.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_trigger = (*C.struct_lttng_trigger)(arg_trigger.ref.ptr)
-	result := C.lttng_trigger_get_condition(native_trigger)
+	result := C.ctlgo_lttng_trigger_get_condition(native_trigger)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -9425,12 +11651,18 @@ func TriggerGetConstCondition(ctx context.Context, arg_trigger *Trigger) (*Condi
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_trigger_get_const_condition", "lttng_condition_destroy"); err != nil {
+		return nil, err
+	}
 	var native_trigger *C.struct_lttng_trigger
 	if err := arg_trigger.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_trigger = (*C.struct_lttng_trigger)(arg_trigger.ref.ptr)
-	result := C.lttng_trigger_get_const_condition(native_trigger)
+	result := C.ctlgo_lttng_trigger_get_const_condition(native_trigger)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -9444,12 +11676,18 @@ func TriggerGetAction(ctx context.Context, arg_trigger *Trigger) (*Action, error
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_trigger_get_action", "lttng_action_destroy"); err != nil {
+		return nil, err
+	}
 	var native_trigger *C.struct_lttng_trigger
 	if err := arg_trigger.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_trigger = (*C.struct_lttng_trigger)(arg_trigger.ref.ptr)
-	result := C.lttng_trigger_get_action(native_trigger)
+	result := C.ctlgo_lttng_trigger_get_action(native_trigger)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -9463,12 +11701,18 @@ func TriggerGetConstAction(ctx context.Context, arg_trigger *Trigger) (*Action, 
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_trigger_get_const_action", "lttng_action_destroy"); err != nil {
+		return nil, err
+	}
 	var native_trigger *C.struct_lttng_trigger
 	if err := arg_trigger.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_trigger = (*C.struct_lttng_trigger)(arg_trigger.ref.ptr)
-	result := C.lttng_trigger_get_const_action(native_trigger)
+	result := C.ctlgo_lttng_trigger_get_const_action(native_trigger)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -9482,13 +11726,19 @@ func TriggerGetName(ctx context.Context, arg_trigger *Trigger) (TriggerStatus, *
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_trigger_get_name"); err != nil {
+		return 0, nil, err
+	}
 	var native_trigger *C.struct_lttng_trigger
 	if err := arg_trigger.resource().check(false); err != nil {
 		return 0, nil, err
 	}
 	native_trigger = (*C.struct_lttng_trigger)(arg_trigger.ref.ptr)
 	var native_name *C.char
-	result := C.lttng_trigger_get_name(native_trigger, &native_name)
+	result := C.ctlgo_lttng_trigger_get_name(native_trigger, &native_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_trigger_get_name", "lttng_trigger_status", int(result), false); err != nil {
 		return 0, nil, err
 	}
@@ -9502,7 +11752,7 @@ func TriggerDestroy(ctx context.Context, arg *Trigger) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // RegisterTriggerWithName wraps lttng_register_trigger_with_name (lttng/trigger/trigger.h).
@@ -9511,6 +11761,9 @@ func RegisterTriggerWithName(ctx context.Context, arg_trigger *Trigger, arg_name
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_register_trigger_with_name"); err != nil {
+		return 0, err
+	}
 	var native_trigger *C.struct_lttng_trigger
 	if err := arg_trigger.resource().check(true); err != nil {
 		return 0, err
@@ -9521,7 +11774,10 @@ func RegisterTriggerWithName(ctx context.Context, arg_trigger *Trigger, arg_name
 		return 0, err
 	}
 	defer C.free(unsafe.Pointer(native_name))
-	result := C.lttng_register_trigger_with_name(native_trigger, native_name)
+	result := C.ctlgo_lttng_register_trigger_with_name(native_trigger, native_name)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_register_trigger_with_name", "lttng_error_code", int(result), true); err != nil {
 		return 0, err
 	}
@@ -9535,12 +11791,18 @@ func RegisterTriggerWithAutomaticName(ctx context.Context, arg_trigger *Trigger)
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_register_trigger_with_automatic_name"); err != nil {
+		return 0, err
+	}
 	var native_trigger *C.struct_lttng_trigger
 	if err := arg_trigger.resource().check(true); err != nil {
 		return 0, err
 	}
 	native_trigger = (*C.struct_lttng_trigger)(arg_trigger.ref.ptr)
-	result := C.lttng_register_trigger_with_automatic_name(native_trigger)
+	result := C.ctlgo_lttng_register_trigger_with_automatic_name(native_trigger)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_register_trigger_with_automatic_name", "lttng_error_code", int(result), true); err != nil {
 		return 0, err
 	}
@@ -9554,12 +11816,18 @@ func UnregisterTrigger(ctx context.Context, arg_trigger *Trigger) (int, error) {
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_unregister_trigger"); err != nil {
+		return 0, err
+	}
 	var native_trigger *C.struct_lttng_trigger
 	if err := arg_trigger.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_trigger = (*C.struct_lttng_trigger)(arg_trigger.ref.ptr)
-	result := C.lttng_unregister_trigger(native_trigger)
+	result := C.ctlgo_lttng_unregister_trigger(native_trigger)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_unregister_trigger", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -9572,14 +11840,20 @@ func ListTriggers(ctx context.Context) (ErrorCode, *Triggers, error) {
 		return 0, nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_list_triggers", "lttng_triggers_destroy"); err != nil {
+		return 0, nil, err
+	}
 	var native_triggers *C.struct_lttng_triggers
-	result := C.lttng_list_triggers(&native_triggers)
+	result := C.ctlgo_lttng_list_triggers(&native_triggers)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, nil, err
+	}
 	if err := statusError("lttng_list_triggers", "lttng_error_code", int(result), true); err != nil {
 		return 0, nil, err
 	}
 	var out_triggers *Triggers
 	if native_triggers != nil {
-		out_triggers = &Triggers{ref: own(unsafe.Pointer(native_triggers), func(p unsafe.Pointer) { C.lttng_triggers_destroy((*C.struct_lttng_triggers)(p)) })}
+		out_triggers = &Triggers{ref: own(unsafe.Pointer(native_triggers), func(p unsafe.Pointer) { C.ctlgo_lttng_triggers_destroy((*C.struct_lttng_triggers)(p)) })}
 	}
 	return ErrorCode(result), out_triggers, nil
 }
@@ -9590,12 +11864,18 @@ func TriggersGetAtIndex(ctx context.Context, arg_triggers *Triggers, arg_index u
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_triggers_get_at_index", "lttng_trigger_destroy"); err != nil {
+		return nil, err
+	}
 	var native_triggers *C.struct_lttng_triggers
 	if err := arg_triggers.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_triggers = (*C.struct_lttng_triggers)(arg_triggers.ref.ptr)
-	result := C.lttng_triggers_get_at_index(native_triggers, C.uint(arg_index))
+	result := C.ctlgo_lttng_triggers_get_at_index(native_triggers, C.uint(arg_index))
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -9609,13 +11889,19 @@ func TriggersGetCount(ctx context.Context, arg_triggers *Triggers) (TriggerStatu
 		return 0, 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_triggers_get_count"); err != nil {
+		return 0, 0, err
+	}
 	var native_triggers *C.struct_lttng_triggers
 	if err := arg_triggers.resource().check(false); err != nil {
 		return 0, 0, err
 	}
 	native_triggers = (*C.struct_lttng_triggers)(arg_triggers.ref.ptr)
 	var native_count C.uint
-	result := C.lttng_triggers_get_count(native_triggers, &native_count)
+	result := C.ctlgo_lttng_triggers_get_count(native_triggers, &native_count)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, 0, err
+	}
 	if err := statusError("lttng_triggers_get_count", "lttng_trigger_status", int(result), false); err != nil {
 		return 0, 0, err
 	}
@@ -9629,7 +11915,7 @@ func TriggersDestroy(ctx context.Context, arg *Triggers) error {
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // RegisterTrigger wraps lttng_register_trigger (lttng/trigger/trigger.h).
@@ -9638,12 +11924,18 @@ func RegisterTrigger(ctx context.Context, arg_trigger *Trigger) (int, error) {
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_register_trigger"); err != nil {
+		return 0, err
+	}
 	var native_trigger *C.struct_lttng_trigger
 	if err := arg_trigger.resource().check(true); err != nil {
 		return 0, err
 	}
 	native_trigger = (*C.struct_lttng_trigger)(arg_trigger.ref.ptr)
-	result := C.lttng_register_trigger(native_trigger)
+	result := C.ctlgo_lttng_register_trigger(native_trigger)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_register_trigger", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -9657,12 +11949,18 @@ func UserspaceProbeLocationLookupMethodGetType(ctx context.Context, arg_lookup_m
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_userspace_probe_location_lookup_method_get_type"); err != nil {
+		return 0, err
+	}
 	var native_lookup_method *C.struct_lttng_userspace_probe_location_lookup_method
 	if err := arg_lookup_method.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_lookup_method = (*C.struct_lttng_userspace_probe_location_lookup_method)(arg_lookup_method.ref.ptr)
-	result := C.lttng_userspace_probe_location_lookup_method_get_type(native_lookup_method)
+	result := C.ctlgo_lttng_userspace_probe_location_lookup_method_get_type(native_lookup_method)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return UserspaceProbeLocationLookupMethodType(result), nil
 }
 
@@ -9673,7 +11971,7 @@ func UserspaceProbeLocationLookupMethodDestroy(ctx context.Context, arg *Userspa
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // UserspaceProbeLocationLookupMethodFunctionELFCreate wraps lttng_userspace_probe_location_lookup_method_function_elf_create (lttng/userspace-probe.h).
@@ -9682,12 +11980,18 @@ func UserspaceProbeLocationLookupMethodFunctionELFCreate(ctx context.Context) (*
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_userspace_probe_location_lookup_method_function_elf_create()
+	if err := ctlstate.Require("lttng_userspace_probe_location_lookup_method_function_elf_create", "lttng_userspace_probe_location_lookup_method_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_userspace_probe_location_lookup_method_function_elf_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
 	out := &UserspaceProbeLocationLookupMethod{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
-		C.lttng_userspace_probe_location_lookup_method_destroy((*C.struct_lttng_userspace_probe_location_lookup_method)(p))
+		C.ctlgo_lttng_userspace_probe_location_lookup_method_destroy((*C.struct_lttng_userspace_probe_location_lookup_method)(p))
 	})}
 	return out, nil
 }
@@ -9698,12 +12002,18 @@ func UserspaceProbeLocationLookupMethodTracepointSDTCreate(ctx context.Context) 
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	result := C.lttng_userspace_probe_location_lookup_method_tracepoint_sdt_create()
+	if err := ctlstate.Require("lttng_userspace_probe_location_lookup_method_tracepoint_sdt_create", "lttng_userspace_probe_location_lookup_method_destroy"); err != nil {
+		return nil, err
+	}
+	result := C.ctlgo_lttng_userspace_probe_location_lookup_method_tracepoint_sdt_create()
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
 	out := &UserspaceProbeLocationLookupMethod{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
-		C.lttng_userspace_probe_location_lookup_method_destroy((*C.struct_lttng_userspace_probe_location_lookup_method)(p))
+		C.ctlgo_lttng_userspace_probe_location_lookup_method_destroy((*C.struct_lttng_userspace_probe_location_lookup_method)(p))
 	})}
 	return out, nil
 }
@@ -9714,12 +12024,18 @@ func UserspaceProbeLocationGetType(ctx context.Context, arg_location *UserspaceP
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_userspace_probe_location_get_type"); err != nil {
+		return 0, err
+	}
 	var native_location *C.struct_lttng_userspace_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_location = (*C.struct_lttng_userspace_probe_location)(arg_location.ref.ptr)
-	result := C.lttng_userspace_probe_location_get_type(native_location)
+	result := C.ctlgo_lttng_userspace_probe_location_get_type(native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return UserspaceProbeLocationType(result), nil
 }
 
@@ -9730,7 +12046,7 @@ func UserspaceProbeLocationDestroy(ctx context.Context, arg *UserspaceProbeLocat
 	}
 	defer ctlstate.Unlock()
 	arg.resource().close()
-	return nil
+	return ctlstate.CallError()
 }
 
 // UserspaceProbeLocationFunctionCreate wraps lttng_userspace_probe_location_function_create (lttng/userspace-probe.h).
@@ -9739,6 +12055,9 @@ func UserspaceProbeLocationFunctionCreate(ctx context.Context, arg_binary_path *
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_userspace_probe_location_function_create", "lttng_userspace_probe_location_destroy"); err != nil {
+		return nil, err
+	}
 	native_binary_path, err := cstring(arg_binary_path)
 	if err != nil {
 		return nil, err
@@ -9757,12 +12076,15 @@ func UserspaceProbeLocationFunctionCreate(ctx context.Context, arg_binary_path *
 		return nil, ErrReadOnly
 	}
 	native_lookup_method = (*C.struct_lttng_userspace_probe_location_lookup_method)(arg_lookup_method.ref.ptr)
-	result := C.lttng_userspace_probe_location_function_create(native_binary_path, native_function_name, native_lookup_method)
+	result := C.ctlgo_lttng_userspace_probe_location_function_create(native_binary_path, native_function_name, native_lookup_method)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
 	out := &UserspaceProbeLocation{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
-		C.lttng_userspace_probe_location_destroy((*C.struct_lttng_userspace_probe_location)(p))
+		C.ctlgo_lttng_userspace_probe_location_destroy((*C.struct_lttng_userspace_probe_location)(p))
 	})}
 	arg_lookup_method.ref.moved()
 	return out, nil
@@ -9774,12 +12096,18 @@ func UserspaceProbeLocationFunctionGetBinaryPath(ctx context.Context, arg_locati
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_userspace_probe_location_function_get_binary_path"); err != nil {
+		return nil, err
+	}
 	var native_location *C.struct_lttng_userspace_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_location = (*C.struct_lttng_userspace_probe_location)(arg_location.ref.ptr)
-	result := C.lttng_userspace_probe_location_function_get_binary_path(native_location)
+	result := C.ctlgo_lttng_userspace_probe_location_function_get_binary_path(native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -9789,12 +12117,18 @@ func UserspaceProbeLocationFunctionGetFunctionName(ctx context.Context, arg_loca
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_userspace_probe_location_function_get_function_name"); err != nil {
+		return nil, err
+	}
 	var native_location *C.struct_lttng_userspace_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_location = (*C.struct_lttng_userspace_probe_location)(arg_location.ref.ptr)
-	result := C.lttng_userspace_probe_location_function_get_function_name(native_location)
+	result := C.ctlgo_lttng_userspace_probe_location_function_get_function_name(native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -9804,12 +12138,18 @@ func UserspaceProbeLocationFunctionGetBinaryFD(ctx context.Context, arg_location
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_userspace_probe_location_function_get_binary_fd"); err != nil {
+		return 0, err
+	}
 	var native_location *C.struct_lttng_userspace_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_location = (*C.struct_lttng_userspace_probe_location)(arg_location.ref.ptr)
-	result := C.lttng_userspace_probe_location_function_get_binary_fd(native_location)
+	result := C.ctlgo_lttng_userspace_probe_location_function_get_binary_fd(native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_userspace_probe_location_function_get_binary_fd", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -9822,12 +12162,18 @@ func UserspaceProbeLocationFunctionGetInstrumentationType(ctx context.Context, a
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_userspace_probe_location_function_get_instrumentation_type"); err != nil {
+		return 0, err
+	}
 	var native_location *C.struct_lttng_userspace_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_location = (*C.struct_lttng_userspace_probe_location)(arg_location.ref.ptr)
-	result := C.lttng_userspace_probe_location_function_get_instrumentation_type(native_location)
+	result := C.ctlgo_lttng_userspace_probe_location_function_get_instrumentation_type(native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	return UserspaceProbeLocationFunctionInstrumentationType(result), nil
 }
 
@@ -9837,6 +12183,9 @@ func UserspaceProbeLocationFunctionSetInstrumentationType(ctx context.Context, a
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_userspace_probe_location_function_set_instrumentation_type"); err != nil {
+		return 0, err
+	}
 	var native_location *C.struct_lttng_userspace_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return 0, err
@@ -9845,7 +12194,10 @@ func UserspaceProbeLocationFunctionSetInstrumentationType(ctx context.Context, a
 	if int64(C.enum_lttng_userspace_probe_location_function_instrumentation_type(arg_instrumentation_type)) != int64(arg_instrumentation_type) {
 		return 0, ErrInvalidArgument
 	}
-	result := C.lttng_userspace_probe_location_function_set_instrumentation_type(native_location, C.enum_lttng_userspace_probe_location_function_instrumentation_type(arg_instrumentation_type))
+	result := C.ctlgo_lttng_userspace_probe_location_function_set_instrumentation_type(native_location, C.enum_lttng_userspace_probe_location_function_instrumentation_type(arg_instrumentation_type))
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_userspace_probe_location_function_set_instrumentation_type", "lttng_userspace_probe_location_status", int(result), false); err != nil {
 		return 0, err
 	}
@@ -9858,12 +12210,18 @@ func UserspaceProbeLocationGetLookupMethod(ctx context.Context, arg_location *Us
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_userspace_probe_location_get_lookup_method", "lttng_userspace_probe_location_lookup_method_destroy"); err != nil {
+		return nil, err
+	}
 	var native_location *C.struct_lttng_userspace_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_location = (*C.struct_lttng_userspace_probe_location)(arg_location.ref.ptr)
-	result := C.lttng_userspace_probe_location_get_lookup_method(native_location)
+	result := C.ctlgo_lttng_userspace_probe_location_get_lookup_method(native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
@@ -9877,6 +12235,9 @@ func UserspaceProbeLocationTracepointCreate(ctx context.Context, arg_binary_path
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_userspace_probe_location_tracepoint_create", "lttng_userspace_probe_location_destroy"); err != nil {
+		return nil, err
+	}
 	native_binary_path, err := cstring(arg_binary_path)
 	if err != nil {
 		return nil, err
@@ -9900,12 +12261,15 @@ func UserspaceProbeLocationTracepointCreate(ctx context.Context, arg_binary_path
 		return nil, ErrReadOnly
 	}
 	native_lookup_method = (*C.struct_lttng_userspace_probe_location_lookup_method)(arg_lookup_method.ref.ptr)
-	result := C.lttng_userspace_probe_location_tracepoint_create(native_binary_path, native_probe_name, native_provider_name, native_lookup_method)
+	result := C.ctlgo_lttng_userspace_probe_location_tracepoint_create(native_binary_path, native_probe_name, native_provider_name, native_lookup_method)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	if result == nil {
 		return nil, ErrNull
 	}
 	out := &UserspaceProbeLocation{ref: own(unsafe.Pointer(result), func(p unsafe.Pointer) {
-		C.lttng_userspace_probe_location_destroy((*C.struct_lttng_userspace_probe_location)(p))
+		C.ctlgo_lttng_userspace_probe_location_destroy((*C.struct_lttng_userspace_probe_location)(p))
 	})}
 	arg_lookup_method.ref.moved()
 	return out, nil
@@ -9917,12 +12281,18 @@ func UserspaceProbeLocationTracepointGetBinaryPath(ctx context.Context, arg_loca
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_userspace_probe_location_tracepoint_get_binary_path"); err != nil {
+		return nil, err
+	}
 	var native_location *C.struct_lttng_userspace_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_location = (*C.struct_lttng_userspace_probe_location)(arg_location.ref.ptr)
-	result := C.lttng_userspace_probe_location_tracepoint_get_binary_path(native_location)
+	result := C.ctlgo_lttng_userspace_probe_location_tracepoint_get_binary_path(native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -9932,12 +12302,18 @@ func UserspaceProbeLocationTracepointGetProbeName(ctx context.Context, arg_locat
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_userspace_probe_location_tracepoint_get_probe_name"); err != nil {
+		return nil, err
+	}
 	var native_location *C.struct_lttng_userspace_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_location = (*C.struct_lttng_userspace_probe_location)(arg_location.ref.ptr)
-	result := C.lttng_userspace_probe_location_tracepoint_get_probe_name(native_location)
+	result := C.ctlgo_lttng_userspace_probe_location_tracepoint_get_probe_name(native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -9947,12 +12323,18 @@ func UserspaceProbeLocationTracepointGetProviderName(ctx context.Context, arg_lo
 		return nil, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_userspace_probe_location_tracepoint_get_provider_name"); err != nil {
+		return nil, err
+	}
 	var native_location *C.struct_lttng_userspace_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return nil, err
 	}
 	native_location = (*C.struct_lttng_userspace_probe_location)(arg_location.ref.ptr)
-	result := C.lttng_userspace_probe_location_tracepoint_get_provider_name(native_location)
+	result := C.ctlgo_lttng_userspace_probe_location_tracepoint_get_provider_name(native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return nil, err
+	}
 	return copyCString(result), nil
 }
 
@@ -9962,12 +12344,18 @@ func UserspaceProbeLocationTracepointGetBinaryFD(ctx context.Context, arg_locati
 		return 0, err
 	}
 	defer ctlstate.Unlock()
+	if err := ctlstate.Require("lttng_userspace_probe_location_tracepoint_get_binary_fd"); err != nil {
+		return 0, err
+	}
 	var native_location *C.struct_lttng_userspace_probe_location
 	if err := arg_location.resource().check(false); err != nil {
 		return 0, err
 	}
 	native_location = (*C.struct_lttng_userspace_probe_location)(arg_location.ref.ptr)
-	result := C.lttng_userspace_probe_location_tracepoint_get_binary_fd(native_location)
+	result := C.ctlgo_lttng_userspace_probe_location_tracepoint_get_binary_fd(native_location)
+	if err := ctlstate.CallError(); err != nil {
+		return 0, err
+	}
 	if err := statusError("lttng_userspace_probe_location_tracepoint_get_binary_fd", "int", int(result), false); err != nil {
 		return 0, err
 	}
@@ -9980,7 +12368,10 @@ func SessionDaemonNotificationEndpoint(ctx context.Context) (*Endpoint, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	return &Endpoint{ref: borrow(unsafe.Pointer(C.lttng_session_daemon_notification_endpoint), nil, true)}, nil
+	if err := ctlstate.Require("lttng_session_daemon_notification_endpoint"); err != nil {
+		return nil, err
+	}
+	return &Endpoint{ref: borrow(unsafe.Pointer(C.ctlgo_get_lttng_session_daemon_notification_endpoint()), nil, true)}, nil
 }
 
 // SessionDaemonCommandEndpoint returns the library-owned endpoint.
@@ -9989,7 +12380,10 @@ func SessionDaemonCommandEndpoint(ctx context.Context) (*Endpoint, error) {
 		return nil, err
 	}
 	defer ctlstate.Unlock()
-	return &Endpoint{ref: borrow(unsafe.Pointer(C.lttng_session_daemon_command_endpoint), nil, true)}, nil
+	if err := ctlstate.Require("lttng_session_daemon_command_endpoint"); err != nil {
+		return nil, err
+	}
+	return &Endpoint{ref: borrow(unsafe.Pointer(C.ctlgo_get_lttng_session_daemon_command_endpoint()), nil, true)}, nil
 }
 func copyCString(p *C.char) *string {
 	if p == nil {

@@ -3,9 +3,8 @@
 package ctl
 
 /*
-#cgo pkg-config: lttng-ctl
 #include <stdlib.h>
-#include <lttng/lttng.h>
+#include "../internal/ctlstate/bridge_generated.h"
 */
 import "C"
 
@@ -20,11 +19,31 @@ import (
 )
 
 var (
-	ErrClosed          = errors.New("ctl: closed, moved, or invalidated object")
-	ErrReadOnly        = errors.New("ctl: borrowed object is read-only")
-	ErrInvalidArgument = errors.New("ctl: invalid argument")
-	ErrNull            = errors.New("ctl: native API returned NULL")
+	// ErrUnsupported identifies APIs absent from the runtime library.
+	ErrUnsupported = ctlstate.ErrUnsupported
+	// ErrLibraryUnavailable identifies dynamic-loader failures.
+	ErrLibraryUnavailable = ctlstate.ErrLibraryUnavailable
+	ErrClosed             = errors.New("ctl: closed, moved, or invalidated object")
+	ErrReadOnly           = errors.New("ctl: borrowed object is read-only")
+	ErrInvalidArgument    = errors.New("ctl: invalid argument")
+	ErrNull               = errors.New("ctl: native API returned NULL")
 )
+
+// UnsupportedError identifies the missing native symbol.
+type UnsupportedError = ctlstate.UnsupportedError
+
+// HasSymbol reports whether the loaded library exports a public API symbol.
+// This checks library availability, not daemon, tracer, or permission support.
+func HasSymbol(ctx context.Context, symbol string) (bool, error) {
+	if err := ctlstate.Lock(ctx); err != nil {
+		return false, err
+	}
+	defer ctlstate.Unlock()
+	if !strings.HasPrefix(symbol, "lttng_") || strings.ContainsRune(symbol, 0) {
+		return false, ErrInvalidArgument
+	}
+	return ctlstate.HasSymbol(symbol)
+}
 
 // StatusError preserves the status namespace; equal numbers from unrelated
 // status enums are not interchangeable. General error messages use strerror.
@@ -43,7 +62,7 @@ func statusError(op, family string, code int, general bool) error {
 		if code == int(C.LTTNG_OK) {
 			return nil
 		}
-		return &StatusError{Op: op, Family: family, Code: code, Message: C.GoString(C.lttng_strerror(C.int(code)))}
+		return &StatusError{Op: op, Family: family, Code: code, Message: C.GoString(C.ctlgo_lttng_strerror(C.int(code)))}
 	}
 	if code < 0 {
 		return &StatusError{Op: op, Family: family, Code: code, Message: "native operation failed"}
@@ -60,10 +79,13 @@ type resource struct {
 	readOnly       bool
 	dispose        func(unsafe.Pointer)
 	extra          []unsafe.Pointer
+	closed         bool
+	pins           int
+	retained       []*resource
 }
 
 func (ref *resource) check(write bool) error {
-	if ref == nil || ref.ptr == nil {
+	if ref == nil || ref.ptr == nil || ref.closed {
 		return ErrClosed
 	}
 	if ref.parent != nil {
@@ -93,7 +115,27 @@ func borrow(ptr unsafe.Pointer, parent *resource, readOnly bool) *resource {
 }
 
 func (ref *resource) close() {
-	if ref == nil || ref.ptr == nil {
+	if ref == nil || ref.ptr == nil || ref.closed {
+		return
+	}
+	ref.closed = true
+	ref.revision++
+	ref.releaseIfClosed()
+}
+
+// Before 2.13 triggers borrow their condition and action without native reference
+// counting. Pin the ultimate owner, including when an input is itself borrowed.
+// Explicit Close still invalidates its Go wrapper immediately.
+func (ref *resource) retain() *resource {
+	for ref.parent != nil {
+		ref = ref.parent
+	}
+	ref.pins++
+	return ref
+}
+
+func (ref *resource) releaseIfClosed() {
+	if !ref.closed || ref.pins != 0 || ref.ptr == nil {
 		return
 	}
 	if ref.parent == nil && ref.dispose != nil {
@@ -103,7 +145,11 @@ func (ref *resource) close() {
 		}
 	}
 	ref.ptr = nil
-	ref.revision++
+	for _, retained := range ref.retained {
+		retained.pins--
+		retained.releaseIfClosed()
+	}
+	ref.retained = nil
 }
 
 func (ref *resource) moved() { ref.ptr = nil; ref.revision++ }

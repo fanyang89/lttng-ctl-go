@@ -5,7 +5,7 @@ package ctl
 /*
 #include <stdlib.h>
 #include <string.h>
-#include <lttng/lttng.h>
+#include "../internal/ctlstate/bridge_generated.h"
 static void ctl_set_probe(struct lttng_event *e, uint64_t address, uint64_t offset, const char *symbol, const char *function) {
     memset(&e->attr, 0, sizeof(e->attr));
     if (e->type == LTTNG_EVENT_FUNCTION_ENTRY) { if (function) strcpy(e->attr.ftrace.symbol_name, function); }
