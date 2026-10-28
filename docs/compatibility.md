@@ -82,6 +82,14 @@ differences fail the check.
 
 ## Reproducible matrix
 
+The [LTTng compatibility workflow](../.github/workflows/compatibility.yml) runs
+on pushes, pull requests, and manual dispatches. A single Ubuntu x86-64 job runs
+the complete Docker harness below, preserving the build-once guarantee across
+all four runtimes. Any build, ABI, linkage, hash, or runtime-test failure fails
+the job. Build/test logs and `SHA256SUMS` are uploaded even on failure and retained
+for 14 days. Go is selected from `go.mod`; native source revisions are pinned in
+`scripts/compat/versions.tsv` and `scripts/compat/urcu.tsv`.
+
 ```sh
 sh scripts/test-compat.sh all
 # Reuse native builds and repeat the build-once/runtime matrix:
