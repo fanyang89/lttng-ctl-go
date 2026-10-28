@@ -1,7 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 series=$1
-work=$(mktemp -d "$TMPDIR/runtime-$series.XXXXXX")
+sdk=$(cd "$(dirname "$0")/../.." && pwd)
+bin=${LTTNG_COMPAT_WORK:-/work}/bin
+# Runner workspace paths can exceed the Unix socket path limit (108 bytes).
+work=$(mktemp -d "/tmp/lttng-$series.XXXXXX")
+export TMPDIR="$work"
 export LTTNG_HOME="$work" LTTNG_RUNDIR="$work/.lttng"
 export LTTNG_UST_CTL_PATH="$LTTNG_RUNDIR" LTTNG_UST_APP_PATH="$LTTNG_RUNDIR"
 export LTTNG_CTL_GO_INTEGRATION=1
@@ -30,10 +34,10 @@ for ((attempt = 0; ; attempt++)); do
 	fi
 	sleep 0.05
 done
-/work/bin/root.test -test.v -test.timeout=180s
+"$bin/root.test" -test.v -test.timeout=180s
 if [[ $series == 2.14 ]]; then
-	(cd /sdk/ctl && /work/bin/ctl.test -test.v -test.timeout=180s)
+	(cd "$sdk/ctl" && "$bin/ctl.test" -test.v -test.timeout=180s)
 else
-	(cd /sdk/ctl && /work/bin/ctl.test -test.v -test.timeout=180s \
+	(cd "$sdk/ctl" && "$bin/ctl.test" -test.v -test.timeout=180s \
 		'-test.run=TestEveryAPI|TestUnavailableAPI|TestCompatibility')
 fi

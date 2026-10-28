@@ -15,10 +15,11 @@ concurrency:
 jobs:
   compatibility:
     name: Build once / LTTng 2.8, 2.10, 2.12, 2.14
-    runs-on: ubuntu-24.04
-    timeout-minutes: 90
+    runs-on: [self-hosted, Linux, X64, lttng-ctl-go]
+    timeout-minutes: 30
     env:
-      LTTNG_BUILD_JOBS: "2"
+      GOPROXY: https://goproxy.cn
+      GOTOOLCHAIN: local
     defaults:
       run:
         shell: bash
@@ -28,19 +29,15 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Set up Go
-        uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
-        with:
-          go-version-file: go.mod
-          cache: false
-
       # Keep every runtime in one job so all versions execute identical binaries.
-      - name: Build native runtimes and run compatibility checks
+      - name: Run compatibility checks with preinstalled runtimes
         env:
           LTTNG_COMPAT_WORK: ${{ runner.temp }}/lttng-ctl-go-compat
         run: |
           mkdir -p "$LTTNG_COMPAT_WORK"
-          sh scripts/test-compat.sh all 2>&1 | tee "$LTTNG_COMPAT_WORK/ci.log"
+          go version
+          test "$(go env GOPROXY)" = https://goproxy.cn
+          bash scripts/compat/run.sh test 2>&1 | tee "$LTTNG_COMPAT_WORK/ci.log"
 
       - name: Upload compatibility evidence
         if: always()

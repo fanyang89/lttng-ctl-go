@@ -83,11 +83,14 @@ differences fail the check.
 ## Reproducible matrix
 
 The [LTTng compatibility workflow](../.github/workflows/compatibility.yml) runs
-on pushes, pull requests, and manual dispatches. A single Ubuntu x86-64 job runs
-the complete Docker harness below, preserving the build-once guarantee across
-all four runtimes. Any build, ABI, linkage, hash, or runtime-test failure fails
+on pushes, pull requests, and manual dispatches. A dedicated Debian 12 x86-64
+runner in the vertigo k3s cluster runs the complete matrix, preserving the
+build-once guarantee across all four runtimes. Any build, ABI, linkage, hash, or runtime-test failure fails
 the job. Build/test logs and `SHA256SUMS` are uploaded even on failure and retained
-for 14 days. Go is selected from `go.mod`; native source revisions are pinned in
+for 14 days. Go 1.27.1 and all native runtimes are baked into the runner image;
+CI neither downloads a toolchain nor rebuilds native runtimes. `GOTOOLCHAIN=local`
+prevents implicit Go downloads, and `GOPROXY=https://goproxy.cn` serves modules.
+Native source revisions are pinned in
 `scripts/compat/versions.tsv` and `scripts/compat/urcu.tsv`.
 
 ```sh
@@ -95,6 +98,19 @@ sh scripts/test-compat.sh all
 # Reuse native builds and repeat the build-once/runtime matrix:
 sh scripts/test-compat.sh test
 ```
+
+Build the preinstalled runner image when upgrading Go or native versions:
+
+```sh
+docker build --target runner --build-arg DEBIAN_MIRROR=mirrors.ustc.edu.cn \
+  -t registry.fuis.space/infra/lttng-ctl-go-runner:go1.27.1-lttng2.14.0-1 scripts/compat
+```
+
+Its deployment and digest pin are managed by the `vertigo-k3s` infrastructure
+repository's `github-runners` Helm chart. Native installations are read-only
+under `/opt/lttng`; `LTTNG_COMPAT_WORK` selects writable job outputs. The harness
+compares the image's version lock files with the checkout and fails on drift.
+The default Dockerfile target remains the local harness without prebuilt tools.
 
 The Linux x86-64 matrix pins upstream source commits for these combinations:
 
