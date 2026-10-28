@@ -8,7 +8,7 @@ case "$mode" in unit | regression | config | full | sdk | all) ;; *)
 	exit 2
 	;;
 esac
-work=${LTTNG_UPSTREAM_WORK:-${TMPDIR:-$HOME/tmp}/opencode/lttng-go-upstream-2.14.0}
+work=${LTTNG_UPSTREAM_WORK:-${TMPDIR:-$HOME/tmp}/opencode/lttng-ctl-go-upstream-2.14.0}
 if [ "$(id -u)" -eq 0 ]; then
 	echo 'Run this harness as an ordinary user; upstream kernel/destructive tests must not run as root.' >&2
 	exit 2
@@ -23,7 +23,7 @@ if [ ! -d "$work/source" ]; then
 	GIT_TERMINAL_PROMPT=0 git clone --depth=1 --branch=v2.14.0 \
 		https://github.com/lttng/lttng-tools.git "$work/source"
 fi
-image=${LTTNG_UPSTREAM_IMAGE:-lttng-go-upstream:2.14.0-f44}
+image=${LTTNG_UPSTREAM_IMAGE:-lttng-ctl-go-upstream:2.14.0-f44}
 docker build --build-arg "TEST_UID=$(id -u)" --build-arg "TEST_GID=$(id -g)" \
 	-t "$image" "$repo/scripts/upstream"
 docker run --rm --init --cap-drop ALL --security-opt no-new-privileges \

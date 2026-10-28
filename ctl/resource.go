@@ -16,7 +16,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/fanyang89/lttng-go/internal/ctlstate"
+	"github.com/fanyang89/lttng-ctl-go/internal/ctlstate"
 )
 
 var (

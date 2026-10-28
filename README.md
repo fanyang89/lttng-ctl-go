@@ -1,4 +1,4 @@
-# lttng-go
+# lttng-ctl-go
 
 A thin, idiomatic Go wrapper around the official **liblttng-ctl** C API.
 It controls a local LTTng session daemon using CGO, without spawning `lttng`
@@ -41,7 +41,8 @@ relay daemon, or no output. **`SessionOptions{}` means no output**, not the CLI'
 default trace directory. Network output URLs are not remote sessiond endpoints.
 
 For the **complete liblttng-ctl 2.14 API**, import
-`github.com/fanyang89/lttng-go/ctl`. The root package remains the simpler
+`github.com/fanyang89/lttng-ctl-go/ctl`. The root package,
+`github.com/fanyang89/lttng-ctl-go` (package `lttng`), remains the simpler
 recording API described above. The `ctl` package covers **all 425 public C
 functions**, all public enums, and the two global endpoints, including deprecated
 APIs. See [the complete symbol/signature inventory](ctl/API.tsv).
@@ -225,7 +226,7 @@ sh scripts/test-upstream.sh sdk
 ```
 
 Source, build products, and logs are retained under
-`${TMPDIR:-$HOME/tmp}/opencode/lttng-go-upstream-2.14.0` (override with
+`${TMPDIR:-$HOME/tmp}/opencode/lttng-ctl-go-upstream-2.14.0` (override with
 `LTTNG_UPSTREAM_WORK`). Raw TAP/Automake logs remain in `build/tests`; stage logs
 are in `logs`, including the native library linkage used by the Go test binary.
 Failures are not suppressed, and SKIP is not counted as PASS. Kernel, destructive,

@@ -9,7 +9,7 @@ int main(void)
     if (getchar() == EOF) {
         return 1;
     }
-    tracef("lttng-go accepted");
-    tracef("lttng-go rejected");
+    tracef("lttng-ctl-go accepted");
+    tracef("lttng-ctl-go rejected");
     return 0;
 }

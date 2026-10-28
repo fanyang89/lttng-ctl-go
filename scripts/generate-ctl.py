@@ -183,7 +183,7 @@ def generate(include):
         "*/",
         'import "C"',
         "",
-        'import ("context"; "fmt"; "unsafe"; "github.com/fanyang89/lttng-go/internal/ctlstate")',
+        'import ("context"; "fmt"; "unsafe"; "github.com/fanyang89/lttng-ctl-go/internal/ctlstate")',
         "",
     ]
     for name in sorted(enums):

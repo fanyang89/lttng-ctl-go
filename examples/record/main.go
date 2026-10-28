@@ -15,11 +15,11 @@ import (
 	"path/filepath"
 	"syscall"
 
-	lttng "github.com/fanyang89/lttng-go"
+	lttng "github.com/fanyang89/lttng-ctl-go"
 )
 
 func main() {
-	name := flag.String("session", "lttng-go-example", "session name")
+	name := flag.String("session", "lttng-ctl-go-example", "session name")
 	output := flag.String("output", "./traces", "trace output directory")
 	pattern := flag.String("event", "*", "UST event name pattern")
 	filter := flag.String("filter", "", "LTTng event filter expression")

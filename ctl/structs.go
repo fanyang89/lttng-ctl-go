@@ -29,7 +29,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/fanyang89/lttng-go/internal/ctlstate"
+	"github.com/fanyang89/lttng-ctl-go/internal/ctlstate"
 )
 
 // DomainData contains the public fields used to select a tracing domain.

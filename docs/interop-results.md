@@ -96,7 +96,7 @@ sh scripts/test-upstream.sh sdk   # Full SDK suite and Go/CLI/C interoperability
 ```
 
 Artifacts are retained under
-`${TMPDIR:-$HOME/tmp}/opencode/lttng-go-upstream-2.14.0`, or
+`${TMPDIR:-$HOME/tmp}/opencode/lttng-ctl-go-upstream-2.14.0`, or
 `LTTNG_UPSTREAM_WORK` when explicitly set:
 
 - `logs/`: stage output, versions, and SDK linkage.

@@ -1,3 +1,3 @@
-module github.com/fanyang89/lttng-go
+module github.com/fanyang89/lttng-ctl-go
 
 go 1.27.1

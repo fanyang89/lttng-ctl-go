@@ -19,7 +19,7 @@ import (
 
 func requireIntegration(t *testing.T) {
 	t.Helper()
-	if os.Getenv("LTTNG_GO_INTEGRATION") != "1" {
+	if os.Getenv("LTTNG_CTL_GO_INTEGRATION") != "1" {
 		t.Skip("use sh scripts/test-integration.sh to start an isolated sessiond")
 	}
 	alive, err := SessionDaemonAlive(t.Context())
@@ -30,7 +30,7 @@ func requireIntegration(t *testing.T) {
 
 func createTestSession(t *testing.T, options SessionOptions) string {
 	t.Helper()
-	name := fmt.Sprintf("lttng-go-%d-%s", os.Getpid(), t.Name())
+	name := fmt.Sprintf("lttng-ctl-go-%d-%s", os.Getpid(), t.Name())
 	name = strings.ReplaceAll(name, "/", "-")
 	if err := CreateSession(t.Context(), name, options); err != nil {
 		t.Fatal(err)
@@ -156,7 +156,7 @@ func TestIntegrationConcurrentCalls(t *testing.T) {
 	var wg sync.WaitGroup
 	for i := range 8 {
 		wg.Go(func() {
-			name := fmt.Sprintf("lttng-go-concurrent-%d-%d", os.Getpid(), i)
+			name := fmt.Sprintf("lttng-ctl-go-concurrent-%d-%d", os.Getpid(), i)
 			if err := CreateSession(ctx, name, SessionOptions{}); err != nil {
 				t.Error(err)
 				return
@@ -212,7 +212,7 @@ func TestIntegrationDefaultsAndCanceledMutation(t *testing.T) {
 }
 
 func TestIntegrationUnavailableDaemon(t *testing.T) {
-	if os.Getenv("LTTNG_GO_MISSING_DAEMON") == "1" {
+	if os.Getenv("LTTNG_CTL_GO_MISSING_DAEMON") == "1" {
 		alive, err := SessionDaemonAlive(t.Context())
 		if err != nil || alive {
 			t.Fatalf("unexpected daemon connection: alive=%v, err=%v", alive, err)
@@ -226,7 +226,7 @@ func TestIntegrationUnavailableDaemon(t *testing.T) {
 	// Re-exec so the C library sees this configuration before initialization.
 	missing := filepath.Join(t.TempDir(), "missing")
 	child := exec.CommandContext(t.Context(), os.Args[0], "-test.run=^TestIntegrationUnavailableDaemon$", "-test.v")
-	child.Env = append(os.Environ(), "LTTNG_GO_MISSING_DAEMON=1", "LTTNG_HOME="+missing, "LTTNG_RUNDIR="+missing)
+	child.Env = append(os.Environ(), "LTTNG_CTL_GO_MISSING_DAEMON=1", "LTTNG_HOME="+missing, "LTTNG_RUNDIR="+missing)
 	if output, err := child.CombinedOutput(); err != nil {
 		t.Fatalf("missing-daemon subprocess: %v\n%s", err, output)
 	}
@@ -277,7 +277,7 @@ func TestIntegrationRecordsFilteredTrace(t *testing.T) {
 	if err := AddContext(ctx, name, ust, "events", ContextVTID); err != nil {
 		t.Fatal(err)
 	}
-	if err := EnableEvent(ctx, name, ust, "events", EventRule{Name: "lttng_ust_tracef:event", Filter: `msg == "lttng-go accepted"`}); err != nil {
+	if err := EnableEvent(ctx, name, ust, "events", EventRule{Name: "lttng_ust_tracef:event", Filter: `msg == "lttng-ctl-go accepted"`}); err != nil {
 		t.Fatal(err)
 	}
 	if err := StartSession(ctx, name); err != nil {
@@ -303,7 +303,7 @@ func TestIntegrationRecordsFilteredTrace(t *testing.T) {
 		t.Fatalf("read trace: %v\n%s", err, output)
 	}
 	text := string(output)
-	if !strings.Contains(text, "lttng-go accepted") || strings.Contains(text, "lttng-go rejected") || !strings.Contains(text, "vtid") {
+	if !strings.Contains(text, "lttng-ctl-go accepted") || strings.Contains(text, "lttng-ctl-go rejected") || !strings.Contains(text, "vtid") {
 		t.Fatalf("unexpected filtered trace:\n%s", output)
 	}
 }

@@ -5,12 +5,12 @@ set -eu
 cd "$(dirname "$0")/.."
 base="${TMPDIR:-$HOME/tmp}/opencode"
 mkdir -p "$base"
-work=$(mktemp -d "$base/lttng-go.XXXXXX")
+work=$(mktemp -d "$base/lttng-ctl-go.XXXXXX")
 export LTTNG_HOME="$work"
 export LTTNG_RUNDIR="$work/.lttng"
 export LTTNG_UST_CTL_PATH="$LTTNG_RUNDIR"
 export LTTNG_UST_APP_PATH="$LTTNG_RUNDIR"
-export LTTNG_GO_INTEGRATION=1
+export LTTNG_CTL_GO_INTEGRATION=1
 mkdir -p "$LTTNG_RUNDIR" "$work/empty-sessions"
 daemon_pid=
 

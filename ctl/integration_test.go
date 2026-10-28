@@ -11,7 +11,7 @@ import (
 )
 
 func TestIntegrationAdvancedControl(t *testing.T) {
-	if os.Getenv("LTTNG_GO_INTEGRATION") != "1" {
+	if os.Getenv("LTTNG_CTL_GO_INTEGRATION") != "1" {
 		t.Skip("use the isolated integration harness")
 	}
 	ctx := t.Context()

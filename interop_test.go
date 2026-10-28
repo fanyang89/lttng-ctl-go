@@ -15,7 +15,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/fanyang89/lttng-go/ctl"
+	"github.com/fanyang89/lttng-ctl-go/ctl"
 )
 
 func officialCLI(t *testing.T, args ...string) []byte {
